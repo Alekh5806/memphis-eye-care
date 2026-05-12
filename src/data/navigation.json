@@ -1,0 +1,30 @@
+[
+  {
+    "label": "Home",
+    "path": "/"
+  },
+  {
+    "label": "About",
+    "path": "/about"
+  },
+  {
+    "label": "Products",
+    "path": "/products"
+  },
+  {
+    "label": "Manufacturing",
+    "path": "/manufacturing"
+  },
+  {
+    "label": "Quality",
+    "path": "/quality"
+  },
+  {
+    "label": "Contract Manufacturing",
+    "path": "/contract-manufacturing"
+  },
+  {
+    "label": "Contact",
+    "path": "/contact"
+  }
+]

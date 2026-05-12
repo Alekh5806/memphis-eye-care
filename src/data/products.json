@@ -1,0 +1,107 @@
+[
+  {
+    "id": "hpmc-ophthalmic-2ml",
+    "slug": "hydroxypropyl-methylcellulose-ophthalmic-solution-2ml",
+    "name": "Hydroxypropyl Methylcellulose Ophthalmic Solution USP",
+    "categoryId": "ophthalmic-care",
+    "strength": "2% w/v",
+    "fillVolume": "2 ml",
+    "pack": "1 PFS",
+    "dosageForm": "Prefilled Syringe",
+    "image": "/images/products/ophthalmic/hpmc-2ml.svg",
+    "gallery": [
+      "/images/products/ophthalmic/hpmc-2ml.svg"
+    ],
+    "featured": true,
+    "description": "Sterile ophthalmic solution in a prefilled syringe presentation for professional use.",
+    "highlights": [
+      "Sterile PFS presentation",
+      "Pre-measured fill volume",
+      "Designed for reduced handling steps"
+    ]
+  },
+  {
+    "id": "sodium-hyaluronate-1ml",
+    "slug": "sodium-hyaluronate-ophthalmic-solution-1ml",
+    "name": "Sodium Hyaluronate Ophthalmic Solution BP",
+    "categoryId": "ophthalmic-care",
+    "strength": "1% w/v",
+    "fillVolume": "1 ml",
+    "pack": "1 PFS",
+    "dosageForm": "Prefilled Syringe",
+    "image": "/images/products/ophthalmic/sodium-hyaluronate-1ml.svg",
+    "gallery": [
+      "/images/products/ophthalmic/sodium-hyaluronate-1ml.svg"
+    ],
+    "featured": true,
+    "description": "Sterile ophthalmic product supplied in a ready-to-use prefilled syringe format.",
+    "highlights": [
+      "Ready-to-use format",
+      "Sterile presentation",
+      "Suitable for B2B product enquiries"
+    ]
+  },
+  {
+    "id": "enoxaparin-0-4ml",
+    "slug": "enoxaparin-sodium-injection-0-4ml",
+    "name": "Enoxaparin Sodium Injection IP",
+    "categoryId": "cardiac-critical-care",
+    "strength": "10 mg / 0.1 ml",
+    "fillVolume": "0.4 ml",
+    "pack": "1 PFS",
+    "dosageForm": "Prefilled Syringe",
+    "image": "/images/products/cardiac/enoxaparin-0-4ml.svg",
+    "gallery": [
+      "/images/products/cardiac/enoxaparin-0-4ml.svg"
+    ],
+    "featured": true,
+    "description": "Critical care injectable product supplied in a prefilled syringe format.",
+    "highlights": [
+      "Critical care segment",
+      "Single PFS pack",
+      "Enquiry-ready product profile"
+    ]
+  },
+  {
+    "id": "sodium-hyaluronate-ortho-3ml",
+    "slug": "sodium-hyaluronate-orthopaedic-injection-3ml",
+    "name": "Sodium Hyaluronate Injection",
+    "categoryId": "orthopaedic-care",
+    "strength": "As per approved specification",
+    "fillVolume": "3 ml",
+    "pack": "1 PFS",
+    "dosageForm": "Prefilled Syringe",
+    "image": "/images/products/orthopaedic/sodium-hyaluronate-3ml.svg",
+    "gallery": [
+      "/images/products/orthopaedic/sodium-hyaluronate-3ml.svg"
+    ],
+    "featured": false,
+    "description": "Orthopaedic segment sterile injectable product in prefilled syringe format.",
+    "highlights": [
+      "Orthopaedic segment",
+      "PFS dosage form",
+      "Professional product enquiry support"
+    ]
+  },
+  {
+    "id": "iron-sucrose-5ml",
+    "slug": "iron-sucrose-injection-5ml",
+    "name": "Iron Sucrose Injection USP",
+    "categoryId": "gynaecology-care",
+    "strength": "40 mg / ml",
+    "fillVolume": "5 ml",
+    "pack": "1 PFS",
+    "dosageForm": "Prefilled Syringe",
+    "image": "/images/products/gynaecology/iron-sucrose-5ml.svg",
+    "gallery": [
+      "/images/products/gynaecology/iron-sucrose-5ml.svg"
+    ],
+    "featured": false,
+    "description": "Women's health injectable product profile for business and institutional enquiries.",
+    "highlights": [
+      "Women's health segment",
+      "Sterile injectable format",
+      "Business enquiry ready"
+    ]
+  }
+]

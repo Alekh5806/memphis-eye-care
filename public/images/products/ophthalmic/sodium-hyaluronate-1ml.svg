@@ -1,0 +1,10 @@
+<svg width="900" height="650" viewBox="0 0 900 650" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="900" height="650" fill="#EDF8F4"/>
+  <rect x="95" y="120" width="710" height="410" rx="18" fill="#FFFFFF"/>
+  <circle cx="450" cy="238" r="72" fill="#168C84" opacity="0.14"/>
+  <path d="M421 238H479M450 209V267" stroke="#168C84" stroke-width="16" stroke-linecap="round"/>
+  <rect x="186" y="334" width="430" height="58" rx="29" fill="#FFFFFF" stroke="#B6DDE2" stroke-width="10"/>
+  <rect x="138" y="345" width="104" height="36" rx="18" fill="#074B70"/>
+  <rect x="600" y="345" width="110" height="36" rx="18" fill="#4D8F52"/>
+  <text x="450" y="462" text-anchor="middle" fill="#074B70" font-family="Arial, sans-serif" font-size="32" font-weight="700">Sodium Hyaluronate 1 ml</text>
+</svg>
