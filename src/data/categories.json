@@ -4,34 +4,27 @@
     "name": "Ophthalmic Care",
     "shortName": "Ophthalmic",
     "description": "Sterile ophthalmic solutions supplied in prefilled syringe formats.",
-    "image": "/images/products/ophthalmic/category.svg"
+    "image": "/images/products/ophthalmic/opthalmic.webp"
   },
   {
     "id": "cardiac-critical-care",
     "name": "Cardiac Critical Care",
     "shortName": "Cardiac",
     "description": "Injectable products for critical care and institutional supply.",
-    "image": "/images/products/cardiac/category.svg"
+    "image": "/images/products/cardiac/cardiac.jpg"
   },
   {
     "id": "orthopaedic-care",
     "name": "Orthopaedic Care",
     "shortName": "Orthopaedic",
     "description": "Sterile injectable solutions for orthopaedic procedures and support.",
-    "image": "/images/products/orthopaedic/category.svg"
+    "image": "/images/products/orthopaedic/orthopadic.webp"
   },
   {
     "id": "gynaecology-care",
     "name": "Gynaecology Care",
     "shortName": "Gynaecology",
     "description": "Injectable products for women's health and institutional care.",
-    "image": "/images/products/gynaecology/category.svg"
-  },
-  {
-    "id": "nutrition-supplements",
-    "name": "Nutritive Supplements",
-    "shortName": "Nutrition",
-    "description": "Supportive nutrition-focused pharmaceutical products.",
-    "image": "/images/products/nutrition/category.svg"
+    "image": "/images/products/gynaecology/gyanecology.webp"
   }
 ]
