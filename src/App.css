@@ -1713,13 +1713,21 @@ main {
 }
 
 @media (max-width: 680px) {
+  .site-header {
+    background: rgba(255, 255, 255, 0.96);
+  }
+
+  .header-inner {
+    min-height: 72px;
+  }
+
   .brand {
     min-width: 0;
   }
 
   .brand-logo {
-    width: 178px;
-    max-height: 54px;
+    width: 150px;
+    max-height: 48px;
   }
 
   .brand strong {
@@ -1730,12 +1738,60 @@ main {
   }
 
   .hero-layout {
-    gap: 34px;
+    gap: 28px;
+  }
+
+  .home-hero {
+    padding: 34px 0 28px;
+    background:
+      linear-gradient(180deg, #ffffff 0%, #edf4ff 100%),
+      var(--sky);
+  }
+
+  .home-hero::before {
+    height: 72px;
+  }
+
+  .hero-copy .eyebrow {
+    font-size: 0.68rem;
+    margin-bottom: 12px;
+  }
+
+  .hero-copy h1 {
+    max-width: 11ch;
+    font-size: clamp(2.15rem, 9.2vw, 2.7rem);
+    line-height: 1.04;
+  }
+
+  .hero-copy p {
+    max-width: 34ch;
+    margin-top: 18px;
+    font-size: 1rem;
+    line-height: 1.62;
+  }
+
+  .hero-actions {
+    gap: 10px;
+    margin-top: 26px;
+  }
+
+  .hero-actions .btn {
+    min-height: 48px;
+    font-size: 0.94rem;
   }
 
   .hero-visual,
   .hero-visual img {
-    min-height: 350px;
+    min-height: 420px;
+  }
+
+  .hero-visual {
+    border-radius: 10px;
+    box-shadow: 0 18px 44px rgba(23, 58, 114, 0.14);
+  }
+
+  .hero-visual img {
+    object-position: 58% center;
   }
 
   .global-reach-section {
@@ -1751,20 +1807,51 @@ main {
   }
 
   .hero-badge {
-    left: 12px;
-    right: 12px;
-    justify-content: center;
+    left: 16px;
+    right: auto;
+    max-width: calc(100% - 32px);
+    justify-content: flex-start;
+    padding: 9px 12px;
+    font-size: 0.86rem;
+    box-shadow: 0 12px 28px rgba(23, 58, 114, 0.14);
+  }
+
+  .hero-badge-top {
+    top: 16px;
   }
 
   .hero-badge-bottom {
-    bottom: 120px;
+    top: 66px;
+    bottom: auto;
   }
 
   .hero-panel {
-    right: 12px;
-    bottom: 12px;
-    width: calc(100% - 24px);
-    padding: 15px;
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+    width: auto;
+    padding: 18px;
+  }
+
+  .hero-panel strong {
+    font-size: 1.05rem;
+  }
+
+  .hero-panel span {
+    font-size: 0.95rem;
+    line-height: 1.55;
+  }
+
+  .trust-strip {
+    gap: 10px;
+    margin-top: 28px;
+  }
+
+  .trust-strip div {
+    min-height: 52px;
+    justify-content: flex-start;
+    padding: 13px 16px;
+    font-size: 0.94rem;
   }
 
   .segment-grid,
@@ -1811,25 +1898,30 @@ main {
   }
 
   .brand-logo {
-    width: 144px;
+    width: 142px;
   }
 
   .header-inner {
-    min-height: 68px;
+    min-height: 70px;
     gap: 10px;
   }
 
+  .icon-button {
+    width: 42px;
+    height: 42px;
+  }
+
   .main-nav {
-    inset: 68px 10px auto;
+    inset: 70px 10px auto;
   }
 
   .home-hero {
-    padding-top: 42px;
+    padding-top: 30px;
   }
 
   .hero-visual,
   .hero-visual img {
-    min-height: 280px;
+    min-height: 390px;
   }
 
   .world-map-header {
