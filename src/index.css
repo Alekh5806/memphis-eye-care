@@ -77,7 +77,9 @@ h3 {
   color: var(--ink);
   line-height: 1.08;
   letter-spacing: 0;
-  overflow-wrap: anywhere;
+  overflow-wrap: normal;
+  text-wrap: balance;
+  word-break: normal;
 }
 
 h1 {
@@ -95,7 +97,8 @@ h3 {
 p {
   color: var(--muted);
   line-height: 1.7;
-  overflow-wrap: anywhere;
+  overflow-wrap: normal;
+  word-break: normal;
 }
 
 #root {
