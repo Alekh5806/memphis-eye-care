@@ -13,8 +13,8 @@ function FeaturedProducts() {
         <div className="section-topline">
           <SectionHeading
             eyebrow="Featured catalogue"
-            title="Products generated directly from JSON data."
-            text="Add a product to products.json and it can appear across listings, detail pages, and featured sections."
+            title="Highlighted sterile PFS products for quick review."
+            text="Featured products give buyers a fast view of dosage form, strength, pack size, and therapeutic segment before they move into the complete catalogue."
           />
           <Button to="/products" variant="secondary">View all products</Button>
         </div>

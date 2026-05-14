@@ -15,7 +15,7 @@ function PartnerWithUs() {
       <PageHero
         eyebrow="Partner with us"
         title="Make every serious buyer feel that the company is ready for business."
-        text="This page can later include partner forms, documentation uploads, and market-specific enquiry options."
+        text="Distributors, institutions, and export partners can use this route to start structured conversations around products, markets, documentation, and supply requirements."
       />
       <section className="section">
         <Container>

@@ -10,8 +10,8 @@ function ProductSegments() {
       <Container>
         <SectionHeading
           eyebrow="Therapeutic focus"
-          title="Product segments designed for serious healthcare buyers."
-          text="Each segment can be expanded through JSON data, so the catalogue stays easy to maintain as new products and photos are added."
+          title="Sterile prefilled syringe segments presented with real healthcare context."
+          text="Explore focused product categories for ophthalmic, critical care, orthopaedic, and gynaecology requirements. Real-world imagery keeps the template credible while the structure stays simple for buyers to scan."
         />
         <div className="segment-grid">
           {categories.map((category) => (

@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import { Mail, MapPin, Phone } from 'lucide-react'
 import Button from '../components/common/Button'
 import Container from '../components/common/Container'
@@ -6,6 +7,9 @@ import PageHero from '../components/common/PageHero'
 import company from '../data/company.json'
 
 function Contact() {
+  const [searchParams] = useSearchParams()
+  const enquiryType = searchParams.get('type') || 'Product enquiry'
+  const selectedCountry = searchParams.get('country') || ''
   const [formState, setFormState] = useState({
     status: 'idle',
     message: '',
@@ -79,8 +83,8 @@ function Contact() {
     <>
       <PageHero
         eyebrow="Contact"
-        title="A focused enquiry page for product, manufacturing, and partnership discussions."
-        text="Enquiries are sent directly to the company inbox using Web3Forms, without a database or custom backend."
+        title="Get in touch with Memphis for product enquiries, partnerships, or general questions."
+        text="Share product, volume, market, or documentation requirements and the team can respond with the right next step."
       />
       <section className="section">
         <Container className="contact-layout">
@@ -104,7 +108,7 @@ function Contact() {
             </label>
             <label>
               Enquiry type
-              <select name="type" defaultValue="Product enquiry">
+              <select name="type" defaultValue={enquiryType}>
                 <option>Product enquiry</option>
                 <option>Contract manufacturing</option>
                 <option>Distribution partnership</option>
@@ -113,11 +117,24 @@ function Contact() {
               </select>
             </label>
             <label>
+              Country / Market
+              <input
+                type="text"
+                name="country"
+                placeholder="Country or market of interest"
+                defaultValue={selectedCountry}
+              />
+            </label>
+            <label>
               Message
               <textarea
                 name="message"
                 rows="5"
-                placeholder="Share product, volume, market, or documentation requirements."
+                placeholder={
+                  selectedCountry
+                    ? `Share product, volume, or documentation requirements for ${selectedCountry}.`
+                    : 'Share product, volume, market, or documentation requirements.'
+                }
                 required
               />
             </label>
@@ -131,7 +148,7 @@ function Contact() {
 
           <aside className="contact-card">
             <h2>Business contact</h2>
-            <p>Replace these placeholder details once Memphis shares final contact information.</p>
+            <p>Use these details for product, partnership, and manufacturing enquiries.</p>
             <div>
               <MapPin size={19} />
               <span>{company.address}</span>

@@ -13,5 +13,23 @@
     "Patient safety",
     "Regulatory discipline",
     "Transparent partnerships"
+  ],
+  "socialLinks": [
+    {
+      "label": "LinkedIn",
+      "type": "linkedin"
+    },
+    {
+      "label": "Facebook",
+      "type": "facebook"
+    },
+    {
+      "label": "Instagram",
+      "type": "instagram"
+    },
+    {
+      "label": "YouTube",
+      "type": "youtube"
+    }
   ]
 }

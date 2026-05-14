@@ -14,8 +14,8 @@ function Quality() {
     <>
       <PageHero
         eyebrow="Quality"
-        title="A premium pharma website makes quality impossible to miss."
-        text="This section is structured to hold certifications, QA/QC systems, validation details, and regulatory statements."
+        title="Communicating quality systems, validation, and regulatory readiness with confidence."
+        text="This page presents Memphis's commitment to quality assurance, quality control, validation, documentation, and regulatory discipline in a concise, verifiable way for healthcare and business audiences."
       />
       <section className="section">
         <Container>

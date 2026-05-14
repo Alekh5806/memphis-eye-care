@@ -12,16 +12,39 @@
     "path": "/products"
   },
   {
-    "label": "Manufacturing",
-    "path": "/manufacturing"
+    "label": "Capabilities",
+    "path": "/capabilities",
+    "children": [
+      {
+        "label": "Manufacturing",
+        "path": "/manufacturing",
+        "description": "Sterile PFS process and production flow"
+      },
+      {
+        "label": "Contract Manufacturing",
+        "path": "/contract-manufacturing",
+        "description": "Third-party and partner manufacturing discussions"
+      },
+      {
+        "label": "Partner With Us",
+        "path": "/partner-with-us",
+        "description": "Distribution, institutional, and export partnerships"
+      },
+      {
+        "label": "Quality Systems",
+        "path": "/quality",
+        "description": "QA, QC, validation, and traceability"
+      },
+      {
+        "label": "Regulatory Documentation",
+        "path": "/contact?type=Export%20enquiry",
+        "description": "Market documents and product dossier enquiries"
+      }
+    ]
   },
   {
-    "label": "Quality",
-    "path": "/quality"
-  },
-  {
-    "label": "Contract Manufacturing",
-    "path": "/contract-manufacturing"
+    "label": "Global Reach",
+    "path": "/global-reach"
   },
   {
     "label": "Contact",

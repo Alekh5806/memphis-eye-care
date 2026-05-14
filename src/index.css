@@ -1,17 +1,19 @@
 :root {
-  --bg: #f7fafb;
+  --bg: #f5f8fc;
   --surface: #ffffff;
-  --surface-strong: #eef6f6;
-  --ink: #10202b;
-  --muted: #5f6f7a;
-  --line: #dce8ec;
-  --primary: #074b70;
-  --primary-dark: #06384f;
-  --teal: #168c84;
-  --green: #4d8f52;
-  --amber: #c4892d;
-  --soft-blue: #e8f3f8;
-  --shadow: 0 18px 55px rgba(15, 53, 75, 0.12);
+  --surface-strong: #eaf1fb;
+  --ink: #102138;
+  --muted: #5d6e84;
+  --line: #d7e2f2;
+  --primary: #2957a2;
+  --primary-dark: #173a72;
+  --primary-deep: #0d254d;
+  --teal: #0f9aa6;
+  --green: #3e8f64;
+  --amber: #c58b34;
+  --soft-blue: #e8f0fb;
+  --sky: #f1f7ff;
+  --shadow: 0 22px 60px rgba(23, 58, 114, 0.13);
   --radius: 8px;
   --container: 1180px;
   color: var(--ink);
@@ -37,7 +39,7 @@ body {
   margin: 0;
   min-width: 320px;
   background:
-    linear-gradient(180deg, rgba(232, 243, 248, 0.68) 0, rgba(247, 250, 251, 0) 420px),
+    linear-gradient(180deg, rgba(232, 240, 251, 0.82) 0, rgba(245, 248, 252, 0) 460px),
     var(--bg);
 }
 
@@ -79,7 +81,7 @@ h3 {
 }
 
 h1 {
-  font-size: clamp(2.35rem, 5vw, 4.7rem);
+  font-size: clamp(2.35rem, 4.4vw, 4.05rem);
 }
 
 h2 {
@@ -117,7 +119,7 @@ p {
 .eyebrow {
   display: inline-flex;
   width: fit-content;
-  color: var(--teal);
+  color: var(--primary);
   font-size: 0.78rem;
   font-weight: 800;
   letter-spacing: 0.08em;
@@ -175,21 +177,21 @@ p {
 }
 
 .btn-primary {
-  background: var(--primary);
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
   color: #ffffff;
-  box-shadow: 0 12px 28px rgba(7, 75, 112, 0.24);
+  box-shadow: 0 14px 30px rgba(41, 87, 162, 0.26);
 }
 
 .btn-secondary {
   background: #ffffff;
   color: var(--primary);
-  border-color: var(--line);
+  border-color: rgba(41, 87, 162, 0.24);
 }
 
 .btn-outline {
   color: var(--primary);
   background: rgba(255, 255, 255, 0.72);
-  border-color: rgba(7, 75, 112, 0.2);
+  border-color: rgba(41, 87, 162, 0.24);
 }
 
 .btn-light {

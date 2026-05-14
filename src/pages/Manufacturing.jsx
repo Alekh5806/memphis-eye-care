@@ -15,8 +15,8 @@ function Manufacturing() {
     <>
       <PageHero
         eyebrow="Manufacturing"
-        title="Facility pages should prove capability, not just show machinery."
-        text="Once photoshoot images arrive, this section should use real cleanroom, filling-line, lab, and packing visuals."
+        title="Manufacturing communication focused on people, process, and controlled handling."
+        text="The manufacturing page gives partners a concise view of sterile product preparation, PFS filling, inspection, packing, and documentation workflows. Real production-style imagery should remain part of the presentation because it helps the company feel tangible and trustworthy."
       />
       <section className="section">
         <Container>

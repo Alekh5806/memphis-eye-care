@@ -16,7 +16,7 @@ function ContractManufacturing() {
       <PageHero
         eyebrow="Contract manufacturing"
         title="A dedicated path for pharma partners, distributors, and institutions."
-        text="This page should become one of the strongest conversion pages on the website."
+        text="Memphis supports contract manufacturing conversations with a clear service scope focused on sterile prefilled syringe products. Partners can understand the capability areas, ask questions, and start discussions around manufacturing, private label, and supply needs."
       />
       <section className="section">
         <Container className="partner-layout">
@@ -24,8 +24,8 @@ function ContractManufacturing() {
             <Boxes size={30} />
             <h2>Manufacturing partnership scope</h2>
             <p>
-              Present Memphis as a focused partner for sterile prefilled syringe products,
-              with a clean enquiry path and verified capability statements.
+              Memphis is positioned as a focused partner for sterile prefilled syringe products,
+              with a clean enquiry path and capability statements that can be verified by the company.
             </p>
             <Button to="/contact">Discuss a project</Button>
           </div>

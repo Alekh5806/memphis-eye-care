@@ -17,8 +17,8 @@ function QualitySection() {
           <span className="eyebrow">Quality and compliance</span>
           <h2>Trust should be visible before a buyer sends the first enquiry.</h2>
           <p>
-            The redesigned website gives quality systems, manufacturing controls, and
-            regulatory discipline a clear place in the story.
+            Quality systems, manufacturing controls, documentation, and traceability are
+            positioned clearly so buyers can understand the company before starting a discussion.
           </p>
           <Button to="/quality" variant="light">
             View quality approach

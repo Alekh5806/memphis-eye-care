@@ -1,0 +1,160 @@
+{
+  "_instructions": "To add a new export country, copy one object inside countries, give it a unique id, set name/region/status, set coordinates as map percentages from 0 to 100, then update products, summary, and details. No React code changes are needed.",
+  "settings": {
+    "eyebrow": "Global reach",
+    "pageHero": {
+      "eyebrow": "Global reach",
+      "title": "Global market access for sterile PFS partnerships.",
+      "text": "A dedicated international section for distributors, institutions, and pharma partners to review market focus, product categories, and begin a country-specific export enquiry."
+    },
+    "section": {
+      "title": "International enquiries organized around markets, products, and documentation.",
+      "text": "A focused export view for distributors and institutional buyers to review active markets, product categories, and begin a country-specific discussion with Memphis.",
+      "previewButtonLabel": "View global reach"
+    },
+    "mapTitle": "International Market View",
+    "kpis": [
+      {
+        "type": "countryCount",
+        "labelSingular": "active market",
+        "labelPlural": "active markets"
+      },
+      {
+        "type": "uniqueProductCount",
+        "labelSingular": "product category",
+        "labelPlural": "product categories"
+      },
+      {
+        "type": "custom",
+        "value": "24h",
+        "label": "enquiry routing"
+      }
+    ]
+  },
+  "countries": [
+    {
+      "id": "kenya",
+      "name": "Kenya",
+      "region": "Africa",
+      "status": "Export market",
+      "coordinates": {
+        "x": 58,
+        "y": 58
+      },
+      "products": [
+        "Ophthalmic prefilled syringes",
+        "Critical care injectables",
+        "Institutional PFS supply"
+      ],
+      "summary": "A priority East Africa market for sterile prefilled syringe product enquiries, distributor discussions, and institutional supply conversations.",
+      "details": [
+        "Africa region market enquiry support",
+        "Product documentation can be shared with verified partners",
+        "Suitable for distributor and institutional discussions"
+      ]
+    },
+    {
+      "id": "uganda",
+      "name": "Uganda",
+      "region": "Africa",
+      "status": "Export market",
+      "coordinates": {
+        "x": 56,
+        "y": 56
+      },
+      "products": [
+        "Ophthalmic PFS products",
+        "Critical care injectables"
+      ],
+      "summary": "East Africa opportunity market for product availability, documentation, and partner-led access discussions.",
+      "details": [
+        "Distributor-led business route",
+        "Segment-wise product review",
+        "Export documentation enquiry support"
+      ]
+    },
+    {
+      "id": "tanzania",
+      "name": "Tanzania",
+      "region": "Africa",
+      "status": "Export market",
+      "coordinates": {
+        "x": 57,
+        "y": 62
+      },
+      "products": [
+        "Sterile PFS portfolio",
+        "Orthopaedic care products",
+        "Gynaecology injectables"
+      ],
+      "summary": "A focused Africa market for prefilled syringe supply discussions and segment-specific product enquiries.",
+      "details": [
+        "Country-specific product discussion",
+        "B2B and institutional enquiry route",
+        "Partner documentation coordination"
+      ]
+    },
+    {
+      "id": "south-africa",
+      "name": "South Africa",
+      "region": "Africa",
+      "status": "Export market",
+      "coordinates": {
+        "x": 55,
+        "y": 78
+      },
+      "products": [
+        "Critical care injectables",
+        "Ophthalmic products",
+        "Contract manufacturing discussions"
+      ],
+      "summary": "Southern Africa market for product, distribution, and contract manufacturing conversations.",
+      "details": [
+        "Market-specific product fit review",
+        "Institutional supply enquiry support",
+        "Manufacturing partnership discussion"
+      ]
+    },
+    {
+      "id": "uae",
+      "name": "UAE",
+      "region": "Middle East",
+      "status": "Export market",
+      "coordinates": {
+        "x": 61,
+        "y": 45
+      },
+      "products": [
+        "Sterile PFS portfolio",
+        "Ophthalmic care products",
+        "Partner supply enquiries"
+      ],
+      "summary": "Middle East market for partner-led sterile prefilled syringe product and supply discussions.",
+      "details": [
+        "Regional distributor enquiry route",
+        "Product dossier coordination",
+        "Private label and supply discussion"
+      ]
+    },
+    {
+      "id": "nepal",
+      "name": "Nepal",
+      "region": "Asia",
+      "status": "Export market",
+      "coordinates": {
+        "x": 69,
+        "y": 42
+      },
+      "products": [
+        "Ophthalmic PFS products",
+        "Sterile injectables"
+      ],
+      "summary": "Nearby Asia market for product availability, distributor, and healthcare institution enquiries.",
+      "details": [
+        "Neighbouring market supply discussion",
+        "Segment-led product review",
+        "Export enquiry support"
+      ]
+    }
+  ]
+}

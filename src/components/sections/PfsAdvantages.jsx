@@ -31,8 +31,8 @@ function PfsAdvantages() {
       <Container className="split-layout">
         <SectionHeading
           eyebrow="Why PFS"
-          title="Prefilled syringe advantages, presented with regulatory restraint."
-          text="The site avoids exaggerated claims and explains benefits in a precise, professional way."
+          title="Prefilled syringe advantages explained with professional restraint."
+          text="The content keeps claims clear, practical, and suitable for healthcare and procurement audiences reviewing the company for the first time."
         />
         <div className="advantage-grid">
           {advantages.map(({ icon: Icon, title, text }) => (

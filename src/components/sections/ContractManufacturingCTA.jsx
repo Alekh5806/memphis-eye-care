@@ -9,10 +9,10 @@ function ContractManufacturingCTA() {
         <div className="cta-panel">
           <div>
             <span className="eyebrow">B2B partnership</span>
-            <h2>Build the contract manufacturing page around capability, confidence, and clarity.</h2>
+            <h2>Discuss sterile PFS manufacturing requirements with Memphis.</h2>
             <p>
-              This gives distributors, institutions, and pharma partners a direct path to discuss
-              prefilled syringe manufacturing, private label opportunities, and supply enquiries.
+              Distributors, institutions, and pharma partners can share prefilled syringe
+              manufacturing, private label, and supply requirements through a clear enquiry route.
             </p>
           </div>
           <Button to="/contact">

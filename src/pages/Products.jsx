@@ -27,9 +27,9 @@ function Products() {
   return (
     <>
       <PageHero
-        eyebrow="Dynamic catalogue"
-        title="Product information that updates from JSON."
-        text="Search, filter, and product detail pages are driven by structured product data."
+        eyebrow="Product catalogue"
+        title="Sterile prefilled syringe products organized for fast buyer review."
+        text="Search by product name or filter by therapeutic segment to review strengths, fill volumes, dosage form, and pack information."
       />
       <section className="section">
         <Container>

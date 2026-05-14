@@ -9,7 +9,7 @@ function About() {
     <>
       <PageHero
         eyebrow="About Memphis"
-        title="A focused pharma manufacturer with a sharper, more credible digital identity."
+        title="A focused pharma manufacturer built around sterile product confidence."
         text={company.description}
       />
       <section className="section">
@@ -18,7 +18,7 @@ function About() {
             <SectionHeading
               eyebrow="Company profile"
               title="Built for sterile product confidence."
-              text="This page should eventually be strengthened with real leadership details, facility images, certificates, and verified milestones from the company."
+              text="Memphis Vision Care focuses on sterile injectable and ophthalmic products supplied in prefilled syringe formats. The company profile highlights quality-led manufacturing, reliable product handling, and clear communication for healthcare and business partners."
             />
           </div>
           <div className="mission-grid">
@@ -37,7 +37,7 @@ function About() {
         <Container>
           <SectionHeading
             eyebrow="Values"
-            title="The brand should feel reliable before it feels decorative."
+            title="Our core values guide everything we do."
           />
           <div className="value-grid">
             {company.values.map((value) => (
