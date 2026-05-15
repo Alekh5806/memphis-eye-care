@@ -9,6 +9,7 @@ import {
   Mail,
   Navigation,
   Phone,
+  Send,
   ShieldCheck,
 } from 'lucide-react'
 import Button from '../components/common/Button'
@@ -107,8 +108,8 @@ function Contact() {
               <span className="eyebrow">Enquiry Desk</span>
               <h2>Start a business conversation</h2>
               <p>
-                Share the essential commercial and technical details so the right Memphis team member can
-                respond with product availability, manufacturing scope, or documentation next steps.
+                Share a few essentials and the right Memphis team member will respond with product,
+                manufacturing, or partnership next steps.
               </p>
             </div>
 
@@ -156,24 +157,28 @@ function Contact() {
                 Message
                 <textarea
                   name="message"
-                  rows="6"
+                  rows="5"
                   placeholder={
                     selectedCountry
-                      ? `Share product, volume, timeline, and documentation requirements for ${selectedCountry}.`
-                      : 'Share product, volume, market, timeline, or documentation requirements.'
+                      ? `Share product, volume, or documentation requirements for ${selectedCountry}.`
+                      : 'Share product, volume, market, or documentation requirements.'
                   }
                   required
                 />
               </label>
 
-              <div className="contact-submit-row">
+              <div className="contact-submit-card">
+                <div>
+                  <ShieldCheck size={20} />
+                  <span>
+                    <strong>Direct business enquiry</strong>
+                    <small>Useful details help us respond with the right next step.</small>
+                  </span>
+                </div>
                 <Button type="submit" disabled={formState.status === 'loading'}>
-                  {formState.status === 'loading' ? 'Sending enquiry...' : 'Submit enquiry'}
+                  <Send size={18} />
+                  {formState.status === 'loading' ? 'Sending...' : 'Send enquiry'}
                 </Button>
-                <span>
-                  <ShieldCheck size={17} />
-                  Business enquiries are routed to the Memphis team.
-                </span>
               </div>
               {formState.message && (
                 <p className={`form-status form-status-${formState.status}`}>{formState.message}</p>
