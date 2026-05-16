@@ -1,4 +1,5 @@
 import { Route, Routes } from 'react-router-dom'
+import CookieConsent from './components/common/CookieConsent'
 import Footer from './components/common/Footer'
 import Header from './components/common/Header'
 import About from './pages/About'
@@ -36,6 +37,7 @@ function App() {
         </Routes>
       </main>
       <Footer />
+      <CookieConsent />
     </div>
   )
 }

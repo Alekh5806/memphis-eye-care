@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { Mail, MapPin, Phone } from 'lucide-react'
+import { CONSENT_EVENT } from './CookieConsent'
 import navigation from '../../data/navigation.json'
 import categories from '../../data/categories.json'
 import company from '../../data/company.json'
@@ -49,6 +50,10 @@ function SocialIcon({ type }) {
 }
 
 function Footer() {
+  const openCookiePreferences = () => {
+    window.dispatchEvent(new CustomEvent(CONSENT_EVENT))
+  }
+
   return (
     <footer className="site-footer">
       <div className="container footer-grid">
@@ -136,7 +141,10 @@ function Footer() {
       </div>
       <div className="container footer-bottom">
         <span>© {new Date().getFullYear()} {company.name}. All rights reserved.</span>
-        <span>For healthcare professional and business enquiry use only.</span>
+        <span className="footer-bottom-links">
+          <span>For healthcare professional and business enquiry use only.</span>
+          <button onClick={openCookiePreferences} type="button">Cookie preferences</button>
+        </span>
       </div>
     </footer>
   )
