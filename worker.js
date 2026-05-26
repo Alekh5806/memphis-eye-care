@@ -18,8 +18,14 @@ async function readJson(request) {
   }
 }
 
+function getWeb3FormsAccessKey(env) {
+  return env.WEB3FORMS_ACCESS_KEY || env.VITE_WEB3FORMS_ACCESS_KEY || ''
+}
+
 async function submitToWeb3Forms(payload, env) {
-  if (!env.WEB3FORMS_ACCESS_KEY) {
+  const accessKey = getWeb3FormsAccessKey(env)
+
+  if (!accessKey) {
     return jsonResponse({
       success: false,
       message: 'Server is missing Web3Forms configuration.',
@@ -34,16 +40,11 @@ async function submitToWeb3Forms(payload, env) {
     },
     body: JSON.stringify({
       ...payload,
-      access_key: env.WEB3FORMS_ACCESS_KEY,
+      access_key: accessKey,
     }),
   })
 
-  let data = {}
-  try {
-    data = await response.json()
-  } catch {
-    data = {}
-  }
+  const data = await response.json().catch(() => ({}))
 
   return jsonResponse(data, response.ok || data.success ? 200 : response.status || 500)
 }

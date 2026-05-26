@@ -1,12 +1,7 @@
 const browserAccessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || ''
 
 async function parseResponse(response) {
-  let data = {}
-  try {
-    data = await response.json()
-  } catch {
-    data = {}
-  }
+  const data = await response.json().catch(() => ({}))
 
   if (!response.ok && !data.success) {
     throw new Error(data.message || 'Something went wrong. Please try again.')

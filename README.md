@@ -1,16 +1,36 @@
-# React + Vite
+# Memphis Vision Care Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React + Vite site served by a Cloudflare Worker with static assets.
 
-Currently, two official plugins are available:
+## Local Development
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Install dependencies and start Vite:
 
-## React Compiler
+```sh
+npm install
+npm run dev
+```
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+For local browser-only form testing, copy `.env.example` to `.env.local` and set `VITE_WEB3FORMS_ACCESS_KEY`.
 
-## Expanding the ESLint configuration
+## Web3Forms Configuration
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+The production contact and newsletter forms submit through the Worker routes in `worker.js`:
+
+- `/api/forms/contact`
+- `/api/forms/newsletter`
+
+Set the Web3Forms key as a Cloudflare Worker secret named `WEB3FORMS_ACCESS_KEY`:
+
+```sh
+npx wrangler secret put WEB3FORMS_ACCESS_KEY
+```
+
+Then rebuild and deploy:
+
+```sh
+npm run build
+npx wrangler deploy
+```
+
+The Worker also accepts `VITE_WEB3FORMS_ACCESS_KEY` as a fallback runtime variable, but `WEB3FORMS_ACCESS_KEY` is the preferred production setting because it keeps the key out of the browser bundle.
