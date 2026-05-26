@@ -1,5 +1,6 @@
 {
   "name": "memphis-vision-care",
+  "main": "./worker.js",
   "compatibility_date": "2026-05-14",
   "assets": {
     "directory": "./dist",

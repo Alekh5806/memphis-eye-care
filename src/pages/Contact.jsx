@@ -17,6 +17,7 @@ import Container from '../components/common/Container'
 import DocumentHead from '../components/common/DocumentHead'
 import PageHero from '../components/common/PageHero'
 import company from '../data/company.json'
+import { submitContactForm } from '../utils/web3FormsClient'
 
 const mapQuery = encodeURIComponent(company.address)
 const googleMapEmbedUrl = `https://www.google.com/maps?q=${mapQuery}&z=15&output=embed`
@@ -28,41 +29,20 @@ function Contact() {
   const selectedCountry = searchParams.get('country') || ''
   const selectedProduct = searchParams.get('product') || ''
   const [formState, setFormState] = useState({ status: 'idle', message: '' })
-  const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || ''
 
   async function handleSubmit(event) {
     event.preventDefault()
-    if (!accessKey) {
-      setFormState({ status: 'error', message: 'Web3Forms access key is not configured yet.' })
-      return
-    }
     setFormState({ status: 'loading', message: 'Sending your enquiry...' })
 
     const formData = new FormData(event.currentTarget)
-    const payload = {
-      ...Object.fromEntries(formData),
-      access_key: accessKey,
-      subject: 'New website enquiry - Memphis Vision Care',
-      from_name: 'Memphis Vision Care Website',
-    }
+    const payload = Object.fromEntries(formData)
 
     try {
-      const response = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify(payload),
-      })
-      let data = {}
-      try { data = await response.json() } catch { data = {} }
-      if (response.ok || data.success) {
-        setFormState({ status: 'success', message: 'Thank you. Your enquiry has been sent successfully.' })
-        event.currentTarget.reset()
-        return
-      }
-      setFormState({ status: 'error', message: data.message || 'Something went wrong. Please try again.' })
-    } catch {
+      await submitContactForm(payload)
       setFormState({ status: 'success', message: 'Thank you. Your enquiry has been sent successfully.' })
       event.currentTarget.reset()
+    } catch (error) {
+      setFormState({ status: 'error', message: error.message || 'Something went wrong. Please try again.' })
     }
   }
 
