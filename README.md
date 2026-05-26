@@ -11,7 +11,7 @@ npm install
 npm run dev
 ```
 
-For local browser-only form testing, copy `.env.example` to `.env.local` and set `VITE_WEB3FORMS_ACCESS_KEY`.
+For local browser-only form testing, copy `.env.example` to `.env.local` and set `VITE_WEB3FORMS_ACCESS_KEY`, then restart Vite or rebuild.
 
 ## Web3Forms Configuration
 
@@ -34,3 +34,9 @@ npx wrangler deploy
 ```
 
 The Worker also accepts `VITE_WEB3FORMS_ACCESS_KEY` as a fallback runtime variable, but `WEB3FORMS_ACCESS_KEY` is the preferred production setting because it keeps the key out of the browser bundle.
+
+## Static Hosting
+
+If the final host only serves the built `dist` folder and does not run `worker.js`, set `VITE_WEB3FORMS_ACCESS_KEY` in that hosting platform's build environment before running `npm run build`.
+
+Vite reads `VITE_*` values at build time. Changing hosting environment variables after the build will not update the already-built JavaScript bundle, so rebuild and redeploy after changing the key.

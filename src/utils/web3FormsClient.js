@@ -1,10 +1,13 @@
 const browserAccessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || ''
 
-async function parseResponse(response) {
-  const data = await response.json().catch(() => ({}))
+async function parseResponse(response, unavailableMessage) {
+  const contentType = response.headers.get('content-type') || ''
+  const data = contentType.includes('application/json')
+    ? await response.json().catch(() => ({}))
+    : {}
 
-  if (!response.ok && !data.success) {
-    throw new Error(data.message || 'Something went wrong. Please try again.')
+  if (!response.ok || data.success === false) {
+    throw new Error(data.message || unavailableMessage || `Form submission failed with status ${response.status}.`)
   }
 
   return data
@@ -23,7 +26,7 @@ async function submitDirect(payload) {
     }),
   })
 
-  return parseResponse(response)
+  return parseResponse(response, 'Web3Forms rejected the request. Please check the access key.')
 }
 
 async function submitViaWorker(path, payload) {
@@ -36,7 +39,10 @@ async function submitViaWorker(path, payload) {
     body: JSON.stringify(payload),
   })
 
-  return parseResponse(response)
+  return parseResponse(
+    response,
+    'Form endpoint is not available on this deployment. Configure the Worker route or rebuild with VITE_WEB3FORMS_ACCESS_KEY.',
+  )
 }
 
 export function submitContactForm(payload) {
