@@ -6,6 +6,7 @@ import navigation from '../../data/navigation.json'
 import categories from '../../data/categories.json'
 import company from '../../data/company.json'
 import certifications from '../../data/certifications.json'
+import { submitNewsletterSubscription } from '../../utils/newsletterUtils'
 
 const companyLinks = [
   ...navigation.slice(1),
@@ -49,18 +50,28 @@ function SocialIcon({ type }) {
 
 function Footer() {
   const [email, setEmail] = useState('')
-  const [submitted, setSubmitted] = useState(false)
+  const [formState, setFormState] = useState({ status: 'idle', message: '' })
 
   const openCookiePreferences = () => {
     window.dispatchEvent(new CustomEvent(CONSENT_EVENT))
   }
 
-  const handleNewsletter = (event) => {
+  const handleNewsletter = async (event) => {
     event.preventDefault()
     if (!email) return
-    setSubmitted(true)
-    setEmail('')
-    setTimeout(() => setSubmitted(false), 4500)
+
+    setFormState({ status: 'loading', message: 'Subscribing...' })
+
+    try {
+      await submitNewsletterSubscription(email, 'Footer newsletter')
+      setFormState({ status: 'success', message: "Thanks - you'll receive our next update." })
+      setEmail('')
+      setTimeout(() => {
+        setFormState((current) => (current.status === 'success' ? { status: 'idle', message: '' } : current))
+      }, 4500)
+    } catch (error) {
+      setFormState({ status: 'error', message: error.message || 'Something went wrong. Please try again.' })
+    }
   }
 
   return (
@@ -80,14 +91,15 @@ function Footer() {
               required
               placeholder="you@company.com"
               value={email}
+              disabled={formState.status === 'loading'}
               onChange={(event) => setEmail(event.target.value)}
             />
-            <button type="submit" className="btn btn-accent">
-              Subscribe <ArrowRight size={16} />
+            <button type="submit" className="btn btn-accent" disabled={formState.status === 'loading'}>
+              {formState.status === 'loading' ? 'Subscribing...' : 'Subscribe'} <ArrowRight size={16} />
             </button>
-            {submitted && (
+            {formState.message && (
               <span className="footer-newsletter-success" role="status">
-                Thanks — you'll receive our next update.
+                {formState.message}
               </span>
             )}
           </form>

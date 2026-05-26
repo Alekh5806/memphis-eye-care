@@ -1,17 +1,28 @@
 import { ArrowRight, Mail, ShieldCheck } from 'lucide-react'
 import { useState } from 'react'
 import Container from '../common/Container'
+import { submitNewsletterSubscription } from '../../utils/newsletterUtils'
 
 function NewsletterCTA() {
   const [email, setEmail] = useState('')
-  const [sent, setSent] = useState(false)
+  const [formState, setFormState] = useState({ status: 'idle', message: '' })
 
-  const submit = (event) => {
+  const submit = async (event) => {
     event.preventDefault()
     if (!email) return
-    setSent(true)
-    setEmail('')
-    setTimeout(() => setSent(false), 4500)
+
+    setFormState({ status: 'loading', message: 'Subscribing...' })
+
+    try {
+      await submitNewsletterSubscription(email, 'Newsletter CTA')
+      setFormState({ status: 'success', message: "Thanks - you'll receive our next update." })
+      setEmail('')
+      setTimeout(() => {
+        setFormState((current) => (current.status === 'success' ? { status: 'idle', message: '' } : current))
+      }, 4500)
+    } catch (error) {
+      setFormState({ status: 'error', message: error.message || 'Something went wrong. Please try again.' })
+    }
   }
 
   return (
@@ -40,14 +51,15 @@ function NewsletterCTA() {
               required
               placeholder="you@company.com"
               value={email}
+              disabled={formState.status === 'loading'}
               onChange={(event) => setEmail(event.target.value)}
             />
-            <button type="submit" className="btn btn-primary">
-              Subscribe <ArrowRight size={18} />
+            <button type="submit" className="btn btn-primary" disabled={formState.status === 'loading'}>
+              {formState.status === 'loading' ? 'Subscribing...' : 'Subscribe'} <ArrowRight size={18} />
             </button>
-            {sent && (
-              <span className="newsletter-success" role="status">
-                Thanks — you'll receive our next update.
+            {formState.message && (
+              <span className={`newsletter-success newsletter-success-${formState.status}`} role="status">
+                {formState.message}
               </span>
             )}
           </form>
