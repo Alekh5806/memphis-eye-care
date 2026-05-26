@@ -1,0 +1,44 @@
+[
+  {
+    "id": "who-gmp",
+    "name": "WHO-GMP",
+    "fullName": "WHO Good Manufacturing Practices",
+    "description": "Manufacturing practices aligned to World Health Organization GMP guidelines.",
+    "color": "#1d4480"
+  },
+  {
+    "id": "iso-9001",
+    "name": "ISO 9001:2015",
+    "fullName": "Quality Management Systems",
+    "description": "Quality management system certified to ISO 9001:2015.",
+    "color": "#0fa6b3"
+  },
+  {
+    "id": "iso-13485",
+    "name": "ISO 13485",
+    "fullName": "Medical Devices Quality",
+    "description": "Medical device quality management standard alignment.",
+    "color": "#2f9461"
+  },
+  {
+    "id": "ce-mark",
+    "name": "CE Mark",
+    "fullName": "European Conformity",
+    "description": "Products supplied with CE-conformity documentation where applicable.",
+    "color": "#c89240"
+  },
+  {
+    "id": "gmp-india",
+    "name": "Schedule M GMP",
+    "fullName": "Indian GMP (Schedule M)",
+    "description": "Manufacturing facility compliant with Indian Schedule M GMP norms.",
+    "color": "#1d4480"
+  },
+  {
+    "id": "halal",
+    "name": "Halal Certified",
+    "fullName": "Halal Compliance",
+    "description": "Halal compliance support available for select export markets.",
+    "color": "#2f9461"
+  }
+]

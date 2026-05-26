@@ -9,42 +9,19 @@ import {
   ShieldCheck,
 } from 'lucide-react'
 import { Link } from 'react-router-dom'
+import { motion } from 'framer-motion'
 import Button from '../components/common/Button'
 import Container from '../components/common/Container'
+import DocumentHead from '../components/common/DocumentHead'
 import PageHero from '../components/common/PageHero'
 import SectionHeading from '../components/common/SectionHeading'
 
 const capabilities = [
-  {
-    icon: Factory,
-    title: 'Manufacturing',
-    text: 'Sterile product preparation, prefilled syringe filling, inspection, packing, and controlled workflow communication.',
-    to: '/manufacturing',
-  },
-  {
-    icon: PackageCheck,
-    title: 'Contract manufacturing',
-    text: 'Third-party manufacturing discussions for pharma partners seeking sterile PFS capability, documentation, and supply alignment.',
-    to: '/contract-manufacturing',
-  },
-  {
-    icon: Handshake,
-    title: 'Partnership model',
-    text: 'Structured routes for distributors, institutional buyers, export partners, and product-led commercial conversations.',
-    to: '/partner-with-us',
-  },
-  {
-    icon: ShieldCheck,
-    title: 'Quality systems',
-    text: 'Quality assurance, QC focus, validation readiness, documentation discipline, and traceability-led manufacturing confidence.',
-    to: '/quality',
-  },
-  {
-    icon: FileText,
-    title: 'Regulatory documentation',
-    text: 'Product dossier, market document, certification reference, and verified regulatory information requests for partner review.',
-    to: '/contact?type=Export%20enquiry',
-  },
+  { icon: Factory, title: 'Manufacturing', text: 'Sterile product preparation, prefilled syringe filling, inspection, packing, and controlled workflow communication.', to: '/manufacturing' },
+  { icon: PackageCheck, title: 'Contract manufacturing', text: 'Third-party manufacturing for pharma partners seeking sterile PFS capability with documented quality systems.', to: '/contract-manufacturing' },
+  { icon: Handshake, title: 'Partnership model', text: 'Structured routes for distributors, institutional buyers, export partners, and product-led commercial conversations.', to: '/partner-with-us' },
+  { icon: ShieldCheck, title: 'Quality systems', text: 'QA, QC focus, validation readiness, documentation discipline, and traceability-led manufacturing confidence.', to: '/quality' },
+  { icon: FileText, title: 'Regulatory documentation', text: 'Product dossier, market document, certification reference, and verified regulatory information for partners.', to: '/contact?type=Export%20enquiry' },
 ]
 
 const operatingPoints = [
@@ -57,12 +34,16 @@ const operatingPoints = [
 function Capabilities() {
   return (
     <>
+      <DocumentHead
+        title="Capabilities"
+        description="Memphis Vision Care capabilities — sterile PFS manufacturing, contract manufacturing, quality systems, regulatory documentation, and partnership routes."
+      />
       <PageHero
         eyebrow="Capabilities"
         title="Integrated pharma capabilities for sterile PFS partnerships."
         text="Explore Memphis Vision Care's manufacturing, quality, documentation, and partnership capabilities for distributors, institutions, export markets, and pharma partners."
+        breadcrumbs={[{ label: 'Capabilities' }]}
       />
-
       <section className="section">
         <Container>
           <SectionHeading
@@ -70,17 +51,22 @@ function Capabilities() {
             title="Focused support across manufacturing, compliance, and business development."
             text="Each capability area gives buyers a direct path to understand the company's scope, review relevant information, and begin the right enquiry."
           />
-
           <div className="capability-grid">
-            {capabilities.map(({ icon: Icon, title, text, to }) => (
-              <Link className="capability-card" key={title} to={to}>
-                <Icon size={27} />
-                <h3>{title}</h3>
-                <p>{text}</p>
-                <strong>
-                  View details <ArrowRight size={16} />
-                </strong>
-              </Link>
+            {capabilities.map(({ icon: Icon, title, text, to }, i) => (
+              <motion.div
+                key={title}
+                initial={{ opacity: 0, y: 18 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.4, delay: i * 0.06 }}
+              >
+                <Link className="capability-card" to={to}>
+                  <Icon size={27} />
+                  <h3>{title}</h3>
+                  <p>{text}</p>
+                  <strong>View details <ArrowRight size={16} /></strong>
+                </Link>
+              </motion.div>
             ))}
           </div>
         </Container>
@@ -91,19 +77,12 @@ function Capabilities() {
           <div>
             <span className="eyebrow">Operating focus</span>
             <h2>Built for procurement, distribution, and manufacturing conversations.</h2>
-            <p>
-              Capability information is organized around the questions business buyers usually
-              ask first: product scope, manufacturing readiness, documentation, quality systems,
-              and commercial route.
-            </p>
+            <p>Capability information is organised around the questions business buyers usually ask first: product scope, manufacturing readiness, documentation, quality systems, and commercial route.</p>
             <Button to="/contact">Start an enquiry</Button>
           </div>
           <div className="capability-checklist">
             {operatingPoints.map((point) => (
-              <div key={point}>
-                <BadgeCheck size={20} />
-                <span>{point}</span>
-              </div>
+              <div key={point}><BadgeCheck size={20} /><span>{point}</span></div>
             ))}
           </div>
         </Container>
@@ -115,14 +94,9 @@ function Capabilities() {
             <div>
               <span className="eyebrow">Regulatory support</span>
               <h2>Need product documents or market-specific information?</h2>
-              <p>
-                Share product, market, volume, and document requirements so the team can route
-                your enquiry to the right capability area.
-              </p>
+              <p>Share product, market, volume, and document requirements so the team can route your enquiry to the right capability area.</p>
             </div>
-            <Button to="/contact?type=Export%20enquiry">
-              Request documents <ClipboardCheck size={18} />
-            </Button>
+            <Button to="/contact?type=Export%20enquiry">Request documents <ClipboardCheck size={18} /></Button>
           </div>
         </Container>
       </section>

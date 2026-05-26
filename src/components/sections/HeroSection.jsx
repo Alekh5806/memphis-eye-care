@@ -1,71 +1,98 @@
-import { ArrowRight, BadgeCheck, Factory, ShieldCheck } from 'lucide-react'
+import { ArrowRight, BadgeCheck, Factory, ShieldCheck, Sparkles } from 'lucide-react'
 import { motion } from 'framer-motion'
 import Button from '../common/Button'
 import Container from '../common/Container'
 
+const trustBadges = [
+  { icon: ShieldCheck, label: 'WHO-GMP aligned' },
+  { icon: Factory, label: 'Sterile PFS specialist' },
+  { icon: BadgeCheck, label: 'Trusted in 25+ countries' },
+]
+
 function HeroSection() {
   return (
     <section className="home-hero">
+      <div className="home-hero-bg" aria-hidden="true">
+        <span className="home-hero-orb home-hero-orb-1" />
+        <span className="home-hero-orb home-hero-orb-2" />
+        <span className="home-hero-grid" />
+      </div>
+
       <Container className="hero-layout">
         <motion.div
           className="hero-copy"
-          initial={{ opacity: 0, y: 18 }}
+          initial={{ opacity: 0, y: 22 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.55 }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
         >
-          <span className="eyebrow">Memphis Vision Care Pvt. Ltd.</span>
-          <h1>Precision-led sterile PFS manufacturing for dependable healthcare partnerships.</h1>
+          <span className="eyebrow eyebrow-hero">
+            <Sparkles size={13} /> Sterile prefilled syringe manufacturer
+          </span>
+          <h1>
+            Precision-engineered <span className="text-gradient">sterile PFS</span> for the world's most dependable healthcare partners.
+          </h1>
           <p>
-            A focused pharma platform for ophthalmic, critical care, orthopaedic, and
-            gynaecology prefilled syringe products, presented with the clarity buyers expect
-            from a modern manufacturing partner.
+            Memphis Vision Care manufactures ophthalmic, cardiac critical care, orthopaedic,
+            and gynaecology prefilled syringes — quality-led, partner-grade, and supplied across 25+ countries.
           </p>
           <div className="hero-actions">
             <Button to="/products">
               Explore products <ArrowRight size={18} />
             </Button>
-            <Button to="/capabilities" variant="secondary">
-              View capabilities
+            <Button to="/contact?type=Export%20enquiry" variant="outline">
+              Talk to our team
             </Button>
           </div>
+
+          <ul className="hero-trust-row" aria-label="Quality highlights">
+            {trustBadges.map(({ icon: Icon, label }) => (
+              <li key={label}>
+                <Icon size={15} />
+                {label}
+              </li>
+            ))}
+          </ul>
         </motion.div>
 
         <motion.div
           className="hero-visual"
-          initial={{ opacity: 0, scale: 0.97 }}
+          initial={{ opacity: 0, scale: 0.96 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
+          transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
         >
-          <img src="/images/hero/pharma1.webp" alt="Sterile prefilled syringe manufacturing" />
-          <div className="hero-badge hero-badge-top">
+          <div className="hero-visual-frame">
+            <img src="/images/hero/pharma1.webp" alt="Sterile prefilled syringe manufacturing line" />
+          </div>
+          <motion.div
+            className="hero-badge hero-badge-top"
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5, duration: 0.4 }}
+          >
             <ShieldCheck size={19} />
-            Quality-led approach
-          </div>
-          <div className="hero-badge hero-badge-bottom">
+            <div>
+              <strong>Quality-led approach</strong>
+              <span>QA release · 99.6% acceptance</span>
+            </div>
+          </motion.div>
+          <motion.div
+            className="hero-badge hero-badge-bottom"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.65, duration: 0.4 }}
+          >
             <Factory size={19} />
-            Partner-ready
-          </div>
-          <div className="hero-panel">
-            <strong>Focused sterile portfolio</strong>
-            <span>Products, quality, and partnership routes in one professional experience.</span>
-          </div>
+            <div>
+              <strong>CDMO ready</strong>
+              <span>Partner-grade documentation</span>
+            </div>
+          </motion.div>
         </motion.div>
       </Container>
 
-      <Container className="trust-strip">
-        <div>
-          <BadgeCheck size={18} />
-          Sterile PFS portfolio
-        </div>
-        <div>
-          <BadgeCheck size={18} />
-          Quality-first positioning
-        </div>
-        <div>
-          <BadgeCheck size={18} />
-          B2B enquiry ready
-        </div>
-      </Container>
+      <a className="hero-scroll-cue" href="#home-stats" aria-label="Scroll to stats">
+        <span />
+      </a>
     </section>
   )
 }

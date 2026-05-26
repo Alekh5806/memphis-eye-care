@@ -1,0 +1,8 @@
+[
+  { "id": "iyc", "name": "International Eye Clinic Network", "type": "Hospital network" },
+  { "id": "mhd", "name": "MediHelm Distributors", "type": "Distribution" },
+  { "id": "ses", "name": "Sentinel Health Systems", "type": "Institutional" },
+  { "id": "trd", "name": "TerraDose Pharma", "type": "Pharma partner" },
+  { "id": "ams", "name": "AmberMed Suppliers", "type": "Distribution" },
+  { "id": "rxp", "name": "Rx Plus Global", "type": "Export partner" }
+]

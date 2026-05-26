@@ -1,9 +1,11 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { Mail, MapPin, Phone } from 'lucide-react'
+import { ArrowRight, Mail, MapPin, Phone, ShieldCheck } from 'lucide-react'
 import { CONSENT_EVENT } from './CookieConsent'
 import navigation from '../../data/navigation.json'
 import categories from '../../data/categories.json'
 import company from '../../data/company.json'
+import certifications from '../../data/certifications.json'
 
 const companyLinks = [
   ...navigation.slice(1),
@@ -21,7 +23,6 @@ function SocialIcon({ type }) {
       </svg>
     )
   }
-
   if (type === 'facebook') {
     return (
       <svg aria-hidden="true" viewBox="0 0 24 24">
@@ -29,7 +30,6 @@ function SocialIcon({ type }) {
       </svg>
     )
   }
-
   if (type === 'instagram') {
     return (
       <svg aria-hidden="true" viewBox="0 0 24 24">
@@ -37,7 +37,6 @@ function SocialIcon({ type }) {
       </svg>
     )
   }
-
   if (type === 'youtube') {
     return (
       <svg aria-hidden="true" viewBox="0 0 24 24">
@@ -45,25 +44,77 @@ function SocialIcon({ type }) {
       </svg>
     )
   }
-
   return null
 }
 
 function Footer() {
+  const [email, setEmail] = useState('')
+  const [submitted, setSubmitted] = useState(false)
+
   const openCookiePreferences = () => {
     window.dispatchEvent(new CustomEvent(CONSENT_EVENT))
   }
 
+  const handleNewsletter = (event) => {
+    event.preventDefault()
+    if (!email) return
+    setSubmitted(true)
+    setEmail('')
+    setTimeout(() => setSubmitted(false), 4500)
+  }
+
   return (
     <footer className="site-footer">
+      <div className="footer-cta-strip">
+        <div className="container footer-cta-inner">
+          <div>
+            <span className="eyebrow eyebrow-light">Newsletter</span>
+            <h3>Regulatory updates, product launches & export news.</h3>
+            <p>Quarterly insights for distributors, hospital procurement leads, and pharma partners.</p>
+          </div>
+          <form className="footer-newsletter" onSubmit={handleNewsletter}>
+            <label className="sr-only" htmlFor="footer-newsletter-email">Email address</label>
+            <input
+              id="footer-newsletter-email"
+              type="email"
+              required
+              placeholder="you@company.com"
+              value={email}
+              onChange={(event) => setEmail(event.target.value)}
+            />
+            <button type="submit" className="btn btn-accent">
+              Subscribe <ArrowRight size={16} />
+            </button>
+            {submitted && (
+              <span className="footer-newsletter-success" role="status">
+                Thanks — you'll receive our next update.
+              </span>
+            )}
+          </form>
+        </div>
+      </div>
+
+      <div className="footer-cert-strip">
+        <div className="container footer-cert-inner">
+          <span className="footer-cert-label">
+            <ShieldCheck size={16} /> Quality alignment
+          </span>
+          <ul>
+            {certifications.map((cert) => (
+              <li key={cert.id} title={cert.fullName}>{cert.name}</li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
       <div className="container footer-grid">
         <div className="footer-company">
           <Link className="brand footer-brand" to="/">
             <img className="brand-logo" src="/images/logo/memphis-vision-care-logo.svg" alt={company.name} />
           </Link>
           <p>
-            Business-oriented information for healthcare professionals, distributors,
-            institutions, and manufacturing partners.
+            Sterile prefilled syringe manufacturer producing ophthalmic, cardiac critical care,
+            orthopaedic, and gynaecology presentations for hospitals, distributors, and pharma partners worldwide.
           </p>
           {company.socialLinks?.length > 0 && (
             <div className="footer-socials" aria-label="Social media links">
@@ -81,7 +132,6 @@ function Footer() {
                     </span>
                   )
                 }
-
                 return (
                   <a
                     aria-label={social.label}
@@ -111,7 +161,7 @@ function Footer() {
         </div>
 
         <div>
-          <h3>Segments</h3>
+          <h3>Therapeutic segments</h3>
           <ul>
             {categories.map((category) => (
               <li key={category.id}>
@@ -130,15 +180,16 @@ function Footer() {
             </li>
             <li>
               <Phone size={16} />
-              <span>{company.phone}</span>
+              <a href={`tel:${company.phone.replace(/\s|\+/g, '')}`}>{company.phone}</a>
             </li>
             <li>
               <Mail size={16} />
-              <span>{company.email}</span>
+              <a href={`mailto:${company.email}`}>{company.email}</a>
             </li>
           </ul>
         </div>
       </div>
+
       <div className="container footer-bottom">
         <span>© {new Date().getFullYear()} {company.name}. All rights reserved.</span>
         <span className="footer-bottom-links">

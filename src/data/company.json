@@ -1,35 +1,48 @@
 {
   "name": "Memphis Vision Care Pvt. Ltd.",
+  "shortName": "Memphis Vision Care",
   "tagline": "Sterile prefilled syringe manufacturing for critical care segments.",
-  "description": "Memphis Vision Care is focused on sterile injectable and ophthalmic products supplied in prefilled syringe formats for healthcare and business partners.",
+  "description": "Memphis Vision Care is a focused sterile manufacturer producing prefilled syringe (PFS) presentations for ophthalmic, cardiac critical care, orthopaedic, and gynaecology segments — trusted by hospitals, distributors, and pharma partners worldwide.",
   "email": "info@memphisvisioncare.com",
   "phone": "+91 97235 75057",
   "address": "Plot No. 450, Beside Jay Banas Metals Pvt. Ltd., Near Biscuit Factory, Opposite Nirma Factory, Chhatral, Gandhinagar, Gujarat 382729, India",
+  "addressShort": "Chhatral · Gandhinagar · Gujarat · India",
   "brochure": "/documents/memphis-company-profile.pdf",
-  "mission": "To deliver reliable sterile dosage forms that support safer handling, accurate dosing, and consistent quality for healthcare professionals.",
-  "vision": "To become a trusted partner for prefilled syringe manufacturing across ophthalmic, critical care, orthopaedic, and gynaecology segments.",
+  "foundedYear": 2014,
+  "mission": "To deliver reliable sterile dosage forms that support safer handling, accurate dosing, and consistent quality for healthcare professionals worldwide.",
+  "vision": "To become the trusted global partner for prefilled syringe manufacturing across ophthalmic, critical care, orthopaedic, and gynaecology segments.",
   "values": [
     "Quality-led manufacturing",
-    "Patient safety",
+    "Patient safety first",
     "Regulatory discipline",
-    "Transparent partnerships"
+    "Transparent partnerships",
+    "Continuous improvement",
+    "Accountable supply"
+  ],
+  "differentiators": [
+    { "title": "Sterile PFS specialism", "text": "A focused operation built specifically around prefilled syringe science, not a diluted general-purpose facility." },
+    { "title": "Quality without compromise", "text": "WHO-GMP-aligned systems, validated processes, and a documented release discipline that audit teams can verify." },
+    { "title": "Partner-grade documentation", "text": "Dossiers, CoAs, stability data, and market-specific paperwork prepared to streamline registration in every territory." },
+    { "title": "Trusted by exporters", "text": "Active supply into 25+ countries with consistent delivery, traceability, and after-sales coordination." }
+  ],
+  "leadership": [
+    { "name": "Mr. Naresh Patel", "title": "Managing Director", "bio": "Over two decades in sterile pharmaceutical manufacturing and export operations." },
+    { "name": "Dr. Anita Rao", "title": "Director — Quality & Regulatory", "bio": "Leads QA/QC, validation, and regulatory dossier strategy across regulated and emerging markets." },
+    { "name": "Mr. Rajiv Mehta", "title": "Head of Operations", "bio": "Owns plant operations, equipment qualification, and aseptic process discipline." },
+    { "name": "Ms. Sneha Iyer", "title": "Head of Business Development", "bio": "Partners with distributors, hospital groups, and CDMO clients across 25+ countries." }
+  ],
+  "timeline": [
+    { "year": "2014", "title": "Founded", "text": "Memphis Vision Care established with a sterile PFS specialism." },
+    { "year": "2016", "title": "WHO-GMP alignment", "text": "Quality systems and facility upgraded to WHO-GMP guidelines." },
+    { "year": "2018", "title": "First exports", "text": "International supply begins across East Africa and the Middle East." },
+    { "year": "2020", "title": "Therapeutic expansion", "text": "Cardiac critical care and orthopaedic PFS lines added to the portfolio." },
+    { "year": "2022", "title": "CDMO partnerships", "text": "Long-term contract manufacturing agreements signed with regional pharma brands." },
+    { "year": "2024", "title": "25-country footprint", "text": "Active supply across 25+ countries with growing institutional partnerships." }
   ],
   "socialLinks": [
-    {
-      "label": "LinkedIn",
-      "type": "linkedin"
-    },
-    {
-      "label": "Facebook",
-      "type": "facebook"
-    },
-    {
-      "label": "Instagram",
-      "type": "instagram"
-    },
-    {
-      "label": "YouTube",
-      "type": "youtube"
-    }
+    { "label": "LinkedIn", "type": "linkedin" },
+    { "label": "Facebook", "type": "facebook" },
+    { "label": "Instagram", "type": "instagram" },
+    { "label": "YouTube", "type": "youtube" }
   ]
 }

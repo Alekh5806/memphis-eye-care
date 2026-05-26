@@ -1,18 +1,6 @@
 [
-  {
-    "value": "5+",
-    "label": "Therapeutic segments"
-  },
-  {
-    "value": "PFS",
-    "label": "Prefilled syringe focus"
-  },
-  {
-    "value": "B2B",
-    "label": "Partner-ready model"
-  },
-  {
-    "value": "cGMP",
-    "label": "Quality-led systems"
-  }
+  { "value": "25+", "label": "Countries served", "sub": "Across Africa, Middle East, SE Asia & EU" },
+  { "value": "120+", "label": "Sterile SKUs", "sub": "Ophthalmic · Cardiac · Ortho · Gynae" },
+  { "value": "10+", "label": "Years of focus", "sub": "Dedicated PFS manufacturing experience" },
+  { "value": "99.6%", "label": "Batch acceptance", "sub": "QA release record across last 24 months" }
 ]

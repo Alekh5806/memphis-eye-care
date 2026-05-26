@@ -4,10 +4,12 @@ import { getCategory } from '../../utils/productUtils'
 
 function ProductCard({ product }) {
   const category = getCategory(product)
+  const isVector = product.image?.endsWith('.svg')
 
   return (
     <article className="product-card">
-      <Link className="product-image-link" to={`/products/${product.slug}`}>
+      <Link className={`product-image-link ${isVector ? 'is-vector' : 'is-photo'}`} to={`/products/${product.slug}`}>
+        {category?.name && <span className="product-image-badge">{category.name}</span>}
         <img
           className="product-image"
           src={product.image || '/images/products/fallback.svg'}
@@ -16,10 +18,10 @@ function ProductCard({ product }) {
         />
       </Link>
       <div className="product-card-body">
-        <span className="product-category">{category?.name}</span>
         <h3>
           <Link to={`/products/${product.slug}`}>{product.name}</Link>
         </h3>
+        {product.genericName && <p className="product-generic">{product.genericName}</p>}
         <div className="product-meta">
           <span>{product.strength}</span>
           <span>{product.fillVolume}</span>
