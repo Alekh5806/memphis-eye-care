@@ -1,22 +1,12 @@
-const browserAccessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || ''
-const formsApiBaseUrl = (
-  import.meta.env.VITE_FORMS_API_BASE_URL || 'https://main-memphis-eye-care.patelalekh3456.workers.dev'
-).replace(/\/$/, '')
+const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || ''
 
-async function parseResponse(response, unavailableMessage) {
-  const contentType = response.headers.get('content-type') || ''
-  const data = contentType.includes('application/json')
-    ? await response.json().catch(() => ({}))
-    : {}
-
-  if (!response.ok || data.success === false) {
-    throw new Error(data.message || unavailableMessage || `Form submission failed with status ${response.status}.`)
+async function submitToWeb3Forms(payload) {
+  if (!accessKey) {
+    throw new Error(
+      'Web3Forms access key is not configured. Set VITE_WEB3FORMS_ACCESS_KEY as a build environment variable on your hosting platform.',
+    )
   }
 
-  return data
-}
-
-async function submitDirect(payload) {
   const response = await fetch('https://api.web3forms.com/submit', {
     method: 'POST',
     headers: {
@@ -25,47 +15,32 @@ async function submitDirect(payload) {
     },
     body: JSON.stringify({
       ...payload,
-      access_key: browserAccessKey,
+      access_key: accessKey,
     }),
   })
 
-  return parseResponse(response, 'Web3Forms rejected the request. Please check the access key.')
-}
+  const data = await response.json().catch(() => ({}))
 
-async function submitViaWorker(path, payload) {
-  const response = await fetch(`${formsApiBaseUrl}${path}`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Accept: 'application/json',
-    },
-    body: JSON.stringify(payload),
-  })
+  if (!response.ok && !data.success) {
+    throw new Error(data.message || 'Form submission failed. Please try again.')
+  }
 
-  return parseResponse(response, 'Form service is currently unavailable. Please try again in a moment.')
+  return data
 }
 
 export function submitContactForm(payload) {
-  if (browserAccessKey) {
-    return submitDirect({
-      ...payload,
-      subject: 'New website enquiry - Memphis Vision Care',
-      from_name: 'Memphis Vision Care Website',
-    })
-  }
-
-  return submitViaWorker('/api/forms/contact', payload)
+  return submitToWeb3Forms({
+    ...payload,
+    subject: 'New website enquiry - Memphis Vision Care',
+    from_name: 'Memphis Vision Care Website',
+  })
 }
 
 export function submitNewsletterForm(payload) {
-  if (browserAccessKey) {
-    return submitDirect({
-      ...payload,
-      subject: 'New newsletter subscription - Memphis Vision Care',
-      from_name: 'Memphis Vision Care Website',
-      form_type: 'Newsletter subscription',
-    })
-  }
-
-  return submitViaWorker('/api/forms/newsletter', payload)
+  return submitToWeb3Forms({
+    ...payload,
+    subject: 'New newsletter subscription - Memphis Vision Care',
+    from_name: 'Memphis Vision Care Website',
+    form_type: 'Newsletter subscription',
+  })
 }
