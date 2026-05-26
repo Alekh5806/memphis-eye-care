@@ -37,6 +37,8 @@ The Worker also accepts `VITE_WEB3FORMS_ACCESS_KEY` as a fallback runtime variab
 
 ## Static Hosting
 
-If the final host only serves the built `dist` folder and does not run `worker.js`, set `VITE_WEB3FORMS_ACCESS_KEY` in that hosting platform's build environment before running `npm run build`.
+Cloudflare Pages is also supported through Pages Functions in `functions/api/forms`.
+
+If the final host only serves the built `dist` folder and does not run `worker.js` or the `functions` directory, set `VITE_WEB3FORMS_ACCESS_KEY` in that hosting platform's build environment before running `npm run build`.
 
 Vite reads `VITE_*` values at build time. Changing hosting environment variables after the build will not update the already-built JavaScript bundle, so rebuild and redeploy after changing the key.
