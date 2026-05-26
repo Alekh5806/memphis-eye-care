@@ -1,4 +1,8 @@
 const browserAccessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || ''
+const formsApiBaseUrl = (
+  import.meta.env.VITE_FORMS_API_BASE_URL || 'https://main-memphis-eye-care.patelalekh3456.workers.dev'
+).replace(/\/$/, '')
+const endpointUnavailableMessage = 'Form endpoint is not available on this deployment.'
 
 async function parseResponse(response, unavailableMessage) {
   const contentType = response.headers.get('content-type') || ''
@@ -30,19 +34,39 @@ async function submitDirect(payload) {
 }
 
 async function submitViaWorker(path, payload) {
-  const response = await fetch(path, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Accept: 'application/json',
-    },
-    body: JSON.stringify(payload),
-  })
+  const submitToEndpoint = async (url) => {
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+      body: JSON.stringify(payload),
+    })
 
-  return parseResponse(
-    response,
-    'Form endpoint is not available on this deployment. Configure the Worker route or rebuild with VITE_WEB3FORMS_ACCESS_KEY.',
-  )
+    return parseResponse(
+      response,
+      `${endpointUnavailableMessage} Configure the Worker route or rebuild with VITE_WEB3FORMS_ACCESS_KEY.`,
+    )
+  }
+
+  try {
+    return await submitToEndpoint(path)
+  } catch (error) {
+    const fallbackUrl = `${formsApiBaseUrl}${path}`
+    const fallbackOrigin = new URL(fallbackUrl).origin
+    const currentOrigin = window.location.origin
+    const shouldRetry = formsApiBaseUrl && fallbackOrigin !== currentOrigin && (
+      error.message.includes(endpointUnavailableMessage) ||
+      error.message.includes('Server is missing Web3Forms configuration')
+    )
+
+    if (shouldRetry) {
+      return submitToEndpoint(fallbackUrl)
+    }
+
+    throw error
+  }
 }
 
 export function submitContactForm(payload) {

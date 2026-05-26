@@ -1,6 +1,9 @@
 const jsonHeaders = {
   'Content-Type': 'application/json',
   'Cache-Control': 'no-store',
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Headers': 'Content-Type, Accept',
+  'Access-Control-Allow-Methods': 'POST, OPTIONS',
 }
 
 function jsonResponse(body, status = 200) {
@@ -44,12 +47,28 @@ async function submitToWeb3Forms(payload, env) {
     }),
   })
 
-  const data = await response.json().catch(() => ({}))
+  let data = await response.json().catch(() => ({}))
+  const isSuccess = response.ok || data.success
 
-  return jsonResponse(data, response.ok || data.success ? 200 : response.status || 500)
+  if (!isSuccess && !data.message) {
+    data = {
+      ...data,
+      success: false,
+      message: 'Web3Forms rejected the request. Please check the access key.',
+    }
+  }
+
+  return jsonResponse(data, isSuccess ? 200 : response.status || 500)
 }
 
 export async function onRequest({ request, env }) {
+  if (request.method === 'OPTIONS') {
+    return new Response(null, {
+      status: 204,
+      headers: jsonHeaders,
+    })
+  }
+
   if (request.method !== 'POST') {
     return jsonResponse({ success: false, message: 'Method not allowed.' }, 405)
   }

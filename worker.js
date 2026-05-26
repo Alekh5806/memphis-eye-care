@@ -1,6 +1,9 @@
 const jsonHeaders = {
   'Content-Type': 'application/json',
   'Cache-Control': 'no-store',
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Headers': 'Content-Type, Accept',
+  'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
 }
 
 function jsonResponse(body, status = 200) {
@@ -44,9 +47,18 @@ async function submitToWeb3Forms(payload, env) {
     }),
   })
 
-  const data = await response.json().catch(() => ({}))
+  let data = await response.json().catch(() => ({}))
+  const isSuccess = response.ok || data.success
 
-  return jsonResponse(data, response.ok || data.success ? 200 : response.status || 500)
+  if (!isSuccess && !data.message) {
+    data = {
+      ...data,
+      success: false,
+      message: 'Web3Forms rejected the request. Please check the access key.',
+    }
+  }
+
+  return jsonResponse(data, isSuccess ? 200 : response.status || 500)
 }
 
 async function handleContact(request, env) {
@@ -88,6 +100,21 @@ async function handleNewsletter(request, env) {
 export default {
   async fetch(request, env) {
     const url = new URL(request.url)
+
+    if (request.method === 'OPTIONS') {
+      return new Response(null, {
+        status: 204,
+        headers: jsonHeaders,
+      })
+    }
+
+    if (url.pathname === '/api/forms') {
+      return jsonResponse({
+        success: true,
+        message: 'Forms API is available.',
+        endpoints: ['/api/forms/contact', '/api/forms/newsletter'],
+      })
+    }
 
     if (url.pathname === '/api/forms/contact') {
       return handleContact(request, env)
