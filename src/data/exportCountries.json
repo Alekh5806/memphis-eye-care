@@ -1,5 +1,5 @@
 {
-  "_instructions": "Coordinates are percentage offsets on the visual map (x: 0-100 left→right, y: 0-100 top→bottom). Adjust without touching React code.",
+  "_instructions": "Coordinates are percentage offsets on the visual world map (x: 0-100 left→right ≈ longitude, y: 0-100 top→bottom ≈ latitude, equirectangular). To add a country, append a new object to `countries` with a unique id and percentage coordinates — the UI map markers and selector will update automatically with no React code changes.",
   "settings": {
     "eyebrow": "Global reach",
     "pageHero": {

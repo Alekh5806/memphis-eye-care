@@ -11,6 +11,7 @@ import { useMemo, useState } from 'react'
 import Button from '../common/Button'
 import Container from '../common/Container'
 import SectionHeading from '../common/SectionHeading'
+import { worldMapPath } from '../../data/worldMapPath'
 import {
   getPluralizedLabel,
   globalReachCountries,
@@ -89,21 +90,78 @@ function GlobalReachSection({ variant = 'preview' }) {
         <div className="global-reach-layout">
           <div className="world-map-panel" aria-label="Interactive export countries map">
             <div className="world-map-header">
-              <div>
+              <div className="world-map-title">
                 <Globe2 size={22} />
                 <span>{globalReachSettings.mapTitle}</span>
+                <small>{countryCount} {mapMarketLabel}</small>
               </div>
-              <small>{countryCount} {mapMarketLabel}</small>
+              <div className="map-caption" aria-live="polite">
+                <MapPin size={14} />
+                <div>
+                  <span>{selectedCountry.region}</span>
+                  <strong>{selectedCountry.name}</strong>
+                </div>
+              </div>
             </div>
 
             <div className="world-map">
-              <svg className="world-map-svg" viewBox="0 0 920 440" aria-hidden="true">
-                <path className="map-grid-line" d="M0 110H920M0 220H920M0 330H920M184 0V440M368 0V440M552 0V440M736 0V440" />
-                <path className="map-continent" d="M143 126c38-37 105-48 159-27 30 12 43 35 30 60-12 24-46 34-74 48-38 19-54 47-88 51-41 6-83-18-96-57-9-29 8-55 69-75Z" />
-                <path className="map-continent" d="M375 113c43-28 112-24 153 6 32 24 30 57-7 76-29 16-77 12-102 33-21 18-9 52-34 68-29 18-75-1-84-36-8-32 26-59 25-87 0-22 18-41 49-60Z" />
-                <path className="map-continent map-continent-focus" d="M466 210c48-30 100 0 113 55 15 63-34 118-82 100-24-9-32-35-40-61-7-25-28-38-25-59 2-14 14-26 34-35Z" />
-                <path className="map-continent" d="M546 113c59-46 180-46 242-1 51 37 31 88-36 103-40 10-84-1-120 14-35 15-49 51-85 48-36-3-65-33-59-72 4-30 23-63 58-92Z" />
-                <path className="map-continent" d="M694 312c35-20 82-18 108 3 20 17 12 39-17 47-29 9-72 4-95-11-22-14-19-27 4-39Z" />
+              <svg
+                className="world-map-svg"
+                viewBox="0 0 1000 500"
+                preserveAspectRatio="xMidYMid meet"
+                aria-hidden="true"
+              >
+                <defs>
+                  <linearGradient id="oceanGradient" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stopColor="#eaf2fc" />
+                    <stop offset="100%" stopColor="#dbe7f7" />
+                  </linearGradient>
+                  <linearGradient id="landGradient" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stopColor="#cdddf3" />
+                    <stop offset="100%" stopColor="#aac3e4" />
+                  </linearGradient>
+                  <pattern id="oceanDots" x="0" y="0" width="14" height="14" patternUnits="userSpaceOnUse">
+                    <circle cx="1.2" cy="1.2" r="0.9" fill="rgba(41, 87, 162, 0.18)" />
+                  </pattern>
+                  <filter id="landShadow" x="-10%" y="-10%" width="120%" height="120%">
+                    <feGaussianBlur in="SourceAlpha" stdDeviation="1.2" />
+                    <feOffset dx="0" dy="1.2" result="off" />
+                    <feComponentTransfer><feFuncA type="linear" slope="0.35" /></feComponentTransfer>
+                    <feMerge><feMergeNode /><feMergeNode in="SourceGraphic" /></feMerge>
+                  </filter>
+                </defs>
+
+                {/* Ocean background + dotted texture */}
+                <rect width="1000" height="500" fill="url(#oceanGradient)" />
+                <rect width="1000" height="500" fill="url(#oceanDots)" />
+
+                {/* Graticule – latitude / longitude grid */}
+                <g className="map-graticule">
+                  <line x1="0" y1="125" x2="1000" y2="125" />
+                  <line x1="0" y1="250" x2="1000" y2="250" strokeDasharray="4 4" />
+                  <line x1="0" y1="375" x2="1000" y2="375" />
+                  <line x1="167" y1="0" x2="167" y2="500" />
+                  <line x1="333" y1="0" x2="333" y2="500" />
+                  <line x1="500" y1="0" x2="500" y2="500" strokeDasharray="4 4" />
+                  <line x1="667" y1="0" x2="667" y2="500" />
+                  <line x1="833" y1="0" x2="833" y2="500" />
+                </g>
+
+                {/* Real country outlines – Natural Earth, equirectangular */}
+                <g className="map-continents" filter="url(#landShadow)" fill="url(#landGradient)">
+                  <path d={worldMapPath} fillRule="evenodd" />
+                </g>
+
+                {/* Subtle highlight ring around the focus region (India / SE Asia) */}
+                <circle
+                  cx="710"
+                  cy="240"
+                  r="58"
+                  fill="none"
+                  stroke="rgba(15, 154, 166, 0.35)"
+                  strokeWidth="1.2"
+                  strokeDasharray="3 4"
+                />
               </svg>
 
               {globalReachCountries.map((country) => (
@@ -125,11 +183,6 @@ function GlobalReachSection({ variant = 'preview' }) {
                   </strong>
                 </button>
               ))}
-
-              <div className="map-caption">
-                <span>{selectedCountry.region}</span>
-                <strong>{selectedCountry.name}</strong>
-              </div>
             </div>
 
             <div className="market-selector" aria-label="Select export country">

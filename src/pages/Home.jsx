@@ -1,8 +1,8 @@
+import { lazy, Suspense } from 'react'
 import DocumentHead from '../components/common/DocumentHead'
 import CertificationsStrip from '../components/sections/CertificationsStrip'
 import ContractManufacturingCTA from '../components/sections/ContractManufacturingCTA'
 import FeaturedProducts from '../components/sections/FeaturedProducts'
-import GlobalReachSection from '../components/sections/GlobalReachSection'
 import HeroSection from '../components/sections/HeroSection'
 import PartnersMarquee from '../components/sections/PartnersMarquee'
 import PfsAdvantages from '../components/sections/PfsAdvantages'
@@ -11,6 +11,9 @@ import QualitySection from '../components/sections/QualitySection'
 import StatsSection from '../components/sections/StatsSection'
 import TestimonialsSection from '../components/sections/TestimonialsSection'
 import company from '../data/company.json'
+
+// Heavy below-the-fold section (world-map paths) — split into its own chunk
+const GlobalReachSection = lazy(() => import('../components/sections/GlobalReachSection'))
 
 function Home() {
   return (
@@ -37,7 +40,9 @@ function Home() {
       <PfsAdvantages />
       <CertificationsStrip />
       <QualitySection />
-      <GlobalReachSection />
+      <Suspense fallback={<div style={{ minHeight: 540 }} />}>
+        <GlobalReachSection />
+      </Suspense>
       <TestimonialsSection />
       <FeaturedProducts />
       <ContractManufacturingCTA />
