@@ -164,25 +164,30 @@ function GlobalReachSection({ variant = 'preview' }) {
                 />
               </svg>
 
-              {globalReachCountries.map((country) => (
-                <button
-                  className={`country-marker ${selectedCountry.id === country.id ? 'is-active' : ''}`}
-                  key={country.id}
-                  style={{
-                    left: `${country.coordinates.x}%`,
-                    top: `${country.coordinates.y}%`,
-                  }}
-                  type="button"
-                  onClick={() => setSelectedId(country.id)}
-                  aria-label={`View export details for ${country.name}`}
-                >
-                  <span />
-                  <strong className="country-tooltip">
-                    {country.name}
-                    <small>{country.region} · {country.products[0]}</small>
-                  </strong>
-                </button>
-              ))}
+              {globalReachCountries.map((country) => {
+                const { x, y } = country.coordinates
+                const tooltipClasses = ['country-tooltip']
+                if (y < 22) tooltipClasses.push('is-bottom')
+                if (x < 14) tooltipClasses.push('is-right')
+                else if (x > 86) tooltipClasses.push('is-left')
+
+                return (
+                  <button
+                    className={`country-marker ${selectedCountry.id === country.id ? 'is-active' : ''}`}
+                    key={country.id}
+                    style={{ left: `${x}%`, top: `${y}%` }}
+                    type="button"
+                    onClick={() => setSelectedId(country.id)}
+                    aria-label={`View export details for ${country.name}`}
+                  >
+                    <span />
+                    <strong className={tooltipClasses.join(' ')}>
+                      {country.name}
+                      <small>{country.region} · {country.products[0]}</small>
+                    </strong>
+                  </button>
+                )
+              })}
             </div>
 
             <div className="market-selector" aria-label="Select export country">
