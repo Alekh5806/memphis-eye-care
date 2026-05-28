@@ -27,7 +27,7 @@ the "26 active markets" counter, and the KPI tiles on `/global-reach`.
       "name": "Kenya",
       "region": "Africa",
       "status": "Active export market",
-      "coordinates": { "x": 58, "y": 58 },            // % offsets on map (0–100)
+      "coordinates": { "x": 60.5, "y": 50 },          // % offsets on map (see below)
       "products": ["Ophthalmic PFS", "..."],
       "summary": "Short paragraph shown in detail card.",
       "details": ["Bullet 1", "Bullet 2"]             // shown on /global-reach
@@ -36,11 +36,73 @@ the "26 active markets" counter, and the KPI tiles on `/global-reach`.
 }
 ```
 
-- **Add a country**: append a new object to `countries`. Pick `x` / `y` by
-  eyeballing the map (top-left = `0,0`, bottom-right = `100,100`).
+### How to add a new country at its perfect location
+
+The map uses an **equirectangular projection** (a flat lat/lon grid). Pin
+positions are stored as percentages so they auto-scale on every screen
+size — but they must come from the country's **real latitude / longitude**,
+not eyeballing.
+
+**Step 1 — Look up the country's latitude & longitude.**
+Use any source (Google "latitude longitude of *Kenya*", Wikipedia infobox,
+[latlong.net](https://www.latlong.net)). Pick the country's geographic
+centre, or its capital if you prefer the pin near a major city.
+
+> Example — Kenya: `latitude = -0.0°`, `longitude = 37.9°`.
+
+**Step 2 — Convert to map percentages with this formula:**
+
+```
+x = (longitude + 180) / 360 * 100
+y = (90 - latitude) / 180 * 100
+```
+
+| Rule              | Latitude       | Longitude        |
+| ----------------- | -------------- | ---------------- |
+| North of equator  | **positive**   | —                |
+| South of equator  | **negative**   | —                |
+| East of Greenwich | —              | **positive**     |
+| West of Greenwich | —              | **negative**     |
+
+> Kenya → `x = (37.9 + 180) / 360 * 100 ≈ 60.5`, `y = (90 - 0) / 180 * 100 = 50`.
+
+**Step 3 — Quick way (copy-paste into terminal):**
+
+```bash
+node -e "const lon=37.9, lat=-0.0; \
+  console.log('x:', ((lon+180)/360*100).toFixed(1), \
+              'y:', ((90-lat)/180*100).toFixed(1))"
+```
+
+**Step 4 — Append the country object** to the `countries` array in this
+file with the calculated `x` and `y`. Save → Vite hot-reloads → the new pin
+appears on the map and in the country selector strip. No React or CSS
+changes needed.
+
+**Step 5 — (Optional) Fine-tune by ±0.5.** If the pin sits slightly in the
+ocean for a small island nation, nudge `x` / `y` by tenths until it lands
+on land.
+
+**Reference coordinates already in use** (sanity check your maths):
+
+| Country     | lat, lon        | x, y          |
+| ----------- | --------------- | ------------- |
+| Kenya       | -0.0, 37.9      | 60.5, 50.0    |
+| UK          | 54.0, -2.0      | 49.4, 20.0    |
+| Brazil      | -10.8, -53.0    | 35.3, 56.0    |
+| Australia   | -25.7, 134.5    | 87.4, 64.3    |
+| Russia      | 62.0, 60.0      | 66.7, 15.5    |
+| Sri Lanka   | 7.9, 80.8       | 72.4, 45.6    |
+
+### Other edits
 - **Remove a country**: delete the object. Counts, markers, chips and detail
   card all update automatically.
-- The first country in the array is the default selection.
+- **Reorder the selector**: reorder objects in `countries`. The first entry
+  is the default selection when the page loads.
+- **Change the focus region**: the dashed teal ring on the map is decorative;
+  to move it edit the `<circle cx cy r>` near the bottom of
+  `src/components/sections/GlobalReachSection.jsx` (`cx`/`cy` are in SVG
+  units on a 1000 × 500 viewBox).
 
 ---
 
