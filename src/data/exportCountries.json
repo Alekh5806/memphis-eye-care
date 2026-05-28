@@ -1,5 +1,5 @@
 {
-  "_instructions": "Coordinates are percentage offsets on the visual world map (x: 0-100 left→right ≈ longitude, y: 0-100 top→bottom ≈ latitude, equirectangular). To add a country, append a new object to `countries` with a unique id and percentage coordinates — the UI map markers and selector will update automatically with no React code changes.",
+  "_instructions": "Coordinates are percentage offsets on an equirectangular world map (x: 0-100 left→right, y: 0-100 top→bottom). Formula from real lat/lon: x = (longitude + 180) / 360 * 100, y = (90 - latitude) / 180 * 100. Append a new country object to `countries` with a unique id — the UI markers and selector update automatically with no React code changes.",
   "settings": {
     "eyebrow": "Global reach",
     "pageHero": {
@@ -25,7 +25,7 @@
       "name": "Kenya",
       "region": "Africa",
       "status": "Active export market",
-      "coordinates": { "x": 58, "y": 58 },
+      "coordinates": { "x": 60.5, "y": 50 },
       "products": ["Ophthalmic prefilled syringes", "Critical care injectables", "Institutional PFS supply"],
       "summary": "A priority East Africa market for sterile prefilled syringe products, distributor partnerships, and institutional hospital supply.",
       "details": ["Africa region market enquiry support", "Product documentation shared with verified partners", "Distributor and institutional discussions"]
@@ -35,7 +35,7 @@
       "name": "Uganda",
       "region": "Africa",
       "status": "Active export market",
-      "coordinates": { "x": 56, "y": 56 },
+      "coordinates": { "x": 59, "y": 49.2 },
       "products": ["Ophthalmic PFS products", "Critical care injectables"],
       "summary": "East Africa opportunity market for product availability, documentation, and partner-led access.",
       "details": ["Distributor-led business route", "Segment-wise product review", "Export documentation enquiry support"]
@@ -45,7 +45,7 @@
       "name": "Tanzania",
       "region": "Africa",
       "status": "Active export market",
-      "coordinates": { "x": 57, "y": 62 },
+      "coordinates": { "x": 59.7, "y": 53.6 },
       "products": ["Sterile PFS portfolio", "Orthopaedic care products", "Gynaecology injectables"],
       "summary": "A focused East Africa market for prefilled syringe supply and segment-specific product partnerships.",
       "details": ["Country-specific product discussion", "B2B and institutional enquiry route", "Partner documentation coordination"]
@@ -55,7 +55,7 @@
       "name": "South Africa",
       "region": "Africa",
       "status": "Active export market",
-      "coordinates": { "x": 55, "y": 78 },
+      "coordinates": { "x": 57, "y": 66 },
       "products": ["Critical care injectables", "Ophthalmic products", "Contract manufacturing discussions"],
       "summary": "Southern Africa market for product, distribution, and CDMO partnerships across hospital networks.",
       "details": ["Market-specific product fit review", "Institutional supply enquiry support", "Manufacturing partnership discussion"]
@@ -65,7 +65,7 @@
       "name": "Nigeria",
       "region": "Africa",
       "status": "Active export market",
-      "coordinates": { "x": 50, "y": 56 },
+      "coordinates": { "x": 52.4, "y": 45 },
       "products": ["Cardiac critical care PFS", "Gynaecology injectables"],
       "summary": "Major West Africa market for sterile PFS supply across teaching hospitals and federal medical centres.",
       "details": ["Hospital tender support", "Dossier coordination", "Distributor relationships"]
@@ -75,7 +75,7 @@
       "name": "Ethiopia",
       "region": "Africa",
       "status": "Active export market",
-      "coordinates": { "x": 58, "y": 54 },
+      "coordinates": { "x": 61.3, "y": 45 },
       "products": ["Critical care injectables", "Ophthalmic surgical PFS"],
       "summary": "Horn of Africa market with growing demand for sterile injectable presentations.",
       "details": ["EFDA documentation alignment", "Institutional supply", "Partner registration support"]
@@ -85,7 +85,7 @@
       "name": "Ghana",
       "region": "Africa",
       "status": "Active export market",
-      "coordinates": { "x": 48, "y": 56 },
+      "coordinates": { "x": 49.7, "y": 45.6 },
       "products": ["Ophthalmic PFS", "Gynaecology injectables"],
       "summary": "Stable West African market for partner-led supply of sterile injectable presentations.",
       "details": ["FDA Ghana dossier support", "Distributor enquiries", "Hospital network access"]
@@ -95,7 +95,7 @@
       "name": "UAE",
       "region": "Middle East",
       "status": "Active export market",
-      "coordinates": { "x": 64, "y": 49 },
+      "coordinates": { "x": 65, "y": 36.7 },
       "products": ["Sterile PFS portfolio", "Ophthalmic care products", "Partner supply enquiries"],
       "summary": "Middle East gateway market for partner-led sterile prefilled syringe supply and distribution.",
       "details": ["Regional distributor enquiry route", "Product dossier coordination", "Private label and supply discussion"]
@@ -105,7 +105,7 @@
       "name": "Saudi Arabia",
       "region": "Middle East",
       "status": "Active export market",
-      "coordinates": { "x": 62, "y": 51 },
+      "coordinates": { "x": 62.5, "y": 36.7 },
       "products": ["Cardiac critical care PFS", "Orthopaedic injectables"],
       "summary": "Premium Gulf market for sterile injectable supply through verified pharma partners.",
       "details": ["SFDA documentation support", "Hospital group coordination", "Long-term supply agreements"]
@@ -115,7 +115,7 @@
       "name": "Qatar",
       "region": "Middle East",
       "status": "Active export market",
-      "coordinates": { "x": 63, "y": 50 },
+      "coordinates": { "x": 64.2, "y": 35.9 },
       "products": ["Ophthalmic PFS", "Critical care injectables"],
       "summary": "High-quality healthcare market with focused demand for sterile, ready-to-use PFS presentations.",
       "details": ["MoPH-aligned dossiers", "Hospital tender support", "Institutional procurement"]
@@ -125,7 +125,7 @@
       "name": "Oman",
       "region": "Middle East",
       "status": "Active export market",
-      "coordinates": { "x": 65, "y": 52 },
+      "coordinates": { "x": 65.5, "y": 38 },
       "products": ["Sterile PFS portfolio"],
       "summary": "Growing Gulf market for distributor-led sterile injectable supply.",
       "details": ["MoH approval pathways", "Cold-chain logistics support"]
@@ -135,7 +135,7 @@
       "name": "Nepal",
       "region": "South Asia",
       "status": "Active export market",
-      "coordinates": { "x": 71, "y": 47 },
+      "coordinates": { "x": 73.4, "y": 34.2 },
       "products": ["Ophthalmic PFS products", "Sterile injectables"],
       "summary": "Neighbouring South Asia market for product availability, distributor, and healthcare institution enquiries.",
       "details": ["Neighbouring market supply discussion", "Segment-led product review", "Export enquiry support"]
@@ -145,7 +145,7 @@
       "name": "Bangladesh",
       "region": "South Asia",
       "status": "Active export market",
-      "coordinates": { "x": 73, "y": 50 },
+      "coordinates": { "x": 75.1, "y": 36.8 },
       "products": ["Ophthalmic PFS", "Gynaecology injectables"],
       "summary": "Sub-continental market for hospital and institutional sterile PFS supply.",
       "details": ["DGDA registration support", "Hospital procurement coordination"]
@@ -155,7 +155,7 @@
       "name": "Sri Lanka",
       "region": "South Asia",
       "status": "Active export market",
-      "coordinates": { "x": 71, "y": 56 },
+      "coordinates": { "x": 72.4, "y": 45.6 },
       "products": ["Ophthalmic surgical PFS", "Critical care injectables"],
       "summary": "Stable South Asia market for sterile prefilled syringe categories.",
       "details": ["NMRA dossier support", "Distributor partnerships"]
@@ -165,7 +165,7 @@
       "name": "Philippines",
       "region": "South-East Asia",
       "status": "Active export market",
-      "coordinates": { "x": 82, "y": 56 },
+      "coordinates": { "x": 83.8, "y": 42.8 },
       "products": ["Critical care PFS", "Ophthalmic PFS"],
       "summary": "Strategic SE Asia market for sterile injectable supply via FDA-aligned dossiers.",
       "details": ["PH FDA dossier support", "Distributor enquiries"]
@@ -175,7 +175,7 @@
       "name": "Vietnam",
       "region": "South-East Asia",
       "status": "Active export market",
-      "coordinates": { "x": 79, "y": 54 },
+      "coordinates": { "x": 80.1, "y": 42.2 },
       "products": ["Sterile PFS portfolio"],
       "summary": "Emerging SE Asia market for high-quality sterile injectable presentations.",
       "details": ["DAV registration support", "Hospital network supply"]
@@ -185,7 +185,7 @@
       "name": "Myanmar",
       "region": "South-East Asia",
       "status": "Active export market",
-      "coordinates": { "x": 76, "y": 52 },
+      "coordinates": { "x": 76.6, "y": 37.8 },
       "products": ["Ophthalmic PFS"],
       "summary": "South-East Asia market for sterile ophthalmic and critical care PFS lines.",
       "details": ["MoH approval pathway"]
@@ -195,7 +195,7 @@
       "name": "United Kingdom",
       "region": "Europe",
       "status": "Partner enquiries",
-      "coordinates": { "x": 47, "y": 33 },
+      "coordinates": { "x": 49.4, "y": 20 },
       "products": ["Sterile PFS portfolio", "Contract manufacturing"],
       "summary": "European partner enquiry route for CDMO and private-label sterile PFS opportunities.",
       "details": ["MHRA dossier alignment", "EU GMP discussions", "CDMO collaboration"]
@@ -205,7 +205,7 @@
       "name": "Germany",
       "region": "Europe",
       "status": "Partner enquiries",
-      "coordinates": { "x": 50, "y": 34 },
+      "coordinates": { "x": 52.9, "y": 21.6 },
       "products": ["Ophthalmic surgical PFS", "Contract manufacturing"],
       "summary": "EU-quality CDMO and supply conversations for ophthalmic surgical PFS lines.",
       "details": ["EU GMP and CE alignment", "CDMO partner discussions"]
@@ -215,7 +215,7 @@
       "name": "Spain",
       "region": "Europe",
       "status": "Partner enquiries",
-      "coordinates": { "x": 46, "y": 38 },
+      "coordinates": { "x": 49, "y": 27.5 },
       "products": ["Ophthalmic PFS portfolio"],
       "summary": "Southern Europe enquiry route for sterile surgical and intra-articular PFS lines.",
       "details": ["AEMPS documentation alignment"]
@@ -225,7 +225,7 @@
       "name": "Russia",
       "region": "Europe",
       "status": "Partner enquiries",
-      "coordinates": { "x": 63, "y": 30 },
+      "coordinates": { "x": 66.7, "y": 15.5 },
       "products": ["Critical care injectables", "Orthopaedic PFS"],
       "summary": "Eurasia market enquiry route through regional partners.",
       "details": ["Russian pharmacopoeia alignment support"]
@@ -235,7 +235,7 @@
       "name": "Brazil",
       "region": "Americas",
       "status": "Partner enquiries",
-      "coordinates": { "x": 33, "y": 70 },
+      "coordinates": { "x": 35.3, "y": 56 },
       "products": ["Sterile PFS portfolio"],
       "summary": "Latin America partner route for sterile injectable opportunities.",
       "details": ["ANVISA dossier support pathway"]
@@ -245,7 +245,7 @@
       "name": "Mexico",
       "region": "Americas",
       "status": "Partner enquiries",
-      "coordinates": { "x": 22, "y": 50 },
+      "coordinates": { "x": 21.7, "y": 36.9 },
       "products": ["Critical care PFS"],
       "summary": "North American partner route for sterile injectable distribution discussions.",
       "details": ["COFEPRIS alignment support"]
@@ -255,7 +255,7 @@
       "name": "Indonesia",
       "region": "South-East Asia",
       "status": "Active export market",
-      "coordinates": { "x": 82, "y": 64 },
+      "coordinates": { "x": 81.6, "y": 51.4 },
       "products": ["Sterile PFS portfolio"],
       "summary": "Major SE Asia market for hospital network and institutional supply of sterile PFS.",
       "details": ["BPOM documentation support"]
@@ -265,7 +265,7 @@
       "name": "Thailand",
       "region": "South-East Asia",
       "status": "Active export market",
-      "coordinates": { "x": 78, "y": 56 },
+      "coordinates": { "x": 77.9, "y": 41.2 },
       "products": ["Ophthalmic PFS", "Critical care injectables"],
       "summary": "Established SE Asia market for ready-to-use sterile injectable supply.",
       "details": ["Thai FDA pathway support"]
@@ -275,7 +275,7 @@
       "name": "Australia",
       "region": "Oceania",
       "status": "Partner enquiries",
-      "coordinates": { "x": 86, "y": 78 },
+      "coordinates": { "x": 87.4, "y": 64.3 },
       "products": ["CDMO partnerships"],
       "summary": "Oceania CDMO discussion route for sterile PFS manufacturing partnerships.",
       "details": ["TGA conformity discussions"]

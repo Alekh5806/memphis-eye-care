@@ -154,11 +154,11 @@ function GlobalReachSection({ variant = 'preview' }) {
 
                 {/* Subtle highlight ring around the focus region (India / SE Asia) */}
                 <circle
-                  cx="710"
-                  cy="240"
-                  r="58"
+                  cx="760"
+                  cy="200"
+                  r="70"
                   fill="none"
-                  stroke="rgba(15, 154, 166, 0.35)"
+                  stroke="rgba(15, 154, 166, 0.32)"
                   strokeWidth="1.2"
                   strokeDasharray="3 4"
                 />
