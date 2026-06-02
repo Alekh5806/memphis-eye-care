@@ -27,13 +27,13 @@ function Manufacturing() {
         text="A concise view of how Memphis prepares, fills, inspects, packs, and releases sterile prefilled syringe products for partners and institutional buyers."
         breadcrumbs={[{ label: 'Capabilities', path: '/capabilities' }, { label: 'Manufacturing' }]}
       />
-      <section className="section">
+      <section className="section section-ambient">
         <Container>
           <SectionHeading
             eyebrow="Process flow"
             title="Six-step sterile PFS process built around quality and accountability."
           />
-          <div className="process-grid process-grid-stepped">
+          <div className="process-grid process-grid-stepped accent-cards">
             {steps.map(({ icon: Icon, title, text }, i) => (
               <motion.div
                 className="process-card"
@@ -53,7 +53,7 @@ function Manufacturing() {
         </Container>
       </section>
 
-      <section className="section section-muted">
+      <section className="section section-muted section-ambient section-ambient-alt">
         <Container className="capability-spotlight">
           <div>
             <span className="eyebrow">Cold-chain ready</span>

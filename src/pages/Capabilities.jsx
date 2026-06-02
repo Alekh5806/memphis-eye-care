@@ -44,14 +44,14 @@ function Capabilities() {
         text="Explore Memphis Vision Care's manufacturing, quality, documentation, and partnership capabilities for distributors, institutions, export markets, and pharma partners."
         breadcrumbs={[{ label: 'Capabilities' }]}
       />
-      <section className="section">
+      <section className="section section-ambient">
         <Container>
           <SectionHeading
             eyebrow="Capability areas"
             title="Focused support across manufacturing, compliance, and business development."
             text="Each capability area gives buyers a direct path to understand the company's scope, review relevant information, and begin the right enquiry."
           />
-          <div className="capability-grid">
+          <div className="capability-grid icon-chip-cards">
             {capabilities.map(({ icon: Icon, title, text, to }, i) => (
               <motion.div
                 key={title}
@@ -72,7 +72,7 @@ function Capabilities() {
         </Container>
       </section>
 
-      <section className="section section-muted">
+      <section className="section section-muted section-ambient section-ambient-alt">
         <Container className="capability-spotlight">
           <div>
             <span className="eyebrow">Operating focus</span>

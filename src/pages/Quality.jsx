@@ -26,9 +26,9 @@ function Quality() {
         text="A documented quality system covering QA, QC, validation, and regulatory readiness — communicated transparently for healthcare and B2B audiences."
         breadcrumbs={[{ label: 'Capabilities', path: '/capabilities' }, { label: 'Quality' }]}
       />
-      <section className="section">
+      <section className="section section-ambient">
         <Container>
-          <div className="quality-card-grid">
+          <div className="quality-card-grid accent-cards icon-chip-cards">
             {qualityItems.map(({ icon: Icon, title, text }, i) => (
               <motion.div
                 className="large-info-card"
@@ -47,7 +47,7 @@ function Quality() {
         </Container>
       </section>
       <CertificationsStrip />
-      <section className="section">
+      <section className="section section-soft section-ambient section-ambient-alt">
         <Container>
           <SectionHeading
             eyebrow="Documentation"

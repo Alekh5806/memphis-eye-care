@@ -161,6 +161,35 @@ Used for filter chips on `/products` and the segment grid on the home page.
 
 ---
 
+## `pfsAdvantages.json` — Home page PFS advantages
+
+Controls the "Why PFS" section on the home page. You can edit the section
+heading, card titles, card text, icon names, signal labels, and accent colors
+without touching React or CSS.
+
+```jsonc
+{
+  "eyebrow": "Why PFS",
+  "title": "Section headline.",
+  "text": "Short intro paragraph.",
+  "items": [
+    {
+      "id": "handling-risk",                         // unique
+      "icon": "ShieldCheck",                         // see choices below
+      "accent": "#0fa6b3",                           // hex color
+      "signal": "Sterility focus",                   // small pill label
+      "title": "Card title",
+      "text": "Card body text."
+    }
+  ]
+}
+```
+
+Supported icon names: `BadgeCheck`, `CircleGauge`, `Droplets`, `HandHeart`,
+`ShieldCheck`, `ShieldPlus`, `Sparkles`, `Syringe`.
+
+---
+
 ## `certifications.json` — Certifications strip
 
 ```jsonc

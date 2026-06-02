@@ -20,7 +20,7 @@ function About() {
         breadcrumbs={[{ label: 'About' }]}
       />
 
-      <section className="section">
+      <section className="section section-ambient">
         <Container className="split-layout about-split">
           <div>
             <SectionHeading
@@ -53,7 +53,7 @@ function About() {
             eyebrow="Values"
             title="Our core values guide every batch, document, and partnership."
           />
-          <div className="value-grid">
+          <div className="value-grid accent-values">
             {company.values.map((value, i) => (
               <motion.div
                 className="value-card"
@@ -78,7 +78,7 @@ function About() {
               eyebrow="What sets us apart"
               title="Specialised. Documented. Accountable."
             />
-            <div className="differentiator-grid">
+            <div className="differentiator-grid accent-cards">
               {company.differentiators.map((item, i) => (
                 <motion.article
                   key={item.title}
@@ -99,7 +99,7 @@ function About() {
       )}
 
       {company.timeline?.length > 0 && (
-        <section className="section section-muted">
+        <section className="section section-muted section-ambient section-ambient-alt">
           <Container>
             <SectionHeading
               eyebrow="Our journey"
@@ -133,7 +133,7 @@ function About() {
               eyebrow="Leadership"
               title="A focused team supporting partners with discipline and clarity."
             />
-            <div className="leadership-grid">
+            <div className="leadership-grid accent-cards">
               {company.leadership.map((person, i) => (
                 <motion.article
                   key={person.name}

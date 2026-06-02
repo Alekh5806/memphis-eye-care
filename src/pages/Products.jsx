@@ -35,7 +35,7 @@ function Products() {
         text="Search by product name or filter by therapeutic segment to review strengths, fill volumes, dosage form, and pack information."
         breadcrumbs={activeCategory ? [{ label: 'Products', path: '/products' }, { label: activeCategory.name }] : [{ label: 'Products' }]}
       />
-      <section className="section">
+      <section className="section section-ambient">
         <Container>
           <ProductFilter
             categoryId={categoryId}

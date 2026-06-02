@@ -9,7 +9,6 @@ import PfsAdvantages from '../components/sections/PfsAdvantages'
 import ProductSegments from '../components/sections/ProductSegments'
 import QualitySection from '../components/sections/QualitySection'
 import StatsSection from '../components/sections/StatsSection'
-import TestimonialsSection from '../components/sections/TestimonialsSection'
 import company from '../data/company.json'
 
 // Heavy below-the-fold section (world-map paths) — split into its own chunk
@@ -43,7 +42,6 @@ function Home() {
       <Suspense fallback={<div style={{ minHeight: 540 }} />}>
         <GlobalReachSection />
       </Suspense>
-      <TestimonialsSection />
       <FeaturedProducts />
       <ContractManufacturingCTA />
     </>

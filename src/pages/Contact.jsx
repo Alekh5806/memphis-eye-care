@@ -64,7 +64,7 @@ function Contact() {
         text="Connect with our team for sterile prefilled syringe enquiries, contract manufacturing discussions, export partnerships, and documentation support."
         breadcrumbs={[{ label: 'Contact' }]}
       />
-      <section className="section contact-section">
+      <section className="section contact-section section-ambient">
         <Container className="contact-layout">
           <div className="contact-form-panel">
             <div className="contact-panel-heading">

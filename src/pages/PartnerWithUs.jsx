@@ -23,9 +23,9 @@ function PartnerWithUs() {
         text="Distributors, institutions, and export partners can use this route to start structured conversations around products, markets, documentation, and supply requirements."
         breadcrumbs={[{ label: 'Capabilities', path: '/capabilities' }, { label: 'Partner With Us' }]}
       />
-      <section className="section">
+      <section className="section section-ambient">
         <Container>
-          <div className="quality-card-grid">
+          <div className="quality-card-grid accent-cards icon-chip-cards">
             {paths.map(({ icon: Icon, title, text }) => (
               <div className="large-info-card" key={title}>
                 <Icon size={28} />

@@ -9,6 +9,7 @@ import ScrollProgress from './components/common/ScrollProgress'
 import ScrollToTop from './components/common/ScrollToTop'
 import Home from './pages/Home'
 import './App.css'
+import './styles/ambient.css'
 
 // Code-split secondary routes
 const About = lazy(() => import('./pages/About'))

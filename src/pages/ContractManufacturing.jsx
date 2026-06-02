@@ -26,7 +26,7 @@ function ContractManufacturing() {
         text="Memphis supports contract manufacturing conversations focused on sterile prefilled syringe products — with a clear service scope, partner-grade documentation, and disciplined supply support."
         breadcrumbs={[{ label: 'Capabilities', path: '/capabilities' }, { label: 'Contract Manufacturing' }]}
       />
-      <section className="section">
+      <section className="section section-ambient">
         <Container className="partner-layout">
           <div className="partner-panel">
             <Boxes size={30} />
@@ -44,9 +44,9 @@ function ContractManufacturing() {
           </div>
         </Container>
       </section>
-      <section className="section section-muted">
+      <section className="section section-muted section-ambient section-ambient-alt">
         <Container>
-          <div className="quality-card-grid">
+          <div className="quality-card-grid accent-cards icon-chip-cards">
             <div className="large-info-card">
               <Handshake size={28} />
               <h3>Partner-first communication</h3>
