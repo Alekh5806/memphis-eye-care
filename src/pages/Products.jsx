@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
+import { Layers3, PackageSearch, SlidersHorizontal } from 'lucide-react'
 import Container from '../components/common/Container'
 import DocumentHead from '../components/common/DocumentHead'
 import PageHero from '../components/common/PageHero'
@@ -18,6 +19,7 @@ function Products() {
   const filteredProducts = useMemo(() => {
     return searchProducts(getProductsByCategory(products, categoryId), search)
   }, [categoryId, search])
+  const totalVariants = products.reduce((sum, product) => sum + (product.variants?.length ?? 0), 0)
 
   const heroTitle = activeCategory
     ? `${activeCategory.name} — Sterile PFS catalogue`
@@ -32,11 +34,28 @@ function Products() {
       <PageHero
         eyebrow="Product catalogue"
         title={heroTitle}
-        text="Search by product name or filter by therapeutic segment to review strengths, fill volumes, dosage form, and pack information."
+        text="Search by product name, strength, fill volume, dosage form, or therapeutic segment to review grouped product lines and their available variants."
         breadcrumbs={activeCategory ? [{ label: 'Products', path: '/products' }, { label: activeCategory.name }] : [{ label: 'Products' }]}
       />
       <section className="section section-ambient">
         <Container>
+          <div className="catalogue-overview" aria-label="Catalogue overview">
+            <div>
+              <PackageSearch size={20} />
+              <strong>{products.length}</strong>
+              <span>Grouped product lines</span>
+            </div>
+            <div>
+              <Layers3 size={20} />
+              <strong>{totalVariants}</strong>
+              <span>Strength and pack variants</span>
+            </div>
+            <div>
+              <SlidersHorizontal size={20} />
+              <strong>{categories.length}</strong>
+              <span>Therapeutic segments</span>
+            </div>
+          </div>
           <ProductFilter
             categoryId={categoryId}
             search={search}
@@ -45,7 +64,7 @@ function Products() {
           />
           <div className="products-result-meta" role="status" aria-live="polite">
             <strong>{filteredProducts.length}</strong>
-            <span>{filteredProducts.length === 1 ? 'product' : 'products'} {activeCategory ? `in ${activeCategory.name}` : 'available'}</span>
+            <span>{filteredProducts.length === 1 ? 'product line' : 'product lines'} {activeCategory ? `in ${activeCategory.name}` : 'available'}</span>
           </div>
           <ProductGrid products={filteredProducts} />
         </Container>

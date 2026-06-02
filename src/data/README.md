@@ -106,37 +106,59 @@ on land.
 
 ---
 
-## `products.json` — Product catalogue
+## `products.json` — Grouped product catalogue
 
 Powers the product grid (`/products`), filter chips, featured carousel, and
-the detail page (`/products/:slug`).
+the detail page (`/products/:slug`). Each entry is a product line; strengths
+and pack variations live inside `variants` so the catalogue does not show
+duplicate-looking cards for each strength.
 
 ```jsonc
 {
-  "id": "hpmc-ophthalmic-2ml",                        // unique
-  "slug": "hydroxypropyl-methylcellulose-...-2ml",    // URL-safe, unique
+  "id": "enoxaparin-sodium",                          // unique product-line id
+  "slug": "enoxaparin-sodium-injection",              // canonical product-line URL
+  "legacySlugs": ["enoxaparin-sodium-injection-0-4ml"], // old variant URLs
   "name": "Product display name",
-  "genericName": "Generic name + strength",
+  "genericName": "Generic name",
   "categoryId": "ophthalmic-care",                    // must match categories.json
-  "strength": "2% w/v",
-  "fillVolume": "2 ml",
-  "pack": "1 PFS in carton",
-  "dosageForm": "Prefilled Syringe",
-  "shelfLife": "24 months",
-  "storage": "Store at 2–25°C, protect from light",
   "image": "/images/products/ophthalmic/hpmc-2ml.svg",
   "gallery": ["/images/products/ophthalmic/hpmc-2ml.svg"],
   "featured": true,                                   // show on home page
   "description": "...",
-  "indications": ["...", "..."],
-  "composition": "...",
-  "highlights": ["...", "..."]
+  "usageSummary": "Plain-language real-life usage context.",
+  "usageContexts": ["Hospital OT", "ICU"],             // practical settings
+  "highlights": ["...", "..."],
+  "variants": [
+    {
+      "id": "enoxaparin-0-4ml",                       // unique variant id
+      "slug": "enoxaparin-sodium-injection-0-4ml",    // legacy-safe variant URL
+      "image": "/images/products/cardiac/enoxaparin-0-4ml.svg",
+      "gallery": ["/images/products/cardiac/enoxaparin-0-4ml.svg"],
+      "strength": "40 mg / 0.4 ml",
+      "fillVolume": "0.4 ml",
+      "pack": "1 PFS with safety guard",
+      "dosageForm": "Prefilled Syringe",
+      "shelfLife": "24 months",
+      "storage": "Store at 2-8°C",
+      "composition": "...",
+      "indications": ["...", "..."],
+      "usage": "Variant-specific practical context."
+    }
+  ]
 }
 ```
 
-- **Add a product**: drop new images in `public/images/products/<category>/`
-  and append an object. Use a unique `id` and `slug`.
-- **Remove a product**: delete the object. Grid, filters and counts adjust.
+- **Add a product line**: drop new images in `public/images/products/<category>/`
+  and append an object. Use a unique product-line `id` and canonical `slug`.
+- **Add a strength**: append an object to the product line's `variants` array.
+  Do not create another top-level product unless it is a genuinely different
+  product line.
+- **Variant packaging**: set each variant's `image`/`gallery` when strengths
+  have different packaging. The detail page switches image when the variant is
+  selected.
+- **Legacy URLs**: put old strength-specific slugs in `legacySlugs` and on the
+  matching variant's `slug`. The detail page maps them to the parent line and
+  preselects the correct variant.
 - `categoryId` must exist in `categories.json` or the filter won't show it.
 
 ---

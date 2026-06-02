@@ -1,0 +1,9 @@
+<svg width="900" height="650" viewBox="0 0 900 650" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="900" height="650" fill="#F2F8FA"/>
+  <rect x="96" y="118" width="708" height="414" rx="18" fill="#FFFFFF"/>
+  <path d="M220 236H315L342 198L390 302L430 176L482 286L514 236H682" stroke="#1D4480" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="180" y="348" width="440" height="58" rx="29" fill="#FFFFFF" stroke="#BFD2EA" stroke-width="10"/>
+  <rect x="132" y="359" width="104" height="36" rx="18" fill="#0B2247"/>
+  <rect x="604" y="359" width="110" height="36" rx="18" fill="#0FA6B3"/>
+  <text x="450" y="470" text-anchor="middle" fill="#074B70" font-family="Arial, sans-serif" font-size="34" font-weight="700">Enoxaparin 0.6 ml</text>
+</svg>

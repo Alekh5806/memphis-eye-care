@@ -8,7 +8,7 @@ function ProductFilter({ categoryId, search, onCategoryChange, onSearchChange })
         <Search size={18} />
         <input
           type="search"
-          placeholder="Search by product, strength, segment..."
+          placeholder="Search by product, strength, volume, dosage form..."
           value={search}
           onChange={(event) => onSearchChange(event.target.value)}
         />

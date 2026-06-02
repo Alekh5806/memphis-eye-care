@@ -1,16 +1,43 @@
-import { Link, useParams } from 'react-router-dom'
-import { ArrowLeft, Download, Mail, PackageCheck, ShieldCheck, Snowflake, Thermometer } from 'lucide-react'
+import { useMemo, useState } from 'react'
+import { Link, useParams, useSearchParams } from 'react-router-dom'
+import { Activity, ArrowLeft, Baby, Building2, Download, Eye, HeartPulse, Hospital, Layers3, Mail, PackageCheck, ShieldCheck, Snowflake, Stethoscope, Syringe, Thermometer } from 'lucide-react'
 import Button from '../components/common/Button'
 import Container from '../components/common/Container'
 import DocumentHead from '../components/common/DocumentHead'
 import ProductCard from '../components/product/ProductCard'
 import products from '../data/products.json'
 import company from '../data/company.json'
-import { getCategory } from '../utils/productUtils'
+import { findProductBySlug, getCategory, getProductVariants, getVariantById } from '../utils/productUtils'
+
+const getUsageIcon = (context) => {
+  const value = context.toLowerCase()
+
+  if (value.includes('icu') || value.includes('cardiac')) return HeartPulse
+  if (value.includes('labour') || value.includes('maternity') || value.includes('obstetric')) return Baby
+  if (value.includes('ophthalmic') || value.includes('eye')) return Eye
+  if (value.includes('emergency')) return Activity
+  if (value.includes('opd') || value.includes('clinic')) return Stethoscope
+  if (value.includes('infusion') || value.includes('dialysis')) return Syringe
+  if (value.includes('hospital') || value.includes('ot') || value.includes('ward')) return Hospital
+
+  return Building2
+}
 
 function ProductDetails() {
   const { slug } = useParams()
-  const product = products.find((item) => item.slug === slug)
+  const [searchParams] = useSearchParams()
+  const resolvedProduct = useMemo(() => findProductBySlug(products, slug), [slug])
+  const product = resolvedProduct.product
+  const variants = useMemo(() => getProductVariants(product), [product])
+  const requestedVariantId = searchParams.get('variant')
+  const initialVariantId = useMemo(() => {
+    return variants.find((variant) => variant.id === requestedVariantId)?.id
+      ?? resolvedProduct.variant?.id
+      ?? variants[0]?.id
+      ?? null
+  }, [requestedVariantId, resolvedProduct.variant?.id, variants])
+  const [variantSelection, setVariantSelection] = useState(null)
+  const selectedVariantId = variantSelection?.slug === slug ? variantSelection.variantId : initialVariantId
 
   if (!product) {
     return (
@@ -27,7 +54,14 @@ function ProductDetails() {
   }
 
   const category = getCategory(product)
-  const mailSubject = encodeURIComponent(`Product enquiry: ${product.name}`)
+  const selectedVariant = getVariantById(product, selectedVariantId)
+  const selectedVariantImage = selectedVariant?.image ?? product.image ?? '/images/products/fallback.svg'
+  const selectedVariantShareImage = selectedVariantImage.startsWith('http')
+    ? selectedVariantImage
+    : `https://www.memphisvisioncare.com${selectedVariantImage}`
+  const isSelectedImageVector = selectedVariantImage.endsWith('.svg')
+  const variantLabel = selectedVariant?.strength ? ` - ${selectedVariant.strength}` : ''
+  const mailSubject = encodeURIComponent(`Product enquiry: ${product.name}${variantLabel}`)
   const related = products.filter((p) => p.categoryId === product.categoryId && p.id !== product.id).slice(0, 3)
 
   const jsonLd = {
@@ -35,7 +69,7 @@ function ProductDetails() {
     '@type': 'Product',
     name: product.name,
     description: product.description,
-    image: `https://www.memphisvisioncare.com${product.image}`,
+    image: selectedVariantShareImage,
     category: category?.name,
     brand: { '@type': 'Brand', name: company.shortName },
     manufacturer: { '@type': 'Organization', name: company.name },
@@ -46,7 +80,7 @@ function ProductDetails() {
       <DocumentHead
         title={product.name}
         description={product.description}
-        image={product.image?.startsWith('http') ? product.image : `https://www.memphisvisioncare.com${product.image}`}
+        image={selectedVariantShareImage}
         structuredData={jsonLd}
       />
       <section className="section product-detail-section">
@@ -56,8 +90,12 @@ function ProductDetails() {
           </Link>
 
           <div className="product-detail-layout">
-            <div className="product-detail-media">
-              <img src={product.image} alt={product.name} loading="eager" />
+            <div className={`product-detail-media ${isSelectedImageVector ? 'is-vector' : 'is-photo'}`}>
+              <div className="product-detail-media-label">
+                <span>{category?.shortName ?? category?.name}</span>
+                {selectedVariant?.strength && <strong>{selectedVariant.strength}</strong>}
+              </div>
+              <img src={selectedVariantImage} alt={`${product.name} ${selectedVariant?.strength ?? ''}`} loading="eager" />
               <div className="product-detail-media-glow" aria-hidden="true" />
             </div>
 
@@ -67,13 +105,52 @@ function ProductDetails() {
               {product.genericName && <p className="product-generic">{product.genericName}</p>}
               <p>{product.description}</p>
 
+              <div className="product-detail-quickfacts" aria-label="Product line overview">
+                <div>
+                  <Layers3 size={18} />
+                  <span>{variants.length} {variants.length === 1 ? 'variant' : 'strength variants'}</span>
+                </div>
+                {selectedVariant?.dosageForm && (
+                  <div>
+                    <PackageCheck size={18} />
+                    <span>{selectedVariant.dosageForm}</span>
+                  </div>
+                )}
+                {product.usageContexts?.[0] && (
+                  <div>
+                    <Building2 size={18} />
+                    <span>{product.usageContexts[0]}</span>
+                  </div>
+                )}
+              </div>
+
+              {variants.length > 1 && (
+                <div className="variant-selector" aria-label="Select product strength">
+                  <span>Available strengths</span>
+                  <div className="variant-options" role="group" aria-label="Product variants">
+                    {variants.map((variant) => (
+                      <button
+                        className={selectedVariant?.id === variant.id ? 'is-selected' : ''}
+                        key={variant.id}
+                        type="button"
+                        aria-pressed={selectedVariant?.id === variant.id}
+                        onClick={() => setVariantSelection({ slug, variantId: variant.id })}
+                      >
+                        <strong>{variant.strength}</strong>
+                        {variant.fillVolume && <small>{variant.fillVolume}</small>}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
+
               <dl className="spec-grid">
-                <div><dt>Strength</dt><dd>{product.strength}</dd></div>
-                <div><dt>Fill volume</dt><dd>{product.fillVolume}</dd></div>
-                <div><dt>Pack</dt><dd>{product.pack}</dd></div>
-                <div><dt>Dosage form</dt><dd>{product.dosageForm}</dd></div>
-                {product.shelfLife && <div><dt>Shelf life</dt><dd>{product.shelfLife}</dd></div>}
-                {product.storage && <div><dt>Storage</dt><dd>{product.storage}</dd></div>}
+                <div><dt>Strength</dt><dd>{selectedVariant?.strength}</dd></div>
+                <div><dt>Fill volume</dt><dd>{selectedVariant?.fillVolume}</dd></div>
+                <div><dt>Pack</dt><dd>{selectedVariant?.pack}</dd></div>
+                <div><dt>Dosage form</dt><dd>{selectedVariant?.dosageForm}</dd></div>
+                {selectedVariant?.shelfLife && <div><dt>Shelf life</dt><dd>{selectedVariant.shelfLife}</dd></div>}
+                {selectedVariant?.storage && <div><dt>Storage</dt><dd>{selectedVariant.storage}</dd></div>}
               </dl>
 
               <div className="highlight-list">
@@ -88,7 +165,7 @@ function ProductDetails() {
                 <Button href={`mailto:${company.email}?subject=${mailSubject}`}>
                   <Mail size={18} /> Enquire now
                 </Button>
-                <Button to={`/contact?type=Product%20enquiry&product=${encodeURIComponent(product.name)}`} variant="outline">
+                <Button to={`/contact?type=Product%20enquiry&product=${encodeURIComponent(`${product.name}${variantLabel}`)}`} variant="outline">
                   Request a quote
                 </Button>
                 {company.brochure && (
@@ -101,28 +178,62 @@ function ProductDetails() {
               <div className="product-trust-row">
                 <span><ShieldCheck size={14} /> WHO-GMP aligned</span>
                 <span><Thermometer size={14} /> Stability data on request</span>
-                {product.storage?.includes('2–8') && (
+                {selectedVariant?.storage?.includes('2-8') && (
                   <span><Snowflake size={14} /> Cold-chain compliant</span>
                 )}
               </div>
             </div>
           </div>
 
-          {product.composition && (
+          {selectedVariant?.composition && (
             <section className="product-section">
               <h2>Composition</h2>
-              <p>{product.composition}</p>
+              <p>{selectedVariant.composition}</p>
             </section>
           )}
 
-          {product.indications?.length > 0 && (
+          {selectedVariant?.indications?.length > 0 && (
             <section className="product-section">
               <h2>Therapeutic indications</h2>
               <ul className="product-indications">
-                {product.indications.map((ind) => (
+                {selectedVariant.indications.map((ind) => (
                   <li key={ind}>{ind}</li>
                 ))}
               </ul>
+            </section>
+          )}
+
+          {(product.usageSummary || product.usageContexts?.length > 0 || selectedVariant?.usage) && (
+            <section className="product-section product-usage-section">
+              <div className="usage-section-head">
+                <span><Activity size={15} /> Practical setting reference</span>
+                <h2>Usage in real-life settings</h2>
+              </div>
+              <div className="usage-experience-panel">
+                <div className="usage-narrative-card">
+                  <span className="usage-narrative-icon" aria-hidden="true">
+                    <Hospital size={22} />
+                  </span>
+                  <div>
+                    {product.usageSummary && <p>{product.usageSummary}</p>}
+                    {selectedVariant?.usage && <p className="variant-usage-note">{selectedVariant.usage}</p>}
+                  </div>
+                </div>
+                {product.usageContexts?.length > 0 && (
+                  <div className="usage-context-list" aria-label="Common usage settings">
+                    {product.usageContexts.map((context, index) => {
+                      const Icon = getUsageIcon(context)
+
+                      return (
+                        <span key={context} style={{ '--usage-delay': `${index * 70}ms` }}>
+                          <Icon size={18} />
+                          <strong>{context}</strong>
+                        </span>
+                      )
+                    })}
+                  </div>
+                )}
+              </div>
             </section>
           )}
 
