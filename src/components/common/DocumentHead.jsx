@@ -7,6 +7,12 @@ const DEFAULT_DESCRIPTION =
   'Quality-led sterile prefilled syringe (PFS) manufacturer for ophthalmic, cardiac critical care, orthopaedic, and gynaecology segments — trusted by hospitals, distributors, and export partners across 25+ countries.'
 const SITE_URL = 'https://www.memphisvisioncare.com'
 
+function absoluteUrl(value) {
+  if (!value) return value
+  if (value.startsWith('http')) return value
+  return `${SITE_URL}${value.startsWith('/') ? value : `/${value}`}`
+}
+
 function upsertMeta(attr, value, content) {
   if (!content) return
   let el = document.head.querySelector(`meta[${attr}="${value}"]`)
@@ -33,12 +39,13 @@ function upsertLink(rel, href) {
  * Lightweight per-page document head manager (no extra deps).
  * Updates title, description, canonical, and OG/Twitter tags on mount.
  */
-function DocumentHead({ title, description, image, type = 'website', structuredData }) {
+function DocumentHead({ title, description, image, type = 'website', canonicalPath, structuredData }) {
   const location = useLocation()
-  const url = `${SITE_URL}${location.pathname}`
+  const path = canonicalPath || location.pathname
+  const url = path.startsWith('http') ? path : `${SITE_URL}${path}`
   const finalTitle = title ? `${title} — Memphis Vision Care` : DEFAULT_TITLE
   const finalDescription = description || DEFAULT_DESCRIPTION
-  const finalImage = image || `${SITE_URL}/images/hero/pharma1.webp`
+  const finalImage = absoluteUrl(image || '/images/hero/pharma1.webp')
 
   useEffect(() => {
     document.title = finalTitle
@@ -47,11 +54,14 @@ function DocumentHead({ title, description, image, type = 'website', structuredD
     upsertLink('canonical', url)
 
     upsertMeta('property', 'og:type', type)
+    upsertMeta('property', 'og:site_name', 'Memphis Vision Care')
+    upsertMeta('property', 'og:locale', 'en_IN')
     upsertMeta('property', 'og:title', finalTitle)
     upsertMeta('property', 'og:description', finalDescription)
     upsertMeta('property', 'og:url', url)
     upsertMeta('property', 'og:image', finalImage)
 
+    upsertMeta('name', 'twitter:card', 'summary_large_image')
     upsertMeta('name', 'twitter:title', finalTitle)
     upsertMeta('name', 'twitter:description', finalDescription)
     upsertMeta('name', 'twitter:image', finalImage)

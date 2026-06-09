@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useMemo } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { Layers3, PackageSearch, SlidersHorizontal } from 'lucide-react'
 import Container from '../components/common/Container'
@@ -12,9 +12,20 @@ import { getProductsByCategory, searchProducts } from '../utils/productUtils'
 
 function Products() {
   const [searchParams, setSearchParams] = useSearchParams()
-  const [search, setSearch] = useState('')
+  const search = searchParams.get('search') || ''
   const categoryId = searchParams.get('category') || 'all'
   const activeCategory = categories.find((c) => c.id === categoryId)
+
+  const updateProductParams = (nextValues) => {
+    const nextCategory = nextValues.category ?? categoryId
+    const nextSearch = nextValues.search ?? search
+    const params = {}
+
+    if (nextCategory && nextCategory !== 'all') params.category = nextCategory
+    if (nextSearch.trim()) params.search = nextSearch.trim()
+
+    setSearchParams(params)
+  }
 
   const filteredProducts = useMemo(() => {
     return searchProducts(getProductsByCategory(products, categoryId), search)
@@ -30,6 +41,7 @@ function Products() {
       <DocumentHead
         title={activeCategory ? `${activeCategory.name} Products` : 'Sterile PFS Product Catalogue'}
         description={`Browse Memphis Vision Care's ${activeCategory?.name || 'sterile prefilled syringe'} portfolio with strengths, fill volumes, and pack details for hospitals and distributors.`}
+        canonicalPath={activeCategory ? `/products?category=${categoryId}` : '/products'}
       />
       <PageHero
         eyebrow="Product catalogue"
@@ -75,8 +87,8 @@ function Products() {
           <ProductFilter
             categoryId={categoryId}
             search={search}
-            onCategoryChange={(next) => setSearchParams(next === 'all' ? {} : { category: next })}
-            onSearchChange={setSearch}
+            onCategoryChange={(next) => updateProductParams({ category: next })}
+            onSearchChange={(next) => updateProductParams({ search: next })}
           />
           <div className="products-result-meta" role="status" aria-live="polite">
             <strong>{filteredProducts.length}</strong>

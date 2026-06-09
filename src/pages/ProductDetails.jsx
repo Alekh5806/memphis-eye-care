@@ -63,16 +63,69 @@ function ProductDetails() {
   const variantLabel = selectedVariant?.strength ? ` - ${selectedVariant.strength}` : ''
   const mailSubject = encodeURIComponent(`Product enquiry: ${product.name}${variantLabel}`)
   const related = products.filter((p) => p.categoryId === product.categoryId && p.id !== product.id).slice(0, 3)
+  const canonicalPath = `/products/${product.slug}`
+  const productUrl = `https://www.memphisvisioncare.com${canonicalPath}`
+  const additionalProperties = [
+    ['Strength', selectedVariant?.strength],
+    ['Fill volume', selectedVariant?.fillVolume],
+    ['Pack', selectedVariant?.pack],
+    ['Dosage form', selectedVariant?.dosageForm],
+    ['Shelf life', selectedVariant?.shelfLife],
+    ['Storage', selectedVariant?.storage],
+  ]
+    .filter(([, value]) => Boolean(value))
+    .map(([name, value]) => ({
+      '@type': 'PropertyValue',
+      name,
+      value,
+    }))
 
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'Product',
-    name: product.name,
-    description: product.description,
-    image: selectedVariantShareImage,
-    category: category?.name,
-    brand: { '@type': 'Brand', name: company.shortName },
-    manufacturer: { '@type': 'Organization', name: company.name },
+    '@graph': [
+      {
+        '@type': 'Product',
+        '@id': `${productUrl}#product`,
+        name: product.name,
+        alternateName: product.genericName,
+        description: product.description,
+        image: selectedVariantShareImage,
+        url: productUrl,
+        sku: selectedVariant?.id || product.id,
+        category: category?.name,
+        brand: { '@type': 'Brand', name: company.shortName },
+        manufacturer: {
+          '@type': 'Organization',
+          name: company.name,
+          url: 'https://www.memphisvisioncare.com/',
+        },
+        additionalProperty: additionalProperties,
+      },
+      {
+        '@type': 'BreadcrumbList',
+        '@id': `${productUrl}#breadcrumb`,
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: 'Home',
+            item: 'https://www.memphisvisioncare.com/',
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: 'Products',
+            item: 'https://www.memphisvisioncare.com/products',
+          },
+          {
+            '@type': 'ListItem',
+            position: 3,
+            name: product.name,
+            item: productUrl,
+          },
+        ],
+      },
+    ],
   }
 
   return (
@@ -81,6 +134,7 @@ function ProductDetails() {
         title={product.name}
         description={product.description}
         image={selectedVariantShareImage}
+        canonicalPath={canonicalPath}
         structuredData={jsonLd}
       />
       <section className="section product-detail-section">

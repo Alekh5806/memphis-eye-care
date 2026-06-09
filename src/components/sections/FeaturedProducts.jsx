@@ -8,7 +8,7 @@ function FeaturedProducts() {
   const featuredProducts = products.filter((product) => product.featured)
 
   return (
-    <section className="section">
+    <section className="section featured-products-section">
       <Container>
         <div className="section-topline">
           <SectionHeading
