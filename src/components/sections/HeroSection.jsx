@@ -13,6 +13,7 @@ function HeroSection() {
   return (
     <section className="home-hero">
       <div className="home-hero-bg" aria-hidden="true">
+        <img src="/images/hero/pages/cleanroom-manufacturing.jpg" alt="" />
         <span className="home-hero-orb home-hero-orb-1" />
         <span className="home-hero-orb home-hero-orb-2" />
         <span className="home-hero-grid" />

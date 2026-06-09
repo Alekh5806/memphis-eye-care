@@ -90,12 +90,18 @@ function ProductDetails() {
           </Link>
 
           <div className="product-detail-layout">
-            <div className={`product-detail-media ${isSelectedImageVector ? 'is-vector' : 'is-photo'}`}>
+            <div
+              className={`product-detail-media ${isSelectedImageVector ? 'is-vector' : 'is-photo'}`}
+            >
               <div className="product-detail-media-label">
                 <span>{category?.shortName ?? category?.name}</span>
                 {selectedVariant?.strength && <strong>{selectedVariant.strength}</strong>}
               </div>
-              <img src={selectedVariantImage} alt={`${product.name} ${selectedVariant?.strength ?? ''}`} loading="eager" />
+              <img
+                src={selectedVariantImage}
+                alt={`${product.name} ${selectedVariant?.strength ?? ''}`}
+                loading="eager"
+              />
               <div className="product-detail-media-glow" aria-hidden="true" />
             </div>
 
@@ -108,18 +114,21 @@ function ProductDetails() {
               <div className="product-detail-quickfacts" aria-label="Product line overview">
                 <div>
                   <Layers3 size={18} />
-                  <span>{variants.length} {variants.length === 1 ? 'variant' : 'strength variants'}</span>
+                  <small>Line depth</small>
+                  <strong>{variants.length} {variants.length === 1 ? 'variant' : 'strength variants'}</strong>
                 </div>
                 {selectedVariant?.dosageForm && (
                   <div>
                     <PackageCheck size={18} />
-                    <span>{selectedVariant.dosageForm}</span>
+                    <small>Format</small>
+                    <strong>{selectedVariant.dosageForm}</strong>
                   </div>
                 )}
                 {product.usageContexts?.[0] && (
                   <div>
                     <Building2 size={18} />
-                    <span>{product.usageContexts[0]}</span>
+                    <small>Primary setting</small>
+                    <strong>{product.usageContexts[0]}</strong>
                   </div>
                 )}
               </div>
@@ -145,12 +154,12 @@ function ProductDetails() {
               )}
 
               <dl className="spec-grid">
-                <div><dt>Strength</dt><dd>{selectedVariant?.strength}</dd></div>
-                <div><dt>Fill volume</dt><dd>{selectedVariant?.fillVolume}</dd></div>
-                <div><dt>Pack</dt><dd>{selectedVariant?.pack}</dd></div>
-                <div><dt>Dosage form</dt><dd>{selectedVariant?.dosageForm}</dd></div>
-                {selectedVariant?.shelfLife && <div><dt>Shelf life</dt><dd>{selectedVariant.shelfLife}</dd></div>}
-                {selectedVariant?.storage && <div><dt>Storage</dt><dd>{selectedVariant.storage}</dd></div>}
+                <div className="spec-item"><dt>Strength</dt><dd>{selectedVariant?.strength}</dd></div>
+                <div className="spec-item"><dt>Fill volume</dt><dd>{selectedVariant?.fillVolume}</dd></div>
+                <div className="spec-item spec-item-wide"><dt>Pack</dt><dd>{selectedVariant?.pack}</dd></div>
+                <div className="spec-item"><dt>Dosage form</dt><dd>{selectedVariant?.dosageForm}</dd></div>
+                {selectedVariant?.shelfLife && <div className="spec-item"><dt>Shelf life</dt><dd>{selectedVariant.shelfLife}</dd></div>}
+                {selectedVariant?.storage && <div className="spec-item spec-item-wide"><dt>Storage</dt><dd>{selectedVariant.storage}</dd></div>}
               </dl>
 
               <div className="highlight-list">

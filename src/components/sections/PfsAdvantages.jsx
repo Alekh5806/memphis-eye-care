@@ -1,4 +1,5 @@
 import { BadgeCheck, CircleGauge, Droplets, HandHeart, ShieldCheck, ShieldPlus, Sparkles, Syringe } from 'lucide-react'
+import { motion } from 'framer-motion'
 import Container from '../common/Container'
 import SectionHeading from '../common/SectionHeading'
 import content from '../../data/pfsAdvantages.json'
@@ -50,11 +51,19 @@ function PfsAdvantages() {
           text={text}
         />
         <div className="advantage-grid">
-          {items.map(({ id, icon, accent, signal, title, text }) => {
+          {items.map(({ id, icon, accent, signal, title, text }, i) => {
             const Icon = iconMap[icon] ?? ShieldCheck
 
             return (
-              <article className="advantage-card" key={id ?? title} style={getAccentStyle(accent)}>
+              <motion.article
+                className="advantage-card"
+                key={id ?? title}
+                style={getAccentStyle(accent)}
+                initial={{ opacity: 0, y: 18 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.25 }}
+                transition={{ duration: 0.42, delay: i * 0.05 }}
+              >
                 <div className="advantage-card-top">
                   <span className="advantage-icon" aria-hidden="true">
                     <Icon size={26} strokeWidth={2.2} />
@@ -64,7 +73,7 @@ function PfsAdvantages() {
                 <h3>{title}</h3>
                 <p>{text}</p>
                 <span className="advantage-card-line" aria-hidden="true" />
-              </article>
+              </motion.article>
             )
           })}
         </div>

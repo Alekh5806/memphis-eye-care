@@ -25,6 +25,21 @@ function ContractManufacturing() {
         title="A dedicated CDMO route for pharma partners, distributors, and institutions."
         text="Memphis supports contract manufacturing conversations focused on sterile prefilled syringe products — with a clear service scope, partner-grade documentation, and disciplined supply support."
         breadcrumbs={[{ label: 'Capabilities', path: '/capabilities' }, { label: 'Contract Manufacturing' }]}
+        image="/images/hero/pages/cleanroom-manufacturing.jpg"
+        imageAlt="Cleanroom manufacturing environment for sterile pharmaceutical partnerships"
+        imagePosition="center"
+        actions={[
+          { label: 'Discuss a project', to: '/contact?type=Contract%20manufacturing' },
+          { label: 'Review quality', to: '/quality', variant: 'outline' },
+        ]}
+        panelEyebrow="CDMO readiness"
+        panelTitle="A clear route for sterile PFS manufacturing partnerships."
+        panelText="Built around scope clarity, documentation confidence, and disciplined supply conversations."
+        proofPoints={['Third-party manufacturing route', 'Private label and packaging support', 'Validated logistics coordination']}
+        stats={[
+          { value: 'PFS', label: 'Specialised focus' },
+          { value: 'B2B', label: 'Partner route' },
+        ]}
       />
       <section className="section section-ambient">
         <Container className="partner-layout">

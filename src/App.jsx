@@ -1,6 +1,7 @@
 import { lazy, Suspense } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import BackToTop from './components/common/BackToTop'
+import AppPreloader from './components/common/AppPreloader'
 import CookieConsent from './components/common/CookieConsent'
 import Footer from './components/common/Footer'
 import Header from './components/common/Header'
@@ -36,6 +37,7 @@ function RouteFallback() {
 function App() {
   return (
     <div className="app-shell">
+      <AppPreloader />
       <a className="skip-link" href="#main">Skip to content</a>
       <ScrollToTop />
       <ScrollProgress />

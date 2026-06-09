@@ -25,6 +25,21 @@ function Quality() {
         title="Quality systems built for partners that audit, register, and rely."
         text="A documented quality system covering QA, QC, validation, and regulatory readiness — communicated transparently for healthcare and B2B audiences."
         breadcrumbs={[{ label: 'Capabilities', path: '/capabilities' }, { label: 'Quality' }]}
+        image="/images/hero/pages/syringe-preparation.jpg"
+        imageAlt="Gloved specialist preparing a syringe under clinical lighting"
+        imagePosition="center 32%"
+        actions={[
+          { label: 'Request documents', to: '/contact?type=Export%20enquiry' },
+          { label: 'View manufacturing', to: '/manufacturing', variant: 'outline' },
+        ]}
+        panelEyebrow="Audit-ready mindset"
+        panelTitle="Quality claims that can be supported with real documentation."
+        panelText="The page foregrounds QA/QC, validation, regulatory readiness, and partner-specific document support."
+        proofPoints={['QA and QC release discipline', 'Validation readiness', 'CoA and dossier support']}
+        stats={[
+          { value: '99.6%', label: 'Batch acceptance' },
+          { value: 'WHO', label: 'GMP aligned' },
+        ]}
       />
       <section className="section section-ambient">
         <Container>

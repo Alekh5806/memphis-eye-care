@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { ArrowRight } from 'lucide-react'
+import { motion } from 'framer-motion'
 import categories from '../../data/categories.json'
 import SectionHeading from '../common/SectionHeading'
 import Container from '../common/Container'
@@ -14,8 +15,15 @@ function ProductSegments() {
           text="Explore focused product categories for ophthalmic, critical care, orthopaedic, and gynaecology requirements. Real-world imagery keeps the template credible while the structure stays simple for buyers to scan."
         />
         <div className="segment-grid">
-          {categories.map((category) => (
-            <Link className="segment-card" key={category.id} to={`/products?category=${category.id}`}>
+          {categories.map((category, i) => (
+            <motion.div
+              key={category.id}
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.25 }}
+              transition={{ duration: 0.42, delay: i * 0.06 }}
+            >
+              <Link className="segment-card" to={`/products?category=${category.id}`}>
               <img src={category.image} alt={category.name} loading="lazy" />
               <span>{category.shortName}</span>
               <h3>{category.name}</h3>
@@ -23,7 +31,8 @@ function ProductSegments() {
               <strong>
                 View products <ArrowRight size={16} />
               </strong>
-            </Link>
+              </Link>
+            </motion.div>
           ))}
         </div>
       </Container>

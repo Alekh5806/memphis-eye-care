@@ -1,4 +1,5 @@
 import { ClipboardCheck, FileCheck2, Microscope, ShieldCheck } from 'lucide-react'
+import { motion } from 'framer-motion'
 import Button from '../common/Button'
 import Container from '../common/Container'
 
@@ -25,11 +26,17 @@ function QualitySection() {
           </Button>
         </div>
         <div className="quality-points">
-          {points.map(({ icon: Icon, label }) => (
-            <div key={label}>
+          {points.map(({ icon: Icon, label }, i) => (
+            <motion.div
+              key={label}
+              initial={{ opacity: 0, y: 14 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.36, delay: i * 0.06 }}
+            >
               <Icon size={22} />
               <span>{label}</span>
-            </div>
+            </motion.div>
           ))}
         </div>
       </Container>

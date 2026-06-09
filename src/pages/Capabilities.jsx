@@ -43,6 +43,21 @@ function Capabilities() {
         title="Integrated pharma capabilities for sterile PFS partnerships."
         text="Explore Memphis Vision Care's manufacturing, quality, documentation, and partnership capabilities for distributors, institutions, export markets, and pharma partners."
         breadcrumbs={[{ label: 'Capabilities' }]}
+        image="/images/hero/pages/cleanroom-manufacturing.jpg"
+        imageAlt="Sterile cleanroom production area for pharmaceutical manufacturing"
+        imagePosition="center"
+        actions={[
+          { label: 'Start an enquiry', to: '/contact' },
+          { label: 'View products', to: '/products', variant: 'outline' },
+        ]}
+        panelEyebrow="Capability map"
+        panelTitle="Manufacturing, quality, documentation, and partnership routes in one place."
+        panelText="Designed for business buyers who need to qualify Memphis before opening a technical or commercial discussion."
+        proofPoints={['Sterile PFS product focus', 'CDMO and third-party support', 'Regulatory document coordination']}
+        stats={[
+          { value: '5', label: 'Capability areas' },
+          { value: '25+', label: 'Markets reached' },
+        ]}
       />
       <section className="section section-ambient">
         <Container>

@@ -63,8 +63,23 @@ function Contact() {
         title="Speak with Memphis Vision Care"
         text="Connect with our team for sterile prefilled syringe enquiries, contract manufacturing discussions, export partnerships, and documentation support."
         breadcrumbs={[{ label: 'Contact' }]}
+        image="/images/hero/pages/syringe-preparation.jpg"
+        imageAlt="Clinical syringe preparation representing specialist pharma enquiry support"
+        imagePosition="center 34%"
+        actions={[
+          { label: 'Open enquiry form', to: '/contact#enquiry' },
+          { label: 'Email Memphis', href: `mailto:${company.email}`, variant: 'outline' },
+        ]}
+        panelEyebrow="Business enquiry desk"
+        panelTitle="Route product, export, CDMO, and documentation requests faster."
+        panelText="Share product scope, market, volume, and document requirements so the Memphis team can respond with the right next step."
+        proofPoints={['Product enquiry support', 'Export and registration support', 'Contract manufacturing discussion']}
+        stats={[
+          { value: '24-48h', label: 'Target response' },
+          { value: '4', label: 'Enquiry routes' },
+        ]}
       />
-      <section className="section contact-section section-ambient">
+      <section id="enquiry" className="section contact-section section-ambient">
         <Container className="contact-layout">
           <div className="contact-form-panel">
             <div className="contact-panel-heading">

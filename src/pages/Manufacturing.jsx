@@ -26,6 +26,21 @@ function Manufacturing() {
         title="Sterile PFS manufacturing — controlled, documented, partner-ready."
         text="A concise view of how Memphis prepares, fills, inspects, packs, and releases sterile prefilled syringe products for partners and institutional buyers."
         breadcrumbs={[{ label: 'Capabilities', path: '/capabilities' }, { label: 'Manufacturing' }]}
+        image="/images/hero/pages/cleanroom-manufacturing.jpg"
+        imageAlt="Controlled sterile manufacturing cleanroom with operators and equipment"
+        imagePosition="center"
+        actions={[
+          { label: 'Discuss manufacturing', to: '/contact?type=Contract%20manufacturing' },
+          { label: 'View quality systems', to: '/quality', variant: 'outline' },
+        ]}
+        panelEyebrow="Controlled flow"
+        panelTitle="Aseptic filling, inspection, packing, and QA release in one documented path."
+        panelText="The manufacturing story is presented for procurement, registration, and partner technical teams."
+        proofPoints={['Material qualification', 'In-process controls', 'Batch traceability']}
+        stats={[
+          { value: '6', label: 'Process stages' },
+          { value: '2-8°C', label: 'Cold-chain support' },
+        ]}
       />
       <section className="section section-ambient">
         <Container>

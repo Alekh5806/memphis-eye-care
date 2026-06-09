@@ -1,4 +1,5 @@
-import { BadgeCheck, Building2, Clock4, Target, Telescope, Users2 } from 'lucide-react'
+import { useState } from 'react'
+import { BadgeCheck, Clock4, Factory, FileText, Globe2, ShieldCheck, Target, Telescope } from 'lucide-react'
 import { motion } from 'framer-motion'
 import Container from '../components/common/Container'
 import DocumentHead from '../components/common/DocumentHead'
@@ -7,6 +8,9 @@ import SectionHeading from '../components/common/SectionHeading'
 import company from '../data/company.json'
 
 function About() {
+  const [activeTimelineIndex, setActiveTimelineIndex] = useState(() => Math.max((company.timeline?.length ?? 1) - 1, 0))
+  const activeTimeline = company.timeline?.[activeTimelineIndex]
+
   return (
     <>
       <DocumentHead
@@ -18,30 +22,75 @@ function About() {
         title="A focused sterile manufacturer built around dependable healthcare partnerships."
         text={company.description}
         breadcrumbs={[{ label: 'About' }]}
+        image="/images/hero/pages/cleanroom-manufacturing.jpg"
+        imageAlt="Sterile manufacturing team working in a controlled cleanroom"
+        imagePosition="center"
+        actions={[
+          { label: 'Explore capabilities', to: '/capabilities' },
+          { label: 'Start an enquiry', to: '/contact', variant: 'outline' },
+        ]}
+        panelEyebrow="Company confidence"
+        panelTitle="Focused sterile PFS manufacturing since 2014."
+        panelText="A compact, accountable operation built for hospitals, distributors, and pharma partners who need verifiable sterile supply."
+        proofPoints={['WHO-GMP-aligned systems', 'Partner-grade documentation', 'Export-ready communication']}
+        stats={[
+          { value: '10+', label: 'Years of PFS focus' },
+          { value: '25+', label: 'Countries served' },
+        ]}
       />
 
-      <section className="section section-ambient">
-        <Container className="split-layout about-split">
-          <div>
+      <section className="section section-ambient about-profile-section">
+        <Container className="about-profile">
+          <div className="about-profile-copy">
             <SectionHeading
               eyebrow="Company profile"
               title="Built for sterile product confidence."
               text="Memphis Vision Care is a focused sterile manufacturer specialising in prefilled syringe (PFS) presentations for ophthalmic, cardiac critical care, orthopaedic, and gynaecology segments. We support hospitals, distributors, and pharma partners with reliable product supply and partner-grade documentation."
             />
-            <div className="about-fact-row">
-              <div><Clock4 size={20} /><strong>Founded {company.foundedYear}</strong><span>{new Date().getFullYear() - company.foundedYear}+ years of focused PFS experience</span></div>
-              <div><Building2 size={20} /><strong>Chhatral · Gujarat</strong><span>Sterile manufacturing facility in Gandhinagar district</span></div>
-              <div><Users2 size={20} /><strong>25+ countries</strong><span>Active distribution and pharma partner footprint</span></div>
+            <div className="about-profile-proof" aria-label="Company highlights">
+              <div>
+                <Clock4 size={21} />
+                <strong>Founded {company.foundedYear}</strong>
+                <span>{new Date().getFullYear() - company.foundedYear}+ years of focused PFS experience</span>
+              </div>
+              <div>
+                <Factory size={21} />
+                <strong>Chhatral · Gujarat</strong>
+                <span>Sterile manufacturing facility in Gandhinagar district</span>
+              </div>
+              <div>
+                <Globe2 size={21} />
+                <strong>25+ countries</strong>
+                <span>Active distribution and pharma partner footprint</span>
+              </div>
+              <div>
+                <FileText size={21} />
+                <strong>Partner-grade docs</strong>
+                <span>Dossiers, CoA, stability and registration support</span>
+              </div>
             </div>
           </div>
-          <div className="mission-grid">
-            <div>
-              <span className="mission-tag"><Target size={16} /> Mission</span>
-              <p>{company.mission}</p>
+
+          <div className="about-profile-system" aria-label="Memphis company operating model">
+            <div className="about-profile-visual">
+              <img src="/images/hero/pages/cleanroom-manufacturing.jpg" alt="Sterile Memphis manufacturing environment" />
+              <div className="about-profile-visual-card">
+                <ShieldCheck size={20} />
+                <div>
+                  <strong>Quality-led operation</strong>
+                  <span>WHO-GMP-aligned systems · documented release discipline</span>
+                </div>
+              </div>
             </div>
-            <div>
-              <span className="mission-tag"><Telescope size={16} /> Vision</span>
-              <p>{company.vision}</p>
+            <div className="mission-grid about-mission-grid">
+              <div>
+                <span className="mission-tag"><Target size={16} /> Mission</span>
+                <p>{company.mission}</p>
+              </div>
+              <div>
+                <span className="mission-tag"><Telescope size={16} /> Vision</span>
+                <p>{company.vision}</p>
+              </div>
             </div>
           </div>
         </Container>
@@ -105,23 +154,66 @@ function About() {
               eyebrow="Our journey"
               title="A decade of focused sterile manufacturing milestones."
             />
-            <ol className="timeline">
-              {company.timeline.map((item, i) => (
-                <motion.li
-                  key={item.year}
-                  initial={{ opacity: 0, x: -16 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, amount: 0.3 }}
-                  transition={{ duration: 0.4, delay: i * 0.06 }}
+            <div className="timeline-interactive" aria-label="Interactive company milestone timeline">
+              <ol className="timeline" aria-label="Company milestone timeline">
+                {company.timeline.map((item, i) => {
+                  const isActive = i === activeTimelineIndex
+
+                  return (
+                    <motion.li
+                      key={item.year}
+                      className={isActive ? 'is-active' : ''}
+                      initial={{ opacity: 0, x: -16 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true, amount: 0.3 }}
+                      transition={{ duration: 0.4, delay: i * 0.06 }}
+                    >
+                      <button
+                        className="timeline-year"
+                        type="button"
+                        aria-pressed={isActive}
+                        aria-controls="timeline-active-panel"
+                        aria-label={`Show ${item.year} milestone: ${item.title}`}
+                        onClick={() => setActiveTimelineIndex(i)}
+                        onFocus={() => setActiveTimelineIndex(i)}
+                        onMouseEnter={() => setActiveTimelineIndex(i)}
+                      >
+                        {item.year}
+                      </button>
+                      <button
+                        className="timeline-body"
+                        type="button"
+                        aria-pressed={isActive}
+                        aria-controls="timeline-active-panel"
+                        onClick={() => setActiveTimelineIndex(i)}
+                        onFocus={() => setActiveTimelineIndex(i)}
+                        onMouseEnter={() => setActiveTimelineIndex(i)}
+                      >
+                        <span className="timeline-body-title">{item.title}</span>
+                        <span className="timeline-body-text">{item.text}</span>
+                      </button>
+                    </motion.li>
+                  )
+                })}
+              </ol>
+              {activeTimeline && (
+                <motion.aside
+                  id="timeline-active-panel"
+                  className="timeline-active-panel"
+                  key={activeTimeline.year}
+                  initial={{ opacity: 0, y: 14 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.32, ease: [0.16, 1, 0.3, 1] }}
+                  aria-live="polite"
                 >
-                  <span className="timeline-year">{item.year}</span>
-                  <div className="timeline-body">
-                    <h3>{item.title}</h3>
-                    <p>{item.text}</p>
+                  <span>{activeTimeline.year}</span>
+                  <div>
+                    <strong>{activeTimeline.title}</strong>
+                    <p>{activeTimeline.text}</p>
                   </div>
-                </motion.li>
-              ))}
-            </ol>
+                </motion.aside>
+              )}
+            </div>
           </Container>
         </section>
       )}
