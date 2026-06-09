@@ -22,7 +22,7 @@ function About() {
         title="A focused sterile manufacturer built around dependable healthcare partnerships."
         text={company.description}
         breadcrumbs={[{ label: 'About' }]}
-        image="/images/hero/pages/cleanroom-manufacturing.jpg"
+        image="/images/hero/optimized/cleanroom-manufacturing.jpg"
         imageAlt="Sterile manufacturing team working in a controlled cleanroom"
         imagePosition="center"
         actions={[
@@ -73,7 +73,7 @@ function About() {
 
           <div className="about-profile-system" aria-label="Memphis company operating model">
             <div className="about-profile-visual">
-              <img src="/images/hero/pages/cleanroom-manufacturing.jpg" alt="Sterile Memphis manufacturing environment" />
+              <img src="/images/hero/optimized/cleanroom-manufacturing.jpg" alt="Sterile Memphis manufacturing environment" loading="lazy" />
               <div className="about-profile-visual-card">
                 <ShieldCheck size={20} />
                 <div>

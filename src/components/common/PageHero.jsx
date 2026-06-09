@@ -29,7 +29,7 @@ function PageHero({
       style={image ? { '--page-hero-image-position': imagePosition } : undefined}
     >
       <div className="page-hero-bg" aria-hidden="true">
-        {image && <img src={image} alt={imageAlt} />}
+        {image && <img src={image} alt={imageAlt} loading="eager" fetchPriority="high" />}
         <span className="page-hero-orb page-hero-orb-1" />
         <span className="page-hero-orb page-hero-orb-2" />
       </div>

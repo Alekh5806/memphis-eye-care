@@ -25,7 +25,7 @@ function ContractManufacturing() {
         title="A dedicated CDMO route for pharma partners, distributors, and institutions."
         text="Memphis supports contract manufacturing conversations focused on sterile prefilled syringe products — with a clear service scope, partner-grade documentation, and disciplined supply support."
         breadcrumbs={[{ label: 'Capabilities', path: '/capabilities' }, { label: 'Contract Manufacturing' }]}
-        image="/images/hero/pages/cleanroom-manufacturing.jpg"
+        image="/images/hero/optimized/cleanroom-manufacturing.jpg"
         imageAlt="Cleanroom manufacturing environment for sterile pharmaceutical partnerships"
         imagePosition="center"
         actions={[

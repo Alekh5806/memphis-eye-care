@@ -22,7 +22,7 @@ function PartnerWithUs() {
         title="Structured partnerships for distributors, institutions, and export markets."
         text="Distributors, institutions, and export partners can use this route to start structured conversations around products, markets, documentation, and supply requirements."
         breadcrumbs={[{ label: 'Capabilities', path: '/capabilities' }, { label: 'Partner With Us' }]}
-        image="/images/hero/pages/export-logistics.jpg"
+        image="/images/hero/optimized/export-logistics.jpg"
         imageAlt="Cargo and logistics route for international healthcare distribution partnerships"
         imagePosition="center"
         actions={[

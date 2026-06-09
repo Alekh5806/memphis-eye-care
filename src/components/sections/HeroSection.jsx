@@ -13,7 +13,7 @@ function HeroSection() {
   return (
     <section className="home-hero">
       <div className="home-hero-bg" aria-hidden="true">
-        <img src="/images/hero/pages/cleanroom-manufacturing.jpg" alt="" />
+        <img src="/images/hero/optimized/cleanroom-manufacturing.jpg" alt="" fetchPriority="high" />
         <span className="home-hero-orb home-hero-orb-1" />
         <span className="home-hero-orb home-hero-orb-2" />
         <span className="home-hero-grid" />
@@ -62,7 +62,7 @@ function HeroSection() {
           transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
         >
           <div className="hero-visual-frame">
-            <img src="/images/hero/pharma1.webp" alt="Sterile prefilled syringe manufacturing line" />
+            <img src="/images/hero/pharma1.webp" alt="Sterile prefilled syringe manufacturing line" loading="eager" fetchPriority="high" />
           </div>
           <motion.div
             className="hero-badge hero-badge-top"

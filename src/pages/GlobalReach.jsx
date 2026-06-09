@@ -16,7 +16,7 @@ function GlobalReach() {
         title={globalReachSettings.pageHero.title}
         text={globalReachSettings.pageHero.text}
         breadcrumbs={[{ label: 'Global Reach' }]}
-        image="/images/hero/pages/export-logistics.jpg"
+        image="/images/hero/optimized/export-logistics.jpg"
         imageAlt="International cargo containers representing pharmaceutical export logistics"
         imagePosition="center"
         actions={[
