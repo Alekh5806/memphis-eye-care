@@ -7,6 +7,16 @@ import PageHero from '../components/common/PageHero'
 import SectionHeading from '../components/common/SectionHeading'
 import company from '../data/company.json'
 
+const profileReveal = {
+  hidden: { opacity: 0, y: 22 },
+  visible: { opacity: 1, y: 0 },
+}
+
+const profileVisualReveal = {
+  hidden: { opacity: 0, y: 24, scale: 0.985 },
+  visible: { opacity: 1, y: 0, scale: 1 },
+}
+
 function About() {
   const [activeTimelineIndex, setActiveTimelineIndex] = useState(() => Math.max((company.timeline?.length ?? 1) - 1, 0))
   const activeTimeline = company.timeline?.[activeTimelineIndex]
@@ -41,58 +51,130 @@ function About() {
 
       <section className="section section-ambient about-profile-section">
         <Container className="about-profile">
-          <div className="about-profile-copy">
+          <motion.div
+            className="about-profile-copy"
+            variants={profileReveal}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.28 }}
+            transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+          >
             <SectionHeading
               eyebrow="Company profile"
               title="Built for sterile product confidence."
               text="Memphis Vision Care is a focused sterile manufacturer specialising in prefilled syringe (PFS) presentations for ophthalmic, cardiac critical care, orthopaedic, and gynaecology segments. We support hospitals, distributors, and pharma partners with reliable product supply and partner-grade documentation."
             />
             <div className="about-profile-proof" aria-label="Company highlights">
-              <div>
+              <motion.div
+                variants={profileReveal}
+                initial="hidden"
+                whileInView="visible"
+                whileHover={{ y: -6, transition: { duration: 0.22, ease: [0.22, 1, 0.36, 1] } }}
+                viewport={{ once: true, amount: 0.35 }}
+                transition={{ duration: 0.45, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
+              >
                 <Clock4 size={21} />
                 <strong>Founded {company.foundedYear}</strong>
                 <span>{new Date().getFullYear() - company.foundedYear}+ years of focused PFS experience</span>
-              </div>
-              <div>
+              </motion.div>
+              <motion.div
+                variants={profileReveal}
+                initial="hidden"
+                whileInView="visible"
+                whileHover={{ y: -6, transition: { duration: 0.22, ease: [0.22, 1, 0.36, 1] } }}
+                viewport={{ once: true, amount: 0.35 }}
+                transition={{ duration: 0.45, delay: 0.14, ease: [0.22, 1, 0.36, 1] }}
+              >
                 <Factory size={21} />
                 <strong>Chhatral · Gujarat</strong>
                 <span>Sterile manufacturing facility in Gandhinagar district</span>
-              </div>
-              <div>
+              </motion.div>
+              <motion.div
+                variants={profileReveal}
+                initial="hidden"
+                whileInView="visible"
+                whileHover={{ y: -6, transition: { duration: 0.22, ease: [0.22, 1, 0.36, 1] } }}
+                viewport={{ once: true, amount: 0.35 }}
+                transition={{ duration: 0.45, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+              >
                 <Globe2 size={21} />
                 <strong>25+ countries</strong>
                 <span>Active distribution and pharma partner footprint</span>
-              </div>
-              <div>
+              </motion.div>
+              <motion.div
+                variants={profileReveal}
+                initial="hidden"
+                whileInView="visible"
+                whileHover={{ y: -6, transition: { duration: 0.22, ease: [0.22, 1, 0.36, 1] } }}
+                viewport={{ once: true, amount: 0.35 }}
+                transition={{ duration: 0.45, delay: 0.26, ease: [0.22, 1, 0.36, 1] }}
+              >
                 <FileText size={21} />
                 <strong>Partner-grade docs</strong>
                 <span>Dossiers, CoA, stability and registration support</span>
-              </div>
+              </motion.div>
             </div>
-          </div>
+          </motion.div>
 
-          <div className="about-profile-system" aria-label="Memphis company operating model">
-            <div className="about-profile-visual">
+          <motion.div
+            className="about-profile-system"
+            aria-label="Memphis company operating model"
+            variants={profileReveal}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.5, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <motion.div
+              className="about-profile-visual"
+              variants={profileVisualReveal}
+              initial="hidden"
+              whileInView="visible"
+              whileHover={{ y: -4, transition: { duration: 0.24, ease: [0.22, 1, 0.36, 1] } }}
+              viewport={{ once: true, amount: 0.28 }}
+              transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+            >
               <img src="/images/hero/optimized/cleanroom-manufacturing.jpg" alt="Sterile Memphis manufacturing environment" loading="lazy" />
-              <div className="about-profile-visual-card">
+              <motion.div
+                className="about-profile-visual-card"
+                initial={{ opacity: 0, y: 18 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                whileHover={{ y: -4, transition: { duration: 0.22, ease: [0.22, 1, 0.36, 1] } }}
+                viewport={{ once: true, amount: 0.5 }}
+                transition={{ duration: 0.45, delay: 0.22, ease: [0.22, 1, 0.36, 1] }}
+              >
                 <ShieldCheck size={20} />
                 <div>
                   <strong>Quality-led operation</strong>
                   <span>WHO-GMP-aligned systems · documented release discipline</span>
                 </div>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
             <div className="mission-grid about-mission-grid">
-              <div>
+              <motion.div
+                variants={profileReveal}
+                initial="hidden"
+                whileInView="visible"
+                whileHover={{ y: -5, transition: { duration: 0.22, ease: [0.22, 1, 0.36, 1] } }}
+                viewport={{ once: true, amount: 0.35 }}
+                transition={{ duration: 0.45, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
+              >
                 <span className="mission-tag"><Target size={16} /> Mission</span>
                 <p>{company.mission}</p>
-              </div>
-              <div>
+              </motion.div>
+              <motion.div
+                variants={profileReveal}
+                initial="hidden"
+                whileInView="visible"
+                whileHover={{ y: -5, transition: { duration: 0.22, ease: [0.22, 1, 0.36, 1] } }}
+                viewport={{ once: true, amount: 0.35 }}
+                transition={{ duration: 0.45, delay: 0.16, ease: [0.22, 1, 0.36, 1] }}
+              >
                 <span className="mission-tag"><Telescope size={16} /> Vision</span>
                 <p>{company.vision}</p>
-              </div>
+              </motion.div>
             </div>
-          </div>
+          </motion.div>
         </Container>
       </section>
 
