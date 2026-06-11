@@ -5754,13 +5754,21 @@ main {
 
 .about-profile-section + .section-muted + .section + .section-muted {
   background:
-    radial-gradient(circle at 12% 18%, rgba(15, 166, 179, 0.13), transparent 28%),
-    linear-gradient(135deg, #061633 0%, #0b2247 48%, #143464 100%);
+    linear-gradient(rgba(29, 68, 128, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(29, 68, 128, 0.025) 1px, transparent 1px),
+    radial-gradient(circle at 12% 18%, rgba(15, 166, 179, 0.10), transparent 28%),
+    radial-gradient(circle at 86% 20%, rgba(200, 146, 64, 0.08), transparent 26%),
+    linear-gradient(180deg, #ffffff 0%, #f4f8fc 100%);
+  background-size: 72px 72px, 72px 72px, auto, auto, auto;
 }
 
 .about-profile-section + .section-muted + .section + .section-muted .section-heading h2,
 .about-profile-section + .section-muted + .section + .section-muted .eyebrow {
-  color: #ffffff;
+  color: var(--primary-dark);
+}
+
+.about-profile-section + .section-muted + .section + .section-muted .eyebrow {
+  color: var(--teal);
 }
 
 .about-profile-section + .section-muted + .section + .section-muted .timeline {
@@ -5788,10 +5796,8 @@ main {
   bottom: auto;
   width: auto;
   height: 2px;
-  background: linear-gradient(90deg, var(--teal), var(--brand-gold-300), var(--teal));
-  background-size: 200% 100%;
-  opacity: 0.55;
-  animation: aboutTimelineFlow 5.5s linear infinite;
+  background: linear-gradient(90deg, rgba(29, 68, 128, 0.12), rgba(15, 166, 179, 0.62), rgba(29, 68, 128, 0.12));
+  opacity: 1;
 }
 
 .about-profile-section + .section-muted + .section + .section-muted .timeline li {
@@ -5803,17 +5809,23 @@ main {
 .about-profile-section + .section-muted + .section + .section-muted .timeline-year {
   appearance: none;
   cursor: pointer;
-  font: inherit;
+  font-family: var(--font-mono);
+  font-size: 0.96rem;
+  font-weight: 850;
+  letter-spacing: 0.03em;
   width: fit-content;
-  min-height: 68px;
+  min-height: 60px;
   display: grid;
   place-items: center;
   border-radius: 999px;
-  padding: 0 16px;
-  background: rgba(255, 255, 255, 0.12);
-  color: #ffffff;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(12px);
+  padding: 0 17px;
+  background:
+    linear-gradient(180deg, #ffffff, #f8fbff);
+  color: var(--primary-dark);
+  border: 1px solid rgba(29, 68, 128, 0.22);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.9) inset,
+    0 10px 24px rgba(11, 34, 71, 0.10);
   transition:
     transform 260ms var(--ease-out),
     background-color 260ms var(--ease-out),
@@ -5824,13 +5836,13 @@ main {
 .about-profile-section + .section-muted + .section + .section-muted .timeline-year::after {
   right: auto;
   left: 50%;
-  top: 60px;
-  width: 12px;
-  height: 12px;
+  top: 57px;
+  width: 11px;
+  height: 11px;
   transform: translateX(-50%);
-  border-color: var(--brand-gold-300);
-  background: var(--primary-deep);
-  animation: aboutTimelinePulse 2.8s ease-in-out infinite;
+  border: 2px solid var(--teal);
+  background: #ffffff;
+  box-shadow: 0 0 0 5px rgba(15, 166, 179, 0.11);
 }
 
 .about-profile-section + .section-muted + .section + .section-muted .timeline-body {
@@ -5839,13 +5851,13 @@ main {
   text-align: left;
   appearance: none;
   font: inherit;
-  min-height: 190px;
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  min-height: 178px;
+  border: 1px solid rgba(29, 68, 128, 0.14);
   border-radius: 16px;
   padding: 18px;
-  background: rgba(255, 255, 255, 0.09);
-  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.18);
-  backdrop-filter: blur(16px);
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 15px 36px rgba(11, 34, 71, 0.075);
+  backdrop-filter: blur(10px);
   transition:
     transform 280ms var(--ease-out),
     background-color 280ms var(--ease-out),
@@ -5856,46 +5868,54 @@ main {
 .about-profile-section + .section-muted + .section + .section-muted .timeline li:hover .timeline-year,
 .about-profile-section + .section-muted + .section + .section-muted .timeline li:focus-within .timeline-year,
 .about-profile-section + .section-muted + .section + .section-muted .timeline li.is-active .timeline-year {
-  border-color: rgba(239, 210, 154, 0.58);
-  background: rgba(255, 255, 255, 0.18);
-  box-shadow: 0 14px 34px rgba(15, 166, 179, 0.18);
-  transform: translateY(-3px);
+  border-color: rgba(15, 166, 179, 0.46);
+  background:
+    linear-gradient(180deg, #ffffff, #eefafd);
+  color: var(--primary-deep);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.95) inset,
+    0 16px 34px rgba(11, 34, 71, 0.14),
+    0 0 0 4px rgba(15, 166, 179, 0.07);
+  transform: translateY(-2px);
 }
 
 .about-profile-section + .section-muted + .section + .section-muted .timeline li:hover .timeline-body,
 .about-profile-section + .section-muted + .section + .section-muted .timeline li:focus-within .timeline-body,
 .about-profile-section + .section-muted + .section + .section-muted .timeline li.is-active .timeline-body {
-  border-color: rgba(239, 210, 154, 0.28);
-  background: rgba(255, 255, 255, 0.14);
-  box-shadow: 0 26px 58px rgba(0, 0, 0, 0.23);
-  transform: translateY(-5px);
+  border-color: rgba(15, 166, 179, 0.30);
+  background: #ffffff;
+  box-shadow: 0 22px 48px rgba(11, 34, 71, 0.12);
+  transform: translateY(-3px);
 }
 
 .about-profile-section + .section-muted + .section + .section-muted .timeline-year:focus-visible,
 .about-profile-section + .section-muted + .section + .section-muted .timeline-body:focus-visible {
-  outline: 3px solid rgba(239, 210, 154, 0.66);
+  outline: 2px solid rgba(15, 166, 179, 0.5);
   outline-offset: 4px;
 }
 
 .about-profile-section + .section-muted + .section + .section-muted .timeline li.is-active .timeline-year::after {
-  background: var(--brand-gold-300);
-  box-shadow: 0 0 0 7px rgba(239, 210, 154, 0.16), 0 0 28px rgba(239, 210, 154, 0.46);
+  border-color: var(--teal);
+  background: var(--teal);
+  box-shadow:
+    0 0 0 5px rgba(15, 166, 179, 0.14),
+    0 8px 18px rgba(15, 166, 179, 0.22);
 }
 
 .about-profile-section + .section-muted + .section + .section-muted .timeline-body-title {
   display: block;
-  color: #ffffff;
-  font-size: 1.05rem;
-  font-weight: 900;
-  line-height: 1.2;
+  color: var(--primary-dark);
+  font-size: 1rem;
+  font-weight: 820;
+  line-height: 1.28;
 }
 
 .about-profile-section + .section-muted + .section + .section-muted .timeline-body-text {
   display: block;
   margin-top: 7px;
-  color: rgba(255, 255, 255, 0.74);
-  font-size: 0.9rem;
-  line-height: 1.55;
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.58;
 }
 
 .timeline-active-panel {
@@ -5904,16 +5924,18 @@ main {
   grid-template-columns: minmax(120px, 0.28fr) minmax(0, 1fr);
   gap: clamp(18px, 3vw, 34px);
   align-items: center;
-  min-height: 230px;
+  min-height: 210px;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: 22px;
-  padding: clamp(22px, 3vw, 34px);
+  border: 1px solid rgba(29, 68, 128, 0.16);
+  border-radius: 20px;
+  padding: clamp(22px, 3vw, 32px);
   background:
-    radial-gradient(circle at 12% 10%, rgba(15, 166, 179, 0.22), transparent 34%),
-    linear-gradient(135deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.08));
-  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.26);
-  backdrop-filter: blur(18px);
+    radial-gradient(circle at 12% 10%, rgba(15, 166, 179, 0.13), transparent 34%),
+    linear-gradient(135deg, #ffffff, #f8fbff);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.92) inset,
+    0 22px 52px rgba(11, 34, 71, 0.11);
+  backdrop-filter: blur(12px);
 }
 
 .timeline-active-panel::before {
@@ -5921,9 +5943,7 @@ main {
   inset: 0 0 auto;
   height: 4px;
   content: "";
-  background: linear-gradient(90deg, var(--teal), var(--brand-gold-300), #ffffff);
-  background-size: 180% 100%;
-  animation: aboutTimelineFlow 4.8s linear infinite;
+  background: linear-gradient(90deg, var(--primary), var(--teal), rgba(200, 146, 64, 0.7));
 }
 
 .timeline-active-panel::after {
@@ -5934,18 +5954,19 @@ main {
   height: 260px;
   content: "";
   border-radius: 999px;
-  background: radial-gradient(circle, rgba(239, 210, 154, 0.18), transparent 68%);
+  background: radial-gradient(circle, rgba(15, 166, 179, 0.08), transparent 68%);
   pointer-events: none;
 }
 
 .timeline-active-panel span {
   position: relative;
   z-index: 1;
-  color: var(--brand-gold-300);
+  color: var(--primary);
   font-family: var(--font-display);
-  font-size: clamp(3.6rem, 9vw, 6.8rem);
-  font-weight: 900;
+  font-size: clamp(3.1rem, 7vw, 5.4rem);
+  font-weight: 760;
   line-height: 0.9;
+  text-shadow: 0 10px 26px rgba(11, 34, 71, 0.10);
 }
 
 .timeline-active-panel > div,
@@ -5961,17 +5982,17 @@ main {
 
 .timeline-active-panel strong {
   display: block;
-  color: #ffffff;
-  font-size: clamp(1.45rem, 2.3vw, 2.2rem);
-  line-height: 1.05;
+  color: var(--primary-dark);
+  font-size: clamp(1.28rem, 2vw, 1.9rem);
+  line-height: 1.15;
 }
 
 .timeline-active-panel p {
   max-width: 620px;
   margin: 10px 0 0;
-  color: rgba(255, 255, 255, 0.76);
-  font-size: clamp(0.96rem, 1.4vw, 1.1rem);
-  line-height: 1.7;
+  color: var(--muted);
+  font-size: clamp(0.94rem, 1.2vw, 1.03rem);
+  line-height: 1.68;
 }
 
 .about-profile-section + .section-muted + .section + .section-muted + .section {
@@ -6427,6 +6448,7 @@ main {
   overflow: hidden;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
+  line-clamp: 3;
 }
 
 .product-variant-summary {
@@ -7801,7 +7823,7 @@ main > .section:has(.segment-grid) .section-heading {
 }
 
 .products-catalogue-section .product-card-body {
-  gap: 9px;
+  gap: 10px;
   padding: 18px 18px 20px;
 }
 
@@ -7819,15 +7841,24 @@ main > .section:has(.segment-grid) .section-heading {
 }
 
 .products-catalogue-section .product-card-summary {
-  min-height: 4.1em;
-  font-size: 0.85rem;
-  line-height: 1.5;
+  display: -webkit-box;
+  min-height: calc(2 * 1.45em);
+  max-height: calc(2 * 1.45em);
+  color: #60718d;
+  font-size: 0.84rem;
+  font-weight: 520;
+  line-height: 1.45;
+  letter-spacing: 0;
+  overflow: hidden;
+  text-wrap: pretty;
+  -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
+  line-clamp: 2;
 }
 
 .products-catalogue-section .product-variant-summary {
   gap: 6px;
-  margin-top: 2px;
+  margin-top: 4px;
 }
 
 .products-catalogue-section .product-variant-summary span {
@@ -8161,7 +8192,7 @@ main > .section:has(.segment-grid) .section-heading {
 }
 
 .featured-products-section .product-card-body {
-  gap: 9px;
+  gap: 10px;
   padding: 18px 18px 20px;
 }
 
@@ -8179,15 +8210,24 @@ main > .section:has(.segment-grid) .section-heading {
 }
 
 .featured-products-section .product-card-summary {
-  min-height: 4.1em;
-  font-size: 0.85rem;
-  line-height: 1.5;
+  display: -webkit-box;
+  min-height: calc(2 * 1.45em);
+  max-height: calc(2 * 1.45em);
+  color: #60718d;
+  font-size: 0.84rem;
+  font-weight: 520;
+  line-height: 1.45;
+  letter-spacing: 0;
+  overflow: hidden;
+  text-wrap: pretty;
+  -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
+  line-clamp: 2;
 }
 
 .featured-products-section .product-variant-summary {
   gap: 6px;
-  margin-top: 2px;
+  margin-top: 4px;
 }
 
 .featured-products-section .product-variant-summary span {
