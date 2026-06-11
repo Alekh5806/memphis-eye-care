@@ -1,0 +1,324 @@
+
+.home-hero .hero-visual {
+  overflow: visible;
+  border-radius: 24px;
+}
+
+.home-hero .hero-visual-frame {
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+.home-hero .hero-badge {
+  max-width: min(300px, calc(50% - 34px));
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.2);
+}
+
+.home-hero .hero-badge-top {
+  top: auto;
+  bottom: 24px;
+  left: 24px;
+}
+
+.home-hero .hero-badge-bottom {
+  right: 24px;
+  bottom: 24px;
+  left: auto;
+}
+
+@media (max-width: 760px) {
+  .home-hero .hero-badge {
+    max-width: calc(100% - 32px);
+  }
+
+  .home-hero .hero-badge-top {
+    top: 16px;
+    bottom: auto;
+    left: 16px;
+  }
+
+  .home-hero .hero-badge-bottom {
+    top: 76px;
+    right: auto;
+    bottom: auto;
+    left: 16px;
+  }
+}
+
+main > .section:has(.segment-grid) {
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(rgba(29, 68, 128, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(29, 68, 128, 0.035) 1px, transparent 1px),
+    radial-gradient(circle at 84% 18%, rgba(15, 166, 179, 0.1), transparent 30%),
+    linear-gradient(180deg, #ffffff 0%, #f7fbff 100%);
+  background-size: 72px 72px, 72px 72px, auto, auto;
+}
+
+main > .section:has(.segment-grid) .section-heading {
+  max-width: 880px;
+}
+
+.segment-grid,
+.product-grid {
+  align-items: stretch;
+}
+
+.segment-grid > *,
+.segment-grid .segment-card {
+  height: 100%;
+}
+
+.segment-card {
+  position: relative;
+  min-height: 420px;
+  border-radius: 18px;
+  border-color: rgba(29, 68, 128, 0.12);
+  background: #ffffff;
+  box-shadow: 0 18px 44px rgba(11, 34, 71, 0.075);
+  isolation: isolate;
+  transition:
+    transform 260ms var(--ease-out),
+    border-color 260ms var(--ease-out),
+    box-shadow 260ms var(--ease-out);
+}
+
+.segment-card::before {
+  position: absolute;
+  inset: 0 0 auto;
+  z-index: 2;
+  height: 4px;
+  content: "";
+  background: linear-gradient(90deg, var(--primary), var(--teal), var(--brand-gold-500));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 340ms var(--ease-out);
+}
+
+.segment-card:hover,
+.segment-card:focus-visible {
+  transform: translateY(-6px);
+  border-color: rgba(15, 166, 179, 0.26);
+  box-shadow: 0 28px 64px rgba(11, 34, 71, 0.14);
+}
+
+.segment-card:hover::before,
+.segment-card:focus-visible::before {
+  transform: scaleX(1);
+}
+
+.segment-card img {
+  height: 196px;
+  filter: saturate(0.98) contrast(1.03);
+  transition: transform 700ms var(--ease-out), filter 260ms var(--ease-out);
+}
+
+.segment-card:hover img,
+.segment-card:focus-visible img {
+  filter: saturate(1.05) contrast(1.06);
+  transform: scale(1.05);
+}
+
+.segment-card span {
+  background: rgba(15, 166, 179, 0.09);
+  color: var(--primary);
+}
+
+.segment-card h3 {
+  color: var(--primary-dark);
+  font-size: 1.14rem;
+  line-height: 1.18;
+}
+
+.segment-card p {
+  color: var(--muted);
+  line-height: 1.62;
+}
+
+.pfs-advantages-section .split-layout {
+  align-items: center;
+}
+
+.pfs-advantages-section .section-heading {
+  position: sticky;
+  top: 118px;
+}
+
+.advantage-card {
+  min-height: 250px;
+  border-radius: 18px;
+}
+
+.advantage-card:hover {
+  transform: translateY(-6px);
+}
+
+.certification-card {
+  min-height: 260px;
+  border-radius: 18px;
+  box-shadow: 0 18px 44px rgba(11, 34, 71, 0.075);
+}
+
+.quality-band {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(76px, 8vw, 118px) 0;
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(135deg, #061633 0%, #0b2247 52%, #123b70 100%);
+  background-size: 72px 72px, 72px 72px, auto;
+}
+
+.quality-points div {
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(16px);
+}
+
+.product-card {
+  border-radius: 18px;
+  box-shadow: 0 18px 44px rgba(11, 34, 71, 0.075);
+  transition:
+    transform 260ms var(--ease-out),
+    border-color 260ms var(--ease-out),
+    box-shadow 260ms var(--ease-out);
+}
+
+.product-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(15, 166, 179, 0.24);
+  box-shadow: 0 28px 64px rgba(11, 34, 71, 0.13);
+}
+
+.cta-panel {
+  position: relative;
+  overflow: hidden;
+  border-radius: 22px;
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(135deg, #0b2247 0%, #1d4480 54%, #0fa6b3 140%);
+  background-size: 56px 56px, 56px 56px, auto;
+}
+
+@media (max-width: 1120px) {
+  .pfs-advantages-section .section-heading {
+    position: static;
+  }
+}
+
+@media (max-width: 760px) {
+  main > .section:has(.segment-grid) {
+    background-size: 52px 52px, 52px 52px, auto, auto;
+  }
+
+  .segment-grid,
+  .advantage-grid,
+  .quality-points {
+    grid-template-columns: 1fr;
+  }
+
+  .segment-card {
+    min-height: 0;
+    border-radius: 16px;
+  }
+
+  .segment-card img {
+    height: 166px;
+  }
+
+  .segment-card span {
+    margin-top: 16px;
+    font-size: 0.72rem;
+  }
+
+  .segment-card h3 {
+    margin-top: 14px;
+    font-size: 1.18rem;
+  }
+
+  .segment-card p {
+    font-size: 0.94rem;
+    line-height: 1.55;
+  }
+
+  .advantage-card,
+  .certification-card {
+    min-height: 0;
+    border-radius: 16px;
+  }
+
+  .quality-points div {
+    min-height: 78px;
+    padding: 16px;
+  }
+
+  .cta-panel {
+    display: grid;
+    padding: 26px;
+    border-radius: 18px;
+  }
+
+  .cta-panel .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 640px) {
+  .home-hero {
+    min-height: auto;
+    padding: 42px 0 46px;
+  }
+
+  .home-hero .hero-copy h1 {
+    font-size: clamp(2.1rem, 10vw, 3.05rem);
+    line-height: 1.08;
+  }
+
+  .home-hero .hero-copy p {
+    font-size: 1.04rem;
+    line-height: 1.62;
+  }
+
+  .home-hero .hero-visual {
+    display: none;
+  }
+
+  .home-hero .hero-trust-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .home-hero .hero-trust-row li {
+    width: fit-content;
+    min-height: 42px;
+    padding: 8px 14px;
+    font-size: 0.84rem;
+  }
+}
+
+@media (hover: none) {
+  .segment-card:hover,
+  .advantage-card:hover,
+  .product-card:hover {
+    transform: none;
+  }
+}
+/* ---- Products catalogue: premium buyer-facing surface ------------- */
+.products-catalogue-section {
+  overflow: hidden;
+  padding-top: clamp(54px, 6vw, 82px);
+  background:
+    linear-gradient(rgba(29, 68, 128, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(29, 68, 128, 0.035) 1px, transparent 1px),
+    radial-gradient(circle at 10% 8%, rgba(15, 166, 179, 0.12), transparent 28%),
+    radial-gradient(circle at 92% 18%, rgba(200, 146, 64, 0.11), transparent 24%),
+    linear-gradient(180deg, #f7fbff 0%, #ffffff 48%, #f6f9fd 100%);
+  background-size: 74px 74px, 74px 74px, auto, auto, auto;
+}

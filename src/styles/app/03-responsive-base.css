@@ -1,0 +1,251 @@
+
+/* ====================================================================
+   RESPONSIVE POLISH LAYER — device-aware overrides
+   Targets: large desktop ≥1280, desktop 1024-1279, tablet 768-1023,
+   small tablet 600-767, phone <600
+   ==================================================================== */
+
+/* ---- Container responsive padding --------------------------------- */
+@media (max-width: 1024px) {
+  .container { padding-left: 20px; padding-right: 20px; }
+}
+@media (max-width: 600px) {
+  .container { padding-left: 16px; padding-right: 16px; }
+}
+
+/* ---- Top bar — collapse gracefully -------------------------------- */
+@media (max-width: 900px) {
+  .top-bar-pill { display: none; }
+  .top-bar-inner { justify-content: center; gap: 10px; }
+  .top-bar-links { gap: 10px; font-size: 0.78rem; }
+}
+@media (max-width: 480px) {
+  .top-bar-links a:nth-child(3) { display: none; }
+  .top-bar-sep { display: none; }
+}
+
+/* ---- Header brand + logo sizing ----------------------------------- */
+@media (max-width: 1024px) {
+  .brand-logo { width: 170px; max-height: 50px; }
+  .site-header.is-scrolled .brand-logo { height: 38px; }
+}
+@media (max-width: 600px) {
+  .brand-logo { width: 148px; max-height: 44px; }
+  .site-header .header-inner { min-height: 64px; }
+}
+
+/* ---- Header CTA visibility ---------------------------------------- */
+@media (max-width: 1180px) {
+  .header-cta { display: none; }
+}
+
+/* ---- Hero — tablet & mobile layout -------------------------------- */
+@media (max-width: 1120px) {
+  .home-hero { padding: 56px 0 32px; }
+  .hero-layout { gap: 32px; }
+  .hero-visual { min-height: 360px; }
+  .hero-visual-frame { aspect-ratio: 4 / 3; }
+}
+@media (max-width: 820px) {
+  .home-hero { padding: 40px 0 24px; }
+  .hero-copy h1 {
+    font-size: clamp(1.85rem, 5.5vw, 2.4rem);
+    line-height: 1.12;
+    letter-spacing: -0.01em;
+  }
+  .hero-copy p { font-size: 1rem; margin-top: 16px; max-width: 100%; }
+  .hero-actions { margin-top: 22px; gap: 10px; }
+  .hero-actions .btn { flex: 1 1 auto; min-height: 48px; }
+  .hero-trust-row { gap: 8px; margin-top: 20px; }
+  .hero-trust-row li { font-size: 0.78rem; padding: 6px 10px; }
+  .hero-visual { min-height: 280px; }
+  .hero-badge { font-size: 0.78rem; padding: 8px 12px; }
+  .hero-badge strong { font-size: 0.86rem; }
+  .hero-scroll-cue { display: none; }
+}
+@media (max-width: 480px) {
+  .home-hero { padding: 28px 0 18px; }
+  .hero-copy h1 { font-size: clamp(1.7rem, 7vw, 2.1rem); }
+  .eyebrow-hero { font-size: 0.7rem; padding: 5px 10px; }
+  .hero-actions { flex-direction: column; }
+  .hero-actions .btn { width: 100%; }
+  .hero-visual { min-height: 220px; }
+  .hero-badge-top, .hero-badge-bottom { display: none; }
+}
+
+/* ---- Page hero — tablet & mobile ---------------------------------- */
+@media (max-width: 820px) {
+  .page-hero { padding: 64px 0 48px; }
+  .page-hero h1 { font-size: clamp(1.7rem, 5vw, 2.4rem); }
+  .page-breadcrumbs { font-size: 0.78rem; gap: 6px; flex-wrap: wrap; }
+  .page-hero-actions { flex-wrap: wrap; }
+  .page-hero-actions .btn { flex: 1 1 auto; }
+}
+@media (max-width: 480px) {
+  .page-hero { padding: 48px 0 36px; }
+}
+
+/* ---- Section heading + section padding ---------------------------- */
+@media (max-width: 820px) {
+  section { padding-block: 56px; }
+  .section-heading h2, h2 { font-size: clamp(1.6rem, 4.6vw, 2.1rem); }
+  .section-heading p { font-size: 0.98rem; }
+}
+@media (max-width: 480px) {
+  section { padding-block: 44px; }
+}
+
+/* ---- Stats — responsive grid -------------------------------------- */
+@media (max-width: 1024px) {
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 820px) {
+  .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .stat-card { min-height: auto; padding: 18px 14px; }
+  .stat-card strong { font-size: clamp(1.7rem, 5vw, 2.2rem); }
+  .stat-card span { font-size: 0.82rem; }
+}
+@media (max-width: 380px) {
+  .stats-grid { grid-template-columns: 1fr; }
+}
+
+/* ---- Product grid + segments -------------------------------------- */
+@media (max-width: 820px) {
+  .product-grid, .segment-grid, .capability-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+@media (min-width: 560px) and (max-width: 1024px) {
+  .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* ---- Certifications grid ------------------------------------------ */
+@media (max-width: 820px) {
+  .certifications-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+  }
+  .certification-card { padding: 18px 16px; }
+}
+@media (max-width: 440px) {
+  .certifications-grid { grid-template-columns: 1fr; }
+}
+
+/* ---- Testimonials -------------------------------------------------- */
+@media (max-width: 820px) {
+  .testimonials-grid { grid-template-columns: 1fr; gap: 16px; }
+  .testimonial-card { padding: 22px 20px; }
+  .testimonial-card blockquote { font-size: 1rem; }
+}
+
+/* ---- Partners marquee --------------------------------------------- */
+@media (max-width: 600px) {
+  .partners-marquee-item { font-size: 0.85rem; padding: 8px 14px; }
+}
+
+/* ---- About page --------------------------------------------------- */
+@media (max-width: 820px) {
+  .about-fact-row { grid-template-columns: repeat(2, 1fr); }
+  .differentiator-grid { grid-template-columns: 1fr; }
+  .leadership-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .timeline { padding-left: 40px; }
+  .timeline-year { font-size: 0.9rem; }
+}
+@media (max-width: 480px) {
+  .about-fact-row { grid-template-columns: 1fr; }
+  .leadership-grid { grid-template-columns: 1fr; }
+}
+
+/* ---- Product detail page ------------------------------------------ */
+@media (max-width: 820px) {
+  .product-detail-actions, .detail-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .product-detail-actions .btn, .detail-actions .btn { width: 100%; justify-content: center; }
+  .spec-grid { grid-template-columns: 1fr 1fr; }
+  .product-trust-row { gap: 8px; }
+  .product-trust-row > * { font-size: 0.78rem; }
+}
+@media (max-width: 480px) {
+  .spec-grid { grid-template-columns: 1fr; }
+}
+
+/* ---- Manufacturing / process grid --------------------------------- */
+@media (max-width: 820px) {
+  .process-grid, .process-grid-stepped {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+}
+
+/* ---- Contact / forms ---------------------------------------------- */
+@media (max-width: 820px) {
+  .form-grid,
+  .contact-form-grid,
+  .contact-method-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .contact-form input,
+  .contact-form select,
+  .contact-form textarea {
+    font-size: 16px; /* prevent iOS zoom on focus */
+  }
+}
+
+/* ---- Footer ------------------------------------------------------- */
+@media (max-width: 1024px) {
+  .footer-grid { grid-template-columns: 1fr 1fr; padding-top: 44px; gap: 28px; }
+}
+@media (max-width: 600px) {
+  .footer-grid { grid-template-columns: 1fr; gap: 24px; padding-top: 36px; }
+  .footer-company p { max-width: 100%; }
+  .footer-socials { gap: 8px; }
+  .footer-bottom { flex-direction: column; gap: 8px; text-align: center; padding: 18px 0; }
+  .footer-bottom-links { flex-direction: column; gap: 6px; }
+}
+@media (max-width: 600px) {
+  .footer-cert-inner { gap: 10px; }
+  .footer-cert-inner ul { gap: 6px; }
+  .footer-cert-inner li { font-size: 0.72rem; padding: 4px 10px; }
+}
+
+/* ---- Quick Contact Dock — responsive collapse --------------------- */
+@media (max-width: 1024px) {
+  .quick-contact-bubble.phone { display: none; }
+  .quick-contact-dock {
+    left: auto;
+    right: 14px;
+    bottom: 76px; /* sit above back-to-top */
+    flex-direction: column-reverse;
+    gap: 10px;
+  }
+}
+@media (max-width: 600px) {
+  .quick-contact-bubble.email { display: none; }
+  .quick-contact-dock {
+    display: none;
+  }
+  .quick-contact-bubble {
+    width: 46px;
+    height: 46px;
+  }
+  .quick-contact-pulse {
+    display: none;
+  }
+}
+/* ---- Home trust band: partners + stats ---------------------------- */
+.partners-marquee {
+  position: relative;
+  padding: clamp(22px, 3vw, 34px) 0 clamp(12px, 2vw, 20px);
+  border-top: 1px solid rgba(29, 68, 128, 0.1);
+  border-bottom: 0;
+  background:
+    linear-gradient(rgba(29, 68, 128, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(29, 68, 128, 0.035) 1px, transparent 1px),
+    radial-gradient(circle at 50% 0%, rgba(15, 166, 179, 0.1), transparent 34%),
+    linear-gradient(180deg, #ffffff 0%, #f6f9fd 100%);
+  background-size: 64px 64px, 64px 64px, auto, auto;
+}
