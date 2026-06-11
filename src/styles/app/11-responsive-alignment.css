@@ -224,6 +224,151 @@
   .global-reach-section:not(.global-reach-full) .market-selector button:nth-child(n+7) {
     display: none;
   }
+
+  .global-reach-full .world-map-panel {
+    border-radius: 18px;
+    box-shadow: 0 16px 38px rgba(11, 34, 71, 0.08);
+  }
+
+  .global-reach-full .world-map-header {
+    align-items: stretch;
+    padding: 13px;
+  }
+
+  .global-reach-full .world-map-title {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 28px minmax(0, 1fr) auto;
+    gap: 8px;
+  }
+
+  .global-reach-full .world-map-title svg {
+    width: 28px;
+    height: 28px;
+    border-radius: 9px;
+    padding: 6px;
+    background: rgba(15, 166, 179, 0.1);
+  }
+
+  .global-reach-full .world-map-title span {
+    min-width: 0;
+    align-self: center;
+    font-size: 0.9rem;
+    line-height: 1.18;
+  }
+
+  .global-reach-full .world-map-title small {
+    align-self: center;
+    border-left: 0;
+    margin-left: 0;
+    padding: 5px 8px;
+    border-radius: 999px;
+    background: #eef7fb;
+    color: var(--primary);
+    font-size: 0.62rem;
+    white-space: nowrap;
+  }
+
+  .global-reach-full .map-caption {
+    width: 100%;
+    justify-content: flex-start;
+    border-radius: 14px;
+    padding: 9px 11px;
+  }
+
+  .global-reach-full .world-map {
+    aspect-ratio: 1.55 / 1;
+    min-height: 220px;
+  }
+
+  .global-reach-full .country-marker {
+    width: 34px;
+    height: 34px;
+  }
+
+  .global-reach-full .country-marker span {
+    width: 10px;
+    height: 10px;
+    box-shadow:
+      0 0 0 5px rgba(240, 123, 68, 0.18),
+      0 8px 16px rgba(240, 123, 68, 0.28);
+  }
+
+  .global-reach-full .country-marker.is-active span {
+    width: 12px;
+    height: 12px;
+    background: var(--teal);
+    box-shadow:
+      0 0 0 5px rgba(15, 166, 179, 0.18),
+      0 8px 18px rgba(15, 166, 179, 0.28);
+  }
+
+  .global-reach-full .market-selector {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    padding: 10px;
+    background:
+      linear-gradient(180deg, #ffffff, #f7fbff);
+  }
+
+  .global-reach-full .market-selector button {
+    min-height: 48px;
+    grid-template-columns: 18px minmax(0, 1fr);
+    gap: 1px 7px;
+    border-radius: 12px;
+    padding: 9px 9px;
+  }
+
+  .global-reach-full .market-selector button.is-active {
+    border-color: rgba(15, 166, 179, 0.36);
+    background:
+      linear-gradient(180deg, rgba(236, 251, 252, 0.95), #ffffff);
+    box-shadow: 0 8px 18px rgba(11, 34, 71, 0.07);
+  }
+
+  .global-reach-full .market-selector span {
+    min-width: 0;
+    overflow: hidden;
+    font-size: 0.78rem;
+    line-height: 1.12;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .global-reach-full .market-selector small {
+    min-width: 0;
+    overflow: hidden;
+    font-size: 0.62rem;
+    line-height: 1.12;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .global-reach-full .country-detail-card {
+    border-radius: 18px;
+  }
+
+  .global-reach-full .country-detail-head {
+    padding-top: 24px;
+  }
+
+  .global-reach-full .country-detail-card h3 {
+    margin-top: 14px;
+  }
+
+  .global-reach-full .country-meta-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .global-reach-full .country-products {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .global-reach-full .country-products h4 {
+    width: 100%;
+  }
 }
 
 @media (max-width: 430px) {
@@ -322,6 +467,10 @@
     grid-template-columns: 1fr;
   }
 
+  .global-reach-full .market-selector {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .footer-grid h3 {
     margin-bottom: 10px;
   }
@@ -351,6 +500,19 @@
 
   .map-caption {
     width: 100%;
+  }
+
+  .global-reach-full .world-map-title {
+    grid-template-columns: 28px minmax(0, 1fr);
+  }
+
+  .global-reach-full .world-map-title small {
+    grid-column: 1 / -1;
+    justify-self: start;
+  }
+
+  .global-reach-full .market-selector button {
+    padding-inline: 8px;
   }
 }
 
