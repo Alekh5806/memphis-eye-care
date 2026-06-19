@@ -561,3 +561,990 @@
 .featured-products-section .product-card-footer .text-link {
   min-height: 44px;
 }
+
+/* ====================================================================
+   WHOLE-SITE RESPONSIVE UX PASS — final overrides
+   Keeps desktop surfaces intact while making tablet/mobile intentional.
+   ==================================================================== */
+
+html,
+body,
+#root,
+.app-shell {
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+main,
+section,
+.container,
+.container-wide,
+.page-hero-inner,
+.hero-layout,
+.split-layout,
+.product-detail-layout,
+.contact-layout,
+.global-reach-layout,
+.capability-spotlight,
+.partner-layout {
+  min-width: 0;
+}
+
+iframe,
+video,
+img,
+svg,
+canvas,
+table,
+form,
+input,
+select,
+textarea,
+button {
+  max-width: 100%;
+}
+
+.btn,
+.icon-button,
+.nav-toggle,
+.mobile-nav-link,
+.mobile-nav-parent,
+.mobile-nav-children a,
+.segment-control button,
+.market-selector button,
+.variant-options button {
+  -webkit-tap-highlight-color: rgba(15, 166, 179, 0.16);
+}
+
+.btn:active,
+.icon-button:active,
+.mobile-nav-link:active,
+.mobile-nav-parent:active,
+.segment-control button:active,
+.market-selector button:active,
+.product-card:active,
+.segment-card:active,
+.large-info-card:active,
+.advantage-card:active {
+  transform: translateY(1px);
+}
+
+@media (max-width: 1200px) {
+  .container,
+  .container-wide {
+    width: min(100% - 40px, var(--container));
+  }
+
+  .main-nav a,
+  .nav-parent {
+    padding-inline: 10px;
+    font-size: 0.88rem;
+  }
+
+}
+
+@media (min-width: 1121px) and (max-width: 1200px) {
+  .product-detail-section .product-detail-layout {
+    grid-template-columns: minmax(320px, 0.84fr) minmax(0, 1.16fr);
+  }
+}
+
+@media (max-width: 1024px) {
+  .container,
+  .container-wide {
+    width: min(100% - 36px, var(--container));
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .section-heading,
+  .contact-panel-heading,
+  .page-hero-copy,
+  .section-topline {
+    max-width: 820px;
+  }
+
+  .page-hero-inner-split {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .page-hero-evidence {
+    width: 100%;
+  }
+
+  .quality-card-grid,
+  .differentiator-grid.accent-cards,
+  .process-grid,
+  .process-grid-stepped {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .capability-spotlight,
+  .partner-layout,
+  .contact-layout {
+    gap: 24px;
+  }
+
+  .footer-cta-inner {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 860px) {
+  .site-header {
+    z-index: 1000;
+  }
+
+  .header-inner {
+    min-height: 66px;
+  }
+
+  .brand {
+    min-width: 0;
+  }
+
+  .brand-logo {
+    width: clamp(136px, 38vw, 168px);
+    max-height: 44px;
+  }
+
+  .main-nav,
+  .header-cta {
+    display: none !important;
+  }
+
+  .nav-toggle {
+    display: inline-grid;
+  }
+
+  .mobile-drawer {
+    width: min(92vw, 390px);
+    max-width: calc(100vw - 18px);
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  .mobile-drawer-head {
+    min-height: 68px;
+    padding: 14px 16px;
+  }
+
+  .mobile-drawer-nav {
+    gap: 5px;
+    padding: 12px;
+  }
+
+  .mobile-nav-link,
+  .mobile-nav-parent,
+  .mobile-nav-children a {
+    border-radius: 12px;
+    min-height: 48px;
+  }
+
+  .mobile-nav-children {
+    padding: 4px 0 8px 12px;
+  }
+
+  .mobile-drawer-foot {
+    padding: 14px 16px 18px;
+  }
+
+  .mobile-drawer-foot .btn,
+  .mobile-call {
+    min-height: 48px;
+  }
+}
+
+@media (max-width: 768px) {
+  h1,
+  .hero-copy h1,
+  .page-hero-copy h1,
+  .product-detail-section .product-detail-copy h1 {
+    letter-spacing: 0;
+    text-wrap: balance;
+  }
+
+  p,
+  li,
+  .product-card-summary,
+  .contact-support-panel span {
+    text-wrap: pretty;
+  }
+
+  .container,
+  .container-wide,
+  .page-hero-with-image .page-hero-inner.container {
+    width: min(100% - 32px, var(--container));
+  }
+
+  .section,
+  section {
+    padding-block: clamp(42px, 9vw, 58px);
+  }
+
+  .section-heading {
+    margin-bottom: 22px;
+  }
+
+  .section-heading h2,
+  .contact-panel-heading h2,
+  .capability-spotlight h2,
+  .cta-panel h2 {
+    font-size: clamp(1.55rem, 7vw, 2.15rem);
+    line-height: 1.1;
+  }
+
+  .section-heading p,
+  .contact-panel-heading p,
+  .capability-spotlight p,
+  .cta-panel p {
+    font-size: 0.98rem;
+    line-height: 1.65;
+  }
+
+  .home-hero {
+    min-height: auto;
+    padding: 42px 0 30px;
+  }
+
+  .home-hero-bg img {
+    object-position: 58% center;
+  }
+
+  .hero-layout {
+    gap: 28px;
+  }
+
+  .hero-copy {
+    max-width: 100%;
+  }
+
+  .hero-copy h1 {
+    max-width: 12.5ch;
+    font-size: clamp(2rem, 9vw, 2.65rem);
+    line-height: 1.05;
+  }
+
+  .hero-copy p {
+    max-width: 36rem;
+    font-size: 1rem;
+    line-height: 1.64;
+  }
+
+  .hero-actions,
+  .page-hero-actions,
+  .detail-actions,
+  .contact-location-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .hero-actions .btn,
+  .page-hero-actions .btn,
+  .detail-actions .btn,
+  .contact-location-actions .btn,
+  .cta-panel .btn,
+  .center-action .btn {
+    width: 100%;
+    min-height: 48px;
+    justify-content: center;
+  }
+
+  .hero-trust-row {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .hero-visual {
+    min-height: clamp(280px, 82vw, 420px);
+    border-radius: 18px;
+  }
+
+  .hero-visual,
+  .hero-visual img,
+  .hero-visual-frame {
+    max-width: 100%;
+  }
+
+  .hero-panel {
+    left: 14px;
+    right: 14px;
+    bottom: 14px;
+  }
+
+  .page-hero-with-image {
+    min-height: auto;
+    padding: 42px 0 34px;
+  }
+
+  .page-hero-bg img {
+    object-fit: cover;
+    object-position: var(--page-hero-image-position, center);
+  }
+
+  .page-hero-bg::after {
+    background:
+      linear-gradient(90deg, rgba(6, 22, 51, 0.72), rgba(6, 22, 51, 0.44) 58%, rgba(6, 22, 51, 0.28)),
+      linear-gradient(180deg, rgba(6, 22, 51, 0.16), rgba(6, 22, 51, 0.62));
+  }
+
+  .page-hero-copy h1 {
+    max-width: 19ch;
+    font-size: clamp(1.78rem, 8vw, 2.45rem);
+    line-height: 1.08;
+  }
+
+  .page-hero-copy > p {
+    max-width: 38rem;
+  }
+
+  .page-breadcrumbs {
+    max-width: 100%;
+    overflow-x: auto;
+    padding-bottom: 2px;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .page-breadcrumbs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .page-breadcrumb {
+    flex: 0 0 auto;
+  }
+
+  .page-hero-evidence {
+    border-radius: 18px;
+    padding: 16px;
+  }
+
+  .page-hero-stat-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .segment-grid,
+  .product-grid,
+  .featured-products-section .product-grid,
+  .products-catalogue-section .product-grid,
+  .capability-grid,
+  .quality-card-grid,
+  .process-grid,
+  .process-grid-stepped,
+  .differentiator-grid.accent-cards,
+  .leadership-grid,
+  .doc-grid,
+  .about-mission-grid,
+  .value-grid,
+  .advantage-grid,
+  .quality-points,
+  .service-list,
+  .contact-method-grid,
+  .contact-support-panel,
+  .footer-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .segment-card,
+  .product-card,
+  .advantage-card,
+  .certification-card,
+  .testimonial-card,
+  .value-card,
+  .differentiator-card,
+  .leadership-card,
+  .capability-card,
+  .process-card,
+  .large-info-card,
+  .contact-form-panel,
+  .contact-location-panel,
+  .partner-panel,
+  .country-detail-card,
+  .world-map-panel,
+  .cta-panel {
+    border-radius: 18px;
+  }
+
+  .segment-card,
+  .product-card,
+  .advantage-card,
+  .certification-card,
+  .testimonial-card,
+  .value-card,
+  .differentiator-card,
+  .leadership-card,
+  .capability-card,
+  .process-card,
+  .large-info-card {
+    min-height: 0;
+  }
+
+  .segment-card img {
+    height: clamp(170px, 48vw, 220px);
+  }
+
+  .split-layout,
+  .product-detail-layout,
+  .capability-spotlight,
+  .partner-layout,
+  .contact-layout,
+  .global-reach-layout {
+    grid-template-columns: 1fr !important;
+    gap: 22px;
+  }
+
+  .capability-card,
+  .large-info-card,
+  .process-card,
+  .differentiator-card,
+  .advantage-card,
+  .partner-panel,
+  .contact-form-panel,
+  .contact-location-panel {
+    padding: 20px;
+  }
+
+  .capability-card,
+  .large-info-card,
+  .process-card {
+    gap: 10px;
+  }
+
+  .capability-checklist div,
+  .service-list div,
+  .contact-support-panel div {
+    min-height: 58px;
+    padding: 15px;
+  }
+
+  .products-catalogue-section {
+    padding-top: 34px;
+  }
+
+  .products-catalogue-section .catalogue-overview {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(72%, 1fr));
+    gap: 12px;
+    margin-inline: -16px;
+    padding: 0 16px 8px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .products-catalogue-section .catalogue-overview::-webkit-scrollbar {
+    display: none;
+  }
+
+  .products-catalogue-section .catalogue-overview div {
+    scroll-snap-align: start;
+  }
+
+  .products-catalogue-section .product-filter {
+    position: static;
+    gap: 11px;
+    border-radius: 18px;
+    padding: 12px;
+  }
+
+  .products-catalogue-section .search-field {
+    min-height: 50px;
+  }
+
+  .products-catalogue-section .search-field input {
+    font-size: 16px;
+  }
+
+  .products-catalogue-section .segment-control {
+    flex-wrap: nowrap !important;
+    display: flex;
+    margin-inline: -4px;
+    padding: 2px 4px 6px;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .products-catalogue-section .segment-control::-webkit-scrollbar {
+    display: none;
+  }
+
+  .products-catalogue-section .segment-control button {
+    flex: 0 0 auto !important;
+    min-width: max-content;
+    min-height: 44px;
+    scroll-snap-align: start;
+  }
+
+  .products-catalogue-section .products-result-meta {
+    align-items: center;
+    border-radius: 14px;
+    padding: 12px 14px;
+  }
+
+  .product-card {
+    overflow: hidden;
+  }
+
+  .product-image-link,
+  .products-catalogue-section .product-image-link,
+  .featured-products-section .product-image-link {
+    height: clamp(168px, 46vw, 220px);
+  }
+
+  .product-card-body,
+  .products-catalogue-section .product-card-body,
+  .featured-products-section .product-card-body {
+    padding: 16px;
+  }
+
+  .product-card-body h3,
+  .products-catalogue-section .product-card-body h3,
+  .featured-products-section .product-card-body h3 {
+    min-height: 0;
+    font-size: 1rem;
+  }
+
+  .product-card-footer,
+  .products-catalogue-section .product-card-footer,
+  .featured-products-section .product-card-footer {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: stretch;
+  }
+
+  .product-card-footer .text-link,
+  .products-catalogue-section .product-card-footer .text-link,
+  .featured-products-section .product-card-footer .text-link,
+  .product-line-status {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .product-detail-section {
+    padding-top: 28px;
+  }
+
+  .product-detail-section .product-detail-media {
+    min-height: clamp(260px, 76vw, 390px);
+  }
+
+  .product-detail-section .product-detail-media.is-photo img {
+    min-height: clamp(260px, 76vw, 390px);
+  }
+
+  .product-detail-section .product-detail-copy,
+  .product-detail-section .product-section {
+    padding: 18px;
+  }
+
+  .product-detail-section .product-detail-quickfacts,
+  .product-detail-section .spec-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .product-detail-section .spec-item-wide {
+    grid-column: auto;
+  }
+
+  .product-detail-section .highlight-list {
+    display: grid;
+  }
+
+  .product-detail-section .highlight-list span,
+  .product-detail-section .product-trust-row span {
+    width: 100%;
+    border-radius: 14px;
+  }
+
+  .variant-options {
+    grid-template-columns: 1fr !important;
+  }
+
+  .usage-experience-panel,
+  .usage-context-list,
+  .usage-narrative-card {
+    grid-template-columns: 1fr !important;
+  }
+
+  .contact-form {
+    gap: 18px;
+  }
+
+  .form-grid,
+  .contact-submit-card {
+    grid-template-columns: 1fr !important;
+    gap: 12px;
+  }
+
+  .contact-form input,
+  .contact-form select,
+  .contact-form textarea {
+    min-height: 48px;
+    font-size: 16px;
+  }
+
+  .contact-submit-card .btn {
+    min-height: 50px;
+  }
+
+  .contact-map,
+  .contact-map iframe {
+    min-height: clamp(240px, 70vw, 320px);
+  }
+
+  .contact-method-card {
+    min-height: 76px;
+    padding: 16px;
+  }
+
+  .world-map-panel {
+    overflow: hidden;
+  }
+
+  .world-map-header {
+    display: grid;
+  }
+
+  .world-map {
+    aspect-ratio: 1.35 / 1;
+  }
+
+  .market-selector {
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory;
+  }
+
+  .market-selector button {
+    flex: 0 0 158px;
+    scroll-snap-align: start;
+  }
+
+  .country-detail-head,
+  .country-meta-grid,
+  .country-products,
+  .country-detail-list,
+  .country-card-action {
+    margin-inline: 18px;
+  }
+
+  .country-meta-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .footer-cta-strip {
+    padding: 36px 0 28px;
+  }
+
+  .footer-cta-inner h3 {
+    font-size: clamp(1.35rem, 7vw, 1.95rem);
+  }
+
+  .footer-newsletter {
+    display: grid;
+    grid-template-columns: 1fr;
+    padding: 10px;
+  }
+
+  .footer-newsletter input,
+  .footer-newsletter .btn-accent {
+    width: 100%;
+    min-height: 48px;
+  }
+
+  .footer-cert-inner {
+    display: grid;
+    justify-items: start;
+  }
+
+  .footer-cert-inner ul {
+    justify-content: flex-start;
+  }
+
+  .footer-grid {
+    padding-top: 34px;
+  }
+
+  .footer-brand {
+    min-width: 0;
+  }
+
+  .footer-grid h3 {
+    margin-bottom: 8px;
+  }
+
+  .footer-bottom {
+    display: grid;
+    justify-items: start;
+    gap: 10px;
+    text-align: left;
+  }
+
+  .footer-bottom-links {
+    display: grid;
+    gap: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container,
+  .container-wide,
+  .page-hero-with-image .page-hero-inner.container {
+    width: min(100% - 28px, var(--container));
+  }
+
+  .section,
+  section {
+    padding-block: 38px;
+  }
+
+  .mobile-drawer {
+    width: min(94vw, 360px);
+    max-width: calc(100vw - 12px);
+  }
+
+  .home-hero {
+    padding: 32px 0 24px;
+  }
+
+  .hero-copy h1 {
+    max-width: 13ch;
+  }
+
+  .hero-copy p,
+  .page-hero-copy > p {
+    font-size: 0.96rem;
+  }
+
+  .hero-visual,
+  .hero-visual img {
+    min-height: 300px;
+  }
+
+  .hero-panel {
+    padding: 15px;
+  }
+
+  .page-hero-with-image {
+    padding: 34px 0 28px;
+  }
+
+  .page-hero-copy h1 {
+    max-width: none;
+    font-size: clamp(1.65rem, 8.2vw, 2.08rem);
+  }
+
+  .page-hero-evidence {
+    padding: 14px;
+  }
+
+  .page-hero-stat-grid {
+    gap: 8px;
+  }
+
+  .products-catalogue-section .catalogue-overview {
+    grid-template-columns: repeat(3, minmax(84%, 1fr));
+  }
+
+  .products-catalogue-section .product-card-spec-strip,
+  .featured-products-section .product-card-spec-strip,
+  .product-card-spec-strip {
+    grid-template-columns: 1fr;
+  }
+
+  .products-catalogue-section .product-card-spec-strip div + div,
+  .featured-products-section .product-card-spec-strip div + div,
+  .product-card-spec-strip div + div {
+    border-top: 1px solid rgba(41, 87, 162, 0.08);
+    border-left: 0;
+  }
+
+  .product-image-badge,
+  .products-catalogue-section .product-image-badge,
+  .featured-products-section .product-image-badge {
+    max-width: calc(100% - 92px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .product-detail-section .product-detail-media {
+    min-height: 250px;
+    border-radius: 16px;
+  }
+
+  .product-detail-section .product-detail-media.is-vector {
+    padding: 20px;
+  }
+
+  .product-detail-section .product-detail-media.is-photo img {
+    min-height: 250px;
+  }
+
+  .product-detail-section .product-detail-media-label {
+    gap: 7px;
+  }
+
+  .product-detail-section .product-detail-media-label span,
+  .product-detail-section .product-detail-media-label strong {
+    min-height: 30px;
+    font-size: 0.72rem;
+  }
+
+  .product-detail-section .product-detail-copy,
+  .product-detail-section .product-section,
+  .contact-form-panel,
+  .contact-location-panel,
+  .partner-panel,
+  .large-info-card,
+  .advantage-card,
+  .process-card,
+  .capability-card,
+  .differentiator-card {
+    padding: 16px;
+  }
+
+  .contact-submit-card > div {
+    display: grid;
+    grid-template-columns: 36px minmax(0, 1fr);
+  }
+
+  .contact-method-card {
+    grid-template-columns: 40px minmax(0, 1fr);
+  }
+
+  .contact-method-card > svg {
+    display: none;
+  }
+
+  .contact-support-panel div {
+    border-right: 0 !important;
+  }
+
+  .world-map {
+    aspect-ratio: 1.18 / 1;
+  }
+
+  .global-reach-full .world-map {
+    min-height: 220px;
+  }
+
+  .global-reach-full .market-selector {
+    grid-template-columns: none;
+    display: flex;
+  }
+
+  .global-reach-full .market-selector button {
+    flex: 0 0 152px;
+  }
+
+  .country-detail-head,
+  .country-meta-grid,
+  .country-products,
+  .country-detail-list,
+  .country-card-action {
+    margin-inline: 16px;
+  }
+
+  .footer-socials a,
+  .footer-social-placeholder {
+    width: 42px;
+    height: 42px;
+  }
+}
+
+@media (max-width: 360px) {
+  .container,
+  .container-wide,
+  .page-hero-with-image .page-hero-inner.container {
+    width: min(100% - 24px, var(--container));
+  }
+
+  .brand-logo {
+    width: 126px;
+  }
+
+  .header-inner {
+    gap: 8px;
+  }
+
+  .icon-button {
+    width: 42px;
+    min-width: 42px;
+  }
+
+  .hero-copy h1 {
+    max-width: none;
+    font-size: clamp(1.82rem, 10vw, 2.12rem);
+  }
+
+  .page-hero-copy h1 {
+    font-size: clamp(1.52rem, 9vw, 1.92rem);
+  }
+
+  .page-hero-stat-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .products-catalogue-section .catalogue-overview {
+    grid-template-columns: repeat(3, minmax(90%, 1fr));
+    margin-inline: -12px;
+    padding-inline: 12px;
+  }
+
+  .product-card-body,
+  .products-catalogue-section .product-card-body,
+  .featured-products-section .product-card-body {
+    padding: 14px;
+  }
+
+  .contact-form-panel,
+  .contact-location-panel,
+  .partner-panel,
+  .large-info-card,
+  .advantage-card,
+  .process-card,
+  .capability-card,
+  .differentiator-card,
+  .product-detail-section .product-detail-copy,
+  .product-detail-section .product-section {
+    padding: 14px;
+  }
+
+  .footer-newsletter {
+    padding: 8px;
+  }
+}
+
+@media (hover: none) {
+  .btn:active,
+  .icon-button:active,
+  .mobile-nav-link:active,
+  .mobile-nav-parent:active,
+  .segment-control button:active,
+  .market-selector button:active,
+  .product-card:active,
+  .segment-card:active,
+  .large-info-card:active,
+  .advantage-card:active {
+    transition-duration: 80ms;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mobile-drawer,
+  .mobile-drawer-overlay,
+  .btn,
+  .icon-button,
+  .product-card,
+  .segment-card,
+  .advantage-card,
+  .large-info-card {
+    transition: none !important;
+  }
+}

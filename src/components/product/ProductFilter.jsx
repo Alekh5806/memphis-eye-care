@@ -8,7 +8,8 @@ function ProductFilter({ categoryId, search, onCategoryChange, onSearchChange })
         <Search size={18} />
         <input
           type="search"
-          placeholder="Search by product, strength, volume, dosage form..."
+          placeholder="Search products, strength, volume..."
+          aria-label="Search products by product, strength, volume, or dosage form"
           value={search}
           onChange={(event) => onSearchChange(event.target.value)}
         />

@@ -99,6 +99,7 @@ function Header() {
               type="button"
               aria-label={open ? 'Close menu' : 'Open menu'}
               aria-expanded={open}
+              aria-controls="mobile-navigation-drawer"
               onClick={() => setOpen((value) => !value)}
             >
               {open ? <X size={22} /> : <Menu size={22} />}
@@ -122,12 +123,15 @@ function Header() {
             <motion.aside
               key="drawer-panel"
               ref={drawerRef}
+              id="mobile-navigation-drawer"
               className="mobile-drawer"
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'tween', ease: [0.16, 1, 0.3, 1], duration: 0.35 }}
               aria-label="Mobile navigation"
+              aria-modal="true"
+              role="dialog"
             >
               <div className="mobile-drawer-head">
                 <Link className="brand" to="/" onClick={() => setOpen(false)}>
