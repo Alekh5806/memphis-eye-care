@@ -40,7 +40,7 @@ function Home() {
       <CertificationsStrip />
       <QualitySection />
       <Suspense fallback={<div style={{ minHeight: 540 }} />}>
-        <GlobalReachSection />
+        <GlobalReachSection mobileFull />
       </Suspense>
       <FeaturedProducts />
       <ContractManufacturingCTA />

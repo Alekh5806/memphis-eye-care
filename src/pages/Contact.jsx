@@ -62,6 +62,8 @@ function Contact() {
         eyebrow="Contact"
         title="Speak with Memphis Vision Care"
         text="Connect with our team for sterile prefilled syringe enquiries, contract manufacturing discussions, export partnerships, and documentation support."
+        mobileTitle="Start a Memphis enquiry."
+        mobileText="Send product, export, CDMO, or documentation requests to the right team."
         breadcrumbs={[{ label: 'Contact' }]}
         image="/images/hero/pages/syringe-preparation.jpg"
         imageAlt="Clinical syringe preparation representing specialist pharma enquiry support"

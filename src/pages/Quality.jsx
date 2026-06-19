@@ -24,6 +24,8 @@ function Quality() {
         eyebrow="Quality"
         title="Quality systems built for partners that audit, register, and rely."
         text="A documented quality system covering QA, QC, validation, and regulatory readiness — communicated transparently for healthcare and B2B audiences."
+        mobileTitle="Audit-ready quality systems."
+        mobileText="QA, QC, validation, and documentation support for regulated pharma partnerships."
         breadcrumbs={[{ label: 'Capabilities', path: '/capabilities' }, { label: 'Quality' }]}
         image="/images/hero/pages/syringe-preparation.jpg"
         imageAlt="Gloved specialist preparing a syringe under clinical lighting"

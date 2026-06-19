@@ -7,6 +7,8 @@ function PageHero({
   eyebrow,
   title,
   text,
+  mobileTitle,
+  mobileText,
   breadcrumbs,
   children,
   image,
@@ -51,8 +53,16 @@ function PageHero({
             </nav>
           )}
           {eyebrow && <span className="eyebrow">{eyebrow}</span>}
-          <h1>{title}</h1>
-          {text && <p>{text}</p>}
+          <h1>
+            <span className="hero-title-desktop">{title}</span>
+            <span className="hero-title-mobile">{mobileTitle || title}</span>
+          </h1>
+          {text && (
+            <p>
+              <span className="hero-text-desktop">{text}</span>
+              <span className="hero-text-mobile">{mobileText || text}</span>
+            </p>
+          )}
           {hasActions && (
             <div className="page-hero-actions">
               {actions.map((action, index) => (

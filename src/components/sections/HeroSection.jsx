@@ -30,11 +30,21 @@ function HeroSection() {
             <Sparkles size={13} /> Sterile prefilled syringe manufacturer
           </span>
           <h1>
-            Precision-engineered <span className="text-gradient">sterile PFS</span> for the world's most dependable healthcare partners.
+            <span className="hero-title-desktop">
+              Precision-engineered <span className="text-gradient">sterile PFS</span> for the world's most dependable healthcare partners.
+            </span>
+            <span className="hero-title-mobile">
+              Trusted <span className="text-gradient">sterile PFS</span> manufacturing.
+            </span>
           </h1>
           <p>
-            Memphis Vision Care manufactures ophthalmic, cardiac critical care, orthopaedic,
-            and gynaecology prefilled syringes — quality-led, partner-grade, and supplied across 25+ countries.
+            <span className="hero-text-desktop">
+              Memphis Vision Care manufactures ophthalmic, cardiac critical care, orthopaedic,
+              and gynaecology prefilled syringes — quality-led, partner-grade, and supplied across 25+ countries.
+            </span>
+            <span className="hero-text-mobile">
+              Ophthalmic, cardiac, orthopaedic, and gynaecology PFS products supplied across 25+ countries.
+            </span>
           </p>
           <div className="hero-actions">
             <Button to="/products">

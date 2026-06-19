@@ -562,6 +562,10 @@
   min-height: 44px;
 }
 
+.global-reach-mobile-only {
+  display: none;
+}
+
 /* ====================================================================
    WHOLE-SITE RESPONSIVE UX PASS — final overrides
    Keeps desktop surfaces intact while making tablet/mobile intentional.
@@ -1220,9 +1224,175 @@ button {
     scroll-snap-type: x mandatory;
   }
 
+  .global-reach-mobile-full {
+    background:
+      linear-gradient(180deg, #ffffff 0%, #f7faff 72%, #ffffff 100%),
+      #ffffff;
+  }
+
+  .global-reach-mobile-full .global-reach-topline .btn {
+    display: none;
+  }
+
+  .global-reach-mobile-full .global-reach-mobile-only {
+    display: grid;
+  }
+
+  .global-reach-mobile-full .global-capability-strip {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin: 0 0 18px;
+  }
+
+  .global-reach-mobile-full .global-capability-strip div {
+    min-height: 74px;
+    grid-template-columns: 42px minmax(0, 1fr);
+    gap: 3px 12px;
+    border-radius: 16px;
+    padding: 14px;
+  }
+
+  .global-reach-mobile-full .global-capability-strip svg {
+    width: 42px;
+    height: 42px;
+    border-radius: 13px;
+    background: rgba(15, 166, 179, 0.1);
+    padding: 10px;
+    color: var(--teal);
+  }
+
+  .global-reach-mobile-full .global-capability-strip strong {
+    font-size: 1.48rem;
+  }
+
   .market-selector button {
     flex: 0 0 158px;
     scroll-snap-align: start;
+  }
+
+  .global-reach-mobile-full .world-map-panel {
+    border-radius: 18px;
+    box-shadow: 0 16px 38px rgba(11, 34, 71, 0.08);
+  }
+
+  .global-reach-mobile-full .world-map-header {
+    align-items: stretch;
+    padding: 13px;
+  }
+
+  .global-reach-mobile-full .world-map-title {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 28px minmax(0, 1fr) auto;
+    gap: 8px;
+  }
+
+  .global-reach-mobile-full .world-map-title svg {
+    width: 28px;
+    height: 28px;
+    border-radius: 9px;
+    padding: 6px;
+    background: rgba(15, 166, 179, 0.1);
+  }
+
+  .global-reach-mobile-full .world-map-title span {
+    min-width: 0;
+    align-self: center;
+    font-size: 0.9rem;
+    line-height: 1.18;
+  }
+
+  .global-reach-mobile-full .world-map-title small {
+    align-self: center;
+    border-left: 0;
+    margin-left: 0;
+    padding: 5px 8px;
+    border-radius: 999px;
+    background: #eef7fb;
+    color: var(--primary);
+    font-size: 0.62rem;
+    white-space: nowrap;
+  }
+
+  .global-reach-mobile-full .map-caption {
+    width: 100%;
+    justify-content: flex-start;
+    border-radius: 14px;
+    padding: 9px 11px;
+  }
+
+  .global-reach-mobile-full .world-map {
+    aspect-ratio: 1.55 / 1;
+    min-height: 220px;
+  }
+
+  .global-reach-mobile-full .country-marker {
+    width: 34px;
+    height: 34px;
+  }
+
+  .global-reach-mobile-full .country-marker span {
+    width: 10px;
+    height: 10px;
+    box-shadow:
+      0 0 0 5px rgba(240, 123, 68, 0.18),
+      0 8px 16px rgba(240, 123, 68, 0.28);
+  }
+
+  .global-reach-mobile-full .country-marker.is-active span {
+    width: 12px;
+    height: 12px;
+    background: var(--teal);
+    box-shadow:
+      0 0 0 5px rgba(15, 166, 179, 0.18),
+      0 8px 18px rgba(15, 166, 179, 0.28);
+  }
+
+  .global-reach-mobile-full .market-selector {
+    display: flex;
+    grid-template-columns: none;
+    gap: 8px;
+    padding: 10px;
+    background:
+      linear-gradient(180deg, #ffffff, #f7fbff);
+  }
+
+  .global-reach-mobile-full .market-selector button {
+    flex: 0 0 152px;
+    min-height: 48px;
+    grid-template-columns: 18px minmax(0, 1fr);
+    gap: 1px 7px;
+    border-radius: 12px;
+    padding: 9px;
+  }
+
+  .global-reach-mobile-full .market-selector button:nth-child(n+7) {
+    display: grid !important;
+  }
+
+  .global-reach-mobile-full .market-selector span,
+  .global-reach-mobile-full .market-selector small {
+    min-width: 0;
+    overflow: hidden;
+    line-height: 1.12;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .global-reach-mobile-full .market-selector span {
+    font-size: 0.78rem;
+  }
+
+  .global-reach-mobile-full .market-selector small {
+    font-size: 0.62rem;
+  }
+
+  .global-reach-mobile-full .country-detail-card {
+    border-radius: 18px;
+  }
+
+  .global-reach-mobile-full .country-detail-list {
+    gap: 10px;
   }
 
   .country-detail-head,
@@ -1546,5 +1716,285 @@ button {
   .advantage-card,
   .large-info-card {
     transition: none !important;
+  }
+}
+
+/* ====================================================================
+   SMALL-DEVICE HERO SYSTEM — premium mobile hero treatment
+   ==================================================================== */
+
+.hero-title-mobile,
+.hero-text-mobile {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .hero-title-desktop,
+  .hero-text-desktop {
+    display: none;
+  }
+
+  .hero-title-mobile,
+  .hero-text-mobile {
+    display: inline;
+  }
+
+  .home-hero,
+  .page-hero-with-image {
+    isolation: isolate;
+    overflow: hidden;
+  }
+
+  .home-hero {
+    min-height: clamp(560px, 76svh, 650px);
+    align-items: start;
+    padding: 30px 0 24px;
+  }
+
+  .home-hero-bg img {
+    object-position: 60% center;
+    filter: saturate(0.9) contrast(1.08);
+  }
+
+  .home-hero-bg::after {
+    background:
+      linear-gradient(180deg, rgba(6, 22, 51, 0.9) 0%, rgba(8, 27, 60, 0.82) 52%, rgba(6, 22, 51, 0.96) 100%),
+      linear-gradient(90deg, rgba(6, 22, 51, 0.96), rgba(6, 22, 51, 0.42));
+  }
+
+  .home-hero .hero-layout {
+    gap: 18px;
+  }
+
+  .home-hero .hero-copy {
+    display: grid;
+    align-content: start;
+    min-height: 0;
+  }
+
+  .home-hero .eyebrow-hero,
+  .page-hero-with-image .eyebrow {
+    max-width: 100%;
+    min-height: 30px;
+    padding: 6px 11px;
+    font-size: 0.66rem;
+    letter-spacing: 0.08em;
+    line-height: 1.18;
+  }
+
+  .home-hero .hero-copy h1 {
+    max-width: 10.8ch;
+    margin-top: 16px;
+    font-size: clamp(2.12rem, 11vw, 2.82rem);
+    line-height: 0.98;
+  }
+
+  .home-hero .hero-copy p {
+    max-width: 30ch;
+    margin-top: 16px;
+    color: rgba(255, 255, 255, 0.82);
+    font-size: 0.98rem;
+    line-height: 1.56;
+  }
+
+  .home-hero .hero-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 9px;
+    margin-top: 22px;
+  }
+
+  .home-hero .hero-actions .btn {
+    width: 100%;
+    min-height: 50px;
+    border-radius: 999px;
+    justify-content: center;
+  }
+
+  .home-hero .hero-actions .btn-outline {
+    min-height: 44px;
+    border-color: rgba(255, 255, 255, 0.24);
+    background: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.92);
+    box-shadow: none;
+  }
+
+  .home-hero .hero-trust-row {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 8px;
+    max-width: calc(100vw - 28px);
+    margin: 18px -14px 0;
+    padding: 0 14px 4px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .home-hero .hero-trust-row::-webkit-scrollbar {
+    display: none;
+  }
+
+  .home-hero .hero-trust-row li {
+    flex: 0 0 auto;
+    min-height: 38px;
+    padding: 8px 12px;
+    scroll-snap-align: start;
+    white-space: nowrap;
+    font-size: 0.78rem;
+  }
+
+  .home-hero .hero-visual,
+  .home-hero .hero-scroll-cue {
+    display: none;
+  }
+
+  .page-hero-with-image {
+    min-height: auto;
+    padding: 30px 0 26px;
+  }
+
+  .page-hero-with-image .page-hero-bg::after {
+    background:
+      linear-gradient(180deg, rgba(6, 22, 51, 0.9) 0%, rgba(8, 27, 60, 0.82) 56%, rgba(6, 22, 51, 0.97) 100%),
+      linear-gradient(90deg, rgba(6, 22, 51, 0.96), rgba(6, 22, 51, 0.36));
+  }
+
+  .page-hero-with-image .page-hero-inner.container {
+    width: min(100% - 28px, var(--container));
+    gap: 16px;
+  }
+
+  .page-breadcrumbs {
+    margin-bottom: 14px;
+    font-size: 0.78rem;
+  }
+
+  .page-hero-copy h1 {
+    max-width: 12.5ch;
+    margin-top: 15px;
+    font-size: clamp(2rem, 10vw, 2.55rem);
+    line-height: 1;
+  }
+
+  .page-hero-copy > p {
+    max-width: 31ch;
+    margin-top: 15px;
+    color: rgba(255, 255, 255, 0.82);
+    font-size: 0.96rem;
+    line-height: 1.54;
+  }
+
+  .page-hero-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 9px;
+    margin-top: 22px;
+  }
+
+  .page-hero-actions .btn {
+    width: 100%;
+    min-height: 50px;
+    border-radius: 999px;
+    justify-content: center;
+  }
+
+  .page-hero-actions .btn-outline {
+    min-height: 44px;
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: none;
+  }
+
+  .page-hero-evidence {
+    margin-top: 4px;
+    padding: 14px;
+    border-radius: 16px;
+    background:
+      linear-gradient(145deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.07)),
+      rgba(6, 22, 51, 0.24);
+    box-shadow: 0 18px 46px rgba(0, 0, 0, 0.16);
+  }
+
+  .page-hero-panel-eyebrow {
+    min-height: 28px;
+    padding-inline: 10px;
+    font-size: 0.62rem;
+  }
+
+  .page-hero-panel-title {
+    margin-top: 12px;
+    font-size: 1.04rem;
+    line-height: 1.18;
+  }
+
+  .page-hero-evidence p {
+    display: none;
+  }
+
+  .page-hero-proof-list {
+    display: grid;
+    gap: 7px;
+    margin: 12px 0 0;
+    padding: 0;
+    overflow: visible;
+  }
+
+  .page-hero-proof-list li {
+    display: inline-flex;
+    width: 100%;
+    max-width: 100%;
+    align-items: center;
+    gap: 7px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 12px;
+    padding: 8px 10px;
+    background: rgba(255, 255, 255, 0.08);
+    white-space: normal;
+    font-size: 0.74rem;
+    line-height: 1.2;
+  }
+
+  .page-hero-proof-list li:nth-child(n+3) {
+    display: none;
+  }
+
+  .page-hero-stat-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    margin-top: 12px;
+  }
+
+  .page-hero-stat-grid div {
+    min-height: 58px;
+    border-radius: 12px;
+    padding: 9px;
+  }
+
+  .page-hero-stat-grid strong {
+    font-size: 1.16rem;
+  }
+
+  .page-hero-stat-grid span {
+    font-size: 0.6rem;
+    line-height: 1.18;
+  }
+}
+
+@media (max-width: 380px) {
+  .home-hero .hero-copy h1,
+  .page-hero-copy h1 {
+    font-size: clamp(1.78rem, 10vw, 2.22rem);
+  }
+
+  .home-hero .hero-copy p,
+  .page-hero-copy > p {
+    max-width: 29ch;
+    font-size: 0.92rem;
+  }
+
+  .home-hero .eyebrow-hero,
+  .page-hero-with-image .eyebrow {
+    font-size: 0.6rem;
   }
 }

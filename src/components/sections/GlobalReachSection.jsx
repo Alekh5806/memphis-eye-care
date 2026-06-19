@@ -18,13 +18,14 @@ import {
   globalReachSettings,
 } from '../../utils/globalReachUtils'
 
-function GlobalReachSection({ variant = 'preview' }) {
+function GlobalReachSection({ mobileFull = false, variant = 'preview' }) {
   const [selectedId, setSelectedId] = useState(globalReachCountries[0]?.id)
   const selectedCountry = useMemo(
     () => globalReachCountries.find((country) => country.id === selectedId) || globalReachCountries[0],
     [selectedId]
   )
   const isFull = variant === 'full'
+  const showMobileFull = mobileFull && !isFull
   const totalProductSegments = new Set(globalReachCountries.flatMap((country) => country.products)).size
   const countryCount = globalReachCountries.length
   const mapMarketLabel = getPluralizedLabel(countryCount, {
@@ -60,7 +61,13 @@ function GlobalReachSection({ variant = 'preview' }) {
   if (!selectedCountry) return null
 
   return (
-    <section className={`global-reach-section ${isFull ? 'global-reach-full' : ''}`}>
+    <section
+      className={[
+        'global-reach-section',
+        isFull ? 'global-reach-full' : '',
+        showMobileFull ? 'global-reach-mobile-full' : '',
+      ].filter(Boolean).join(' ')}
+    >
       <Container>
         <div className="section-topline global-reach-topline">
           <SectionHeading
@@ -75,8 +82,8 @@ function GlobalReachSection({ variant = 'preview' }) {
           )}
         </div>
 
-        {isFull && (
-          <div className="global-capability-strip">
+        {(isFull || showMobileFull) && (
+          <div className={`global-capability-strip ${showMobileFull ? 'global-reach-mobile-only' : ''}`.trim()}>
             {capabilityItems.map(({ icon: Icon, value, label }) => (
               <div key={label}>
                 <Icon size={20} />
@@ -236,8 +243,8 @@ function GlobalReachSection({ variant = 'preview' }) {
               ))}
             </div>
 
-            {isFull && (
-              <div className="country-detail-list">
+            {(isFull || showMobileFull) && (
+              <div className={`country-detail-list ${showMobileFull ? 'global-reach-mobile-only' : ''}`.trim()}>
                 <h4>Partner support</h4>
                 {selectedCountry.details.map((detail) => (
                   <div key={detail}>

@@ -21,6 +21,8 @@ function PartnerWithUs() {
         eyebrow="Partner with us"
         title="Structured partnerships for distributors, institutions, and export markets."
         text="Distributors, institutions, and export partners can use this route to start structured conversations around products, markets, documentation, and supply requirements."
+        mobileTitle="Partner with Memphis."
+        mobileText="Distribution, institutional, and export partnership routes for sterile PFS supply."
         breadcrumbs={[{ label: 'Capabilities', path: '/capabilities' }, { label: 'Partner With Us' }]}
         image="/images/hero/optimized/export-logistics.jpg"
         imageAlt="Cargo and logistics route for international healthcare distribution partnerships"
