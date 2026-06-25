@@ -177,18 +177,12 @@ Preferred Cloudflare Pages setup:
 - Build command: `npm run build`
 - Build output directory: `dist`
 - Functions directory: `functions`
+- Node version: `22`
 
 Deploy manually to the Pages project:
 
 ```sh
 npm run deploy:pages
-```
-
-Deploy to Workers Static Assets when using the Cloudflare configuration in
-`wrangler.jsonc`:
-
-```sh
-npm run deploy:workers
 ```
 
 Cloudflare Pages is also supported through the functions in `functions/api/forms`.

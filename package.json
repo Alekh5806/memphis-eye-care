@@ -3,11 +3,13 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "engines": {
+    "node": ">=22.12.0"
+  },
   "scripts": {
     "dev": "vite",
     "build": "npm run seo:sitemap && vite build",
-    "deploy": "npm run deploy:workers",
-    "deploy:workers": "npm run build && wrangler deploy",
+    "deploy": "npm run deploy:pages",
     "deploy:pages": "npm run build && wrangler pages deploy dist --project-name memphis-eye-care",
     "lint": "eslint .",
     "check:responsive": "node scripts/check-responsive.mjs",

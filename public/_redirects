@@ -1,13 +1,22 @@
-/index.php /
-/about.php /about
-/our-products.php /products
-/contact.php /contact
-/partner.php /partner-with-us
-/quality.php /quality
-/production-facility.php /manufacturing
-/manufacturing-contract.php /contract-manufacturing
-/regularity.php /quality
-/manf-contract.php /contract-manufacturing
-/facility.php /manufacturing
+/index.php / 301
+/about.php /about 301
+/our-products.php /products 301
+/contact.php /contact 301
+/partner.php /partner-with-us 301
+/quality.php /quality 301
+/production-facility.php /manufacturing 301
+/manufacturing-contract.php /contract-manufacturing 301
+/regularity.php /quality 301
+/manf-contract.php /contract-manufacturing 301
+/facility.php /manufacturing 301
 
-/* /index.html 200
+/about / 200
+/products / 200
+/capabilities / 200
+/manufacturing / 200
+/quality / 200
+/contract-manufacturing / 200
+/partner-with-us / 200
+/global-reach / 200
+/contact / 200
+/products/* / 200
