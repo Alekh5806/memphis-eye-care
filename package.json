@@ -6,6 +6,9 @@
   "scripts": {
     "dev": "vite",
     "build": "npm run seo:sitemap && vite build",
+    "deploy": "npm run deploy:workers",
+    "deploy:workers": "npm run build && wrangler deploy",
+    "deploy:pages": "npm run build && wrangler pages deploy dist --project-name memphis-eye-care",
     "lint": "eslint .",
     "check:responsive": "node scripts/check-responsive.mjs",
     "seo:sitemap": "node scripts/generate-sitemap.mjs",
@@ -28,6 +31,7 @@
     "eslint-plugin-react-refresh": "^0.5.2",
     "globals": "^17.6.0",
     "playwright": "^1.60.0",
-    "vite": "^8.0.12"
+    "vite": "^8.0.12",
+    "wrangler": "^4.104.0"
   }
 }
