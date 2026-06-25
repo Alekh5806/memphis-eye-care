@@ -12,7 +12,7 @@ const points = [
 
 function QualitySection() {
   return (
-    <section className="quality-band">
+    <section className="quality-band" id="home-quality">
       <Container className="quality-layout">
         <div>
           <span className="eyebrow">Quality and compliance</span>

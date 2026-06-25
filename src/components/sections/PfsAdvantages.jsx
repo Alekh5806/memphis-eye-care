@@ -43,7 +43,7 @@ function PfsAdvantages() {
   const { eyebrow, title, text, items } = content
 
   return (
-    <section className="section section-muted pfs-advantages-section">
+    <section className="section section-muted pfs-advantages-section" id="home-cdmo">
       <Container className="split-layout">
         <SectionHeading
           eyebrow={eyebrow}

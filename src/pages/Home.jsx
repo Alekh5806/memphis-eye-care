@@ -1,4 +1,5 @@
 import { lazy, Suspense } from 'react'
+import { Factory, Globe2, PackageCheck, ShieldCheck } from 'lucide-react'
 import DocumentHead from '../components/common/DocumentHead'
 import CertificationsStrip from '../components/sections/CertificationsStrip'
 import ContractManufacturingCTA from '../components/sections/ContractManufacturingCTA'
@@ -13,6 +14,13 @@ import company from '../data/company.json'
 
 // Heavy below-the-fold section (world-map paths) — split into its own chunk
 const GlobalReachSection = lazy(() => import('../components/sections/GlobalReachSection'))
+
+const mobilePathItems = [
+  { href: '#home-products', icon: PackageCheck, label: 'Products', meta: 'Sterile PFS' },
+  { href: '#home-quality', icon: ShieldCheck, label: 'Quality', meta: 'Compliance' },
+  { href: '#home-global', icon: Globe2, label: 'Global', meta: '25+ markets' },
+  { href: '#home-cdmo', icon: Factory, label: 'CDMO', meta: 'Partners' },
+]
 
 function Home() {
   return (
@@ -33,13 +41,22 @@ function Home() {
         }}
       />
       <HeroSection />
+      <nav className="home-mobile-path" aria-label="Home page quick sections">
+        {mobilePathItems.map(({ href, icon: Icon, label, meta }) => (
+          <a key={href} href={href}>
+            <Icon size={18} aria-hidden="true" />
+            <span>{label}</span>
+            <small>{meta}</small>
+          </a>
+        ))}
+      </nav>
       <PartnersMarquee />
       <StatsSection />
       <ProductSegments />
       <PfsAdvantages />
       <CertificationsStrip />
       <QualitySection />
-      <Suspense fallback={<div style={{ minHeight: 540 }} />}>
+      <Suspense fallback={<div id="home-global" style={{ minHeight: 540 }} />}>
         <GlobalReachSection mobileFull />
       </Suspense>
       <FeaturedProducts />

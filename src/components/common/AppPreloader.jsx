@@ -25,11 +25,11 @@ function AppPreloader() {
   useEffect(() => {
     if (!isVisible) return undefined
 
-    const leaveTimer = window.setTimeout(() => setIsLeaving(true), 850)
+    const leaveTimer = window.setTimeout(() => setIsLeaving(true), 420)
     const removeTimer = window.setTimeout(() => {
       markIntroSeen()
       setIsVisible(false)
-    }, 1200)
+    }, 680)
 
     return () => {
       window.clearTimeout(leaveTimer)

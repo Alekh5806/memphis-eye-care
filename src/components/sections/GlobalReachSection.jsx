@@ -62,6 +62,7 @@ function GlobalReachSection({ mobileFull = false, variant = 'preview' }) {
 
   return (
     <section
+      id={isFull ? undefined : 'home-global'}
       className={[
         'global-reach-section',
         isFull ? 'global-reach-full' : '',

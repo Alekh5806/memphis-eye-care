@@ -72,7 +72,7 @@ function HeroSection() {
           transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
         >
           <div className="hero-visual-frame">
-            <img src="/images/hero/pharma1.webp" alt="Sterile prefilled syringe manufacturing line" loading="eager" fetchPriority="high" />
+            <img src="/images/hero/pharma1.webp" alt="Sterile prefilled syringe manufacturing line" loading="lazy" fetchPriority="low" />
           </div>
           <motion.div
             className="hero-badge hero-badge-top"

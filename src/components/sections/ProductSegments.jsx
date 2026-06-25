@@ -7,7 +7,7 @@ import Container from '../common/Container'
 
 function ProductSegments() {
   return (
-    <section className="section">
+    <section className="section" id="home-products">
       <Container>
         <SectionHeading
           eyebrow="Therapeutic focus"
