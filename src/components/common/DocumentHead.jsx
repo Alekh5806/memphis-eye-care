@@ -2,15 +2,21 @@ import { useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 
 const DEFAULT_TITLE =
-  'Memphis Vision Care | Sterile Prefilled Syringe Manufacturer — Ophthalmic, Cardiac, Orthopaedic & Gynaecology'
+  'Memphis Vision Care | Sterile PFS Manufacturer in India'
 const DEFAULT_DESCRIPTION =
-  'Quality-led sterile prefilled syringe (PFS) manufacturer for ophthalmic, cardiac critical care, orthopaedic, and gynaecology segments — trusted by hospitals, distributors, and export partners across 25+ countries.'
+  'Sterile prefilled syringe manufacturer for ophthalmic, cardiac, orthopaedic, and gynaecology segments, serving healthcare partners across 25+ countries.'
 const SITE_URL = 'https://www.memphisvisioncare.com'
+const DEFAULT_SHARE_IMAGE = '/images/hero/pharma1.webp'
 
 function absoluteUrl(value) {
   if (!value) return value
   if (value.startsWith('http')) return value
   return `${SITE_URL}${value.startsWith('/') ? value : `/${value}`}`
+}
+
+function getShareImage(value) {
+  if (!value || value.endsWith('.svg')) return DEFAULT_SHARE_IMAGE
+  return value
 }
 
 function upsertMeta(attr, value, content) {
@@ -45,7 +51,7 @@ function DocumentHead({ title, description, image, type = 'website', canonicalPa
   const url = path.startsWith('http') ? path : `${SITE_URL}${path}`
   const finalTitle = title ? `${title} — Memphis Vision Care` : DEFAULT_TITLE
   const finalDescription = description || DEFAULT_DESCRIPTION
-  const finalImage = absoluteUrl(image || '/images/hero/pharma1.webp')
+  const finalImage = absoluteUrl(getShareImage(image))
 
   useEffect(() => {
     document.title = finalTitle
@@ -60,11 +66,13 @@ function DocumentHead({ title, description, image, type = 'website', canonicalPa
     upsertMeta('property', 'og:description', finalDescription)
     upsertMeta('property', 'og:url', url)
     upsertMeta('property', 'og:image', finalImage)
+    upsertMeta('property', 'og:image:alt', finalTitle)
 
     upsertMeta('name', 'twitter:card', 'summary_large_image')
     upsertMeta('name', 'twitter:title', finalTitle)
     upsertMeta('name', 'twitter:description', finalDescription)
     upsertMeta('name', 'twitter:image', finalImage)
+    upsertMeta('name', 'twitter:image:alt', finalTitle)
 
     // JSON-LD structured data
     const existing = document.getElementById('page-jsonld')

@@ -9,7 +9,7 @@ function GlobalReach() {
     <>
       <DocumentHead
         title="Global Reach"
-        description={globalReachSettings.pageHero.text}
+        description="Review Memphis Vision Care export markets, product categories, and documentation support for sterile PFS distribution partners."
       />
       <PageHero
         eyebrow={globalReachSettings.pageHero.eyebrow}

@@ -10,7 +10,6 @@ import PfsAdvantages from '../components/sections/PfsAdvantages'
 import ProductSegments from '../components/sections/ProductSegments'
 import QualitySection from '../components/sections/QualitySection'
 import StatsSection from '../components/sections/StatsSection'
-import company from '../data/company.json'
 
 // Heavy below-the-fold section (world-map paths) — split into its own chunk
 const GlobalReachSection = lazy(() => import('../components/sections/GlobalReachSection'))
@@ -27,18 +26,7 @@ function Home() {
     <>
       <DocumentHead
         title={null}
-        description={company.description}
-        structuredData={{
-          '@context': 'https://schema.org',
-          '@type': 'WebSite',
-          name: company.name,
-          url: 'https://www.memphisvisioncare.com/',
-          potentialAction: {
-            '@type': 'SearchAction',
-            target: 'https://www.memphisvisioncare.com/products?search={query}',
-            'query-input': 'required name=query',
-          },
-        }}
+        description="Sterile prefilled syringe manufacturer for ophthalmic, cardiac, orthopaedic, and gynaecology segments, serving healthcare partners across 25+ countries."
       />
       <HeroSection />
       <nav className="home-mobile-path" aria-label="Home page quick sections">

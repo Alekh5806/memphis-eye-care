@@ -25,7 +25,7 @@ function About() {
     <>
       <DocumentHead
         title="About Memphis Vision Care"
-        description={company.description}
+        description="Learn about Memphis Vision Care, a Gujarat-based sterile PFS manufacturer supporting hospitals, distributors, and pharma partners worldwide."
       />
       <PageHero
         eyebrow="About Memphis"

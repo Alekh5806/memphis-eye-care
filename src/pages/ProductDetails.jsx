@@ -56,9 +56,15 @@ function ProductDetails() {
   const category = getCategory(product)
   const selectedVariant = getVariantById(product, selectedVariantId)
   const selectedVariantImage = selectedVariant?.image ?? product.image ?? '/images/products/fallback.svg'
+  const selectedVariantShareImagePath = [
+    selectedVariantImage,
+    product.image,
+    category?.image,
+    '/images/hero/pharma1.webp',
+  ].find((path) => path && !path.endsWith('.svg'))
   const selectedVariantShareImage = selectedVariantImage.startsWith('http')
     ? selectedVariantImage
-    : `https://www.memphisvisioncare.com${selectedVariantImage}`
+    : `https://www.memphisvisioncare.com${selectedVariantShareImagePath}`
   const isSelectedImageVector = selectedVariantImage.endsWith('.svg')
   const variantLabel = selectedVariant?.strength ? ` - ${selectedVariant.strength}` : ''
   const mailSubject = encodeURIComponent(`Product enquiry: ${product.name}${variantLabel}`)
