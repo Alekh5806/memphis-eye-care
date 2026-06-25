@@ -23,7 +23,7 @@
 
 /* ---- Route fallback ------------------------------------------------ */
 .route-fallback {
-  min-height: 60vh;
+  min-height: 100svh;
   display: grid; place-items: center;
 }
 .route-fallback-spinner {
@@ -34,6 +34,37 @@
   animation: spin 0.9s linear infinite;
 }
 @keyframes spin { to { transform: rotate(360deg); } }
+
+main {
+  min-height: 100svh;
+}
+
+.global-reach-skeleton {
+  min-height: 1520px;
+  background:
+    linear-gradient(rgba(29, 68, 128, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(29, 68, 128, 0.035) 1px, transparent 1px),
+    linear-gradient(180deg, #ffffff 0%, #f7fbff 100%);
+  background-size: 72px 72px, 72px 72px, auto;
+}
+
+@media (max-width: 1120px) {
+  .global-reach-skeleton {
+    min-height: 2080px;
+  }
+}
+
+@media (max-width: 820px) {
+  .global-reach-skeleton {
+    min-height: 2140px;
+  }
+}
+
+@media (max-width: 760px) {
+  .global-reach-skeleton {
+    min-height: 1760px;
+  }
+}
 
 /* ---- Scroll progress ---------------------------------------------- */
 .scroll-progress {

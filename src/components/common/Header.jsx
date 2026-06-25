@@ -139,6 +139,8 @@ function Header() {
                     className="brand-logo"
                     src="/images/logo/memphis-vision-care-logo.svg"
                     alt={company.name}
+                    width="180"
+                    height="44"
                   />
                 </Link>
                 <button

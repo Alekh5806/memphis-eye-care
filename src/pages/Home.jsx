@@ -56,7 +56,7 @@ function Home() {
       <PfsAdvantages />
       <CertificationsStrip />
       <QualitySection />
-      <Suspense fallback={<div id="home-global" style={{ minHeight: 540 }} />}>
+      <Suspense fallback={<div id="home-global" className="global-reach-skeleton" aria-hidden="true" />}>
         <GlobalReachSection mobileFull />
       </Suspense>
       <FeaturedProducts />

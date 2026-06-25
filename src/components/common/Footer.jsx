@@ -122,7 +122,13 @@ function Footer() {
       <div className="container footer-grid">
         <div className="footer-company">
           <Link className="brand footer-brand" to="/">
-            <img className="brand-logo" src="/images/logo/memphis-vision-care-logo.svg" alt={company.name} />
+            <img
+              className="brand-logo"
+              src="/images/logo/memphis-vision-care-logo.svg"
+              alt={company.name}
+              width="180"
+              height="44"
+            />
           </Link>
           <p>
             Sterile prefilled syringe manufacturer producing ophthalmic, cardiac critical care,
