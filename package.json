@@ -9,7 +9,9 @@
   "scripts": {
     "dev": "vite",
     "build": "npm run seo:sitemap && vite build",
-    "deploy": "npm run deploy:pages",
+    "deploy": "npm run build && wrangler deploy",
+    "deploy:workers": "npm run deploy",
+    "deploy:dry-run": "npm run build && wrangler deploy --dry-run",
     "deploy:pages": "npm run build && wrangler pages deploy dist --project-name memphis-eye-care",
     "lint": "eslint .",
     "check:responsive": "node scripts/check-responsive.mjs",

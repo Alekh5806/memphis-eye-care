@@ -1,5 +1,28 @@
 const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || ''
 
+async function submitToFormsApi(endpoint, payload) {
+  const response = await fetch(endpoint, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+    },
+    body: JSON.stringify(payload),
+  })
+
+  if (response.status === 404) {
+    return null
+  }
+
+  const data = await response.json().catch(() => ({}))
+
+  if (!response.ok && !data.success) {
+    throw new Error(data.message || 'Form submission failed. Please try again.')
+  }
+
+  return data
+}
+
 async function submitToWeb3Forms(payload) {
   if (!accessKey) {
     throw new Error(
@@ -28,7 +51,13 @@ async function submitToWeb3Forms(payload) {
   return data
 }
 
-export function submitContactForm(payload) {
+export async function submitContactForm(payload) {
+  const serverResponse = await submitToFormsApi('/api/forms/contact', payload)
+
+  if (serverResponse) {
+    return serverResponse
+  }
+
   return submitToWeb3Forms({
     ...payload,
     subject: 'New website enquiry - Memphis Vision Care',
@@ -36,7 +65,13 @@ export function submitContactForm(payload) {
   })
 }
 
-export function submitNewsletterForm(payload) {
+export async function submitNewsletterForm(payload) {
+  const serverResponse = await submitToFormsApi('/api/forms/newsletter', payload)
+
+  if (serverResponse) {
+    return serverResponse
+  }
+
   return submitToWeb3Forms({
     ...payload,
     subject: 'New newsletter subscription - Memphis Vision Care',

@@ -172,23 +172,21 @@ Create a production build:
 npm run build
 ```
 
-Preferred Cloudflare Pages setup:
+Preferred Cloudflare Workers setup:
 
 - Build command: `npm run build`
-- Build output directory: `dist`
-- Functions directory: `functions`
+- Deploy command: `npx wrangler deploy`
 - Node version: `22`
 
-Deploy manually to the Pages project:
+Deploy manually:
 
 ```sh
-npm run deploy:pages
+npm run deploy
 ```
 
 Cloudflare Pages is also supported through the functions in `functions/api/forms`.
-If a host only serves the built `dist` folder and does not run the `functions`
-directory, configure `VITE_WEB3FORMS_ACCESS_KEY` in that host's build environment
-before running `npm run build`.
+For the current Cloudflare deploy command, the Worker in `src/worker.js` serves
+the built assets and form endpoints so `npx wrangler deploy` succeeds.
 
 Vite reads `VITE_*` values at build time. Rebuild and redeploy after changing
 hosting environment variables.
