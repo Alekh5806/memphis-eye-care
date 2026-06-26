@@ -31,8 +31,8 @@ function About() {
         eyebrow="About Memphis"
         title="A focused sterile manufacturer built around dependable healthcare partnerships."
         text={company.description}
-        mobileTitle="Focused sterile PFS manufacturing."
-        mobileText="A Gujarat-based sterile manufacturer supporting hospitals, distributors, and pharma partners worldwide."
+        mobileTitle="Built for sterile confidence."
+        mobileText="Focused PFS manufacturing for trusted healthcare supply."
         breadcrumbs={[{ label: 'About' }]}
         image="/images/hero/optimized/cleanroom-manufacturing.jpg"
         imageAlt="Sterile manufacturing team working in a controlled cleanroom"

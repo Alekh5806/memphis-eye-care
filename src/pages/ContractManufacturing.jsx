@@ -24,8 +24,8 @@ function ContractManufacturing() {
         eyebrow="Contract manufacturing"
         title="A dedicated CDMO route for pharma partners, distributors, and institutions."
         text="Memphis supports contract manufacturing conversations focused on sterile prefilled syringe products — with a clear service scope, partner-grade documentation, and disciplined supply support."
-        mobileTitle="Sterile PFS contract manufacturing."
-        mobileText="CDMO and third-party manufacturing conversations with quality-led documentation support."
+        mobileTitle="Sterile PFS partnerships."
+        mobileText="CDMO conversations with quality-led documentation."
         breadcrumbs={[{ label: 'Capabilities', path: '/capabilities' }, { label: 'Contract Manufacturing' }]}
         image="/images/hero/optimized/cleanroom-manufacturing.jpg"
         imageAlt="Cleanroom manufacturing environment for sterile pharmaceutical partnerships"

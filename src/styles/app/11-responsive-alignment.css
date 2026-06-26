@@ -3073,8 +3073,7 @@ button {
   }
 
   .page-breadcrumbs {
-    margin-bottom: 18px !important;
-    font-size: 0.86rem !important;
+    display: none !important;
   }
 
   .home-hero .hero-copy h1 {
@@ -3154,70 +3153,10 @@ button {
   }
 
   .home-hero .hero-trust-row {
-    display: flex !important;
-    flex-wrap: nowrap !important;
-    gap: 8px !important;
-    margin: 14px -16px 0 !important;
-    padding: 0 16px 2px !important;
-    overflow-x: auto !important;
-    scroll-snap-type: x mandatory !important;
-    scrollbar-width: none !important;
-    mask-image: none !important;
-  }
-
-  .home-hero .hero-trust-row::-webkit-scrollbar {
-    display: none;
-  }
-
-  .home-hero .hero-trust-row li {
-    flex: 0 0 auto !important;
-    min-height: 34px !important;
-    padding: 6px 10px !important;
-    border-radius: 999px !important;
-    font-size: 0.74rem !important;
-    line-height: 1.1 !important;
-    scroll-snap-align: start !important;
-    white-space: nowrap !important;
-  }
-
-  .home-hero .hero-trust-row li:nth-child(n+3) {
     display: none !important;
   }
 
   .page-hero-evidence {
-    margin-top: 14px !important;
-    padding: 0 !important;
-    border: 0 !important;
-    background: transparent !important;
-    box-shadow: none !important;
-    backdrop-filter: none !important;
-  }
-
-  .page-hero-proof-list {
-    display: flex !important;
-    flex-wrap: nowrap !important;
-    gap: 8px !important;
-    margin: 0 -16px !important;
-    padding: 0 16px 2px !important;
-    overflow-x: auto !important;
-    scroll-snap-type: x mandatory !important;
-    scrollbar-width: none !important;
-  }
-
-  .page-hero-proof-list li,
-  .page-hero-proof-list li:nth-child(n+3) {
-    flex: 0 0 auto !important;
-    width: auto !important;
-    max-width: min(76vw, 310px) !important;
-    min-height: 34px !important;
-    padding: 6px 10px !important;
-    border-radius: 999px !important;
-    font-size: 0.74rem !important;
-    line-height: 1.15 !important;
-    white-space: nowrap !important;
-  }
-
-  .page-hero-proof-list li:nth-child(n+3) {
     display: none !important;
   }
 

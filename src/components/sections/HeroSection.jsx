@@ -28,7 +28,7 @@ function HeroSection() {
               Precision-engineered <span className="text-gradient">sterile PFS</span> for the world's most dependable healthcare partners.
             </span>
             <span className="hero-title-mobile">
-              Trusted <span className="text-gradient">sterile PFS</span> manufacturing.
+              Sterile PFS, made dependable.
             </span>
           </h1>
           <p>
@@ -37,7 +37,7 @@ function HeroSection() {
               and gynaecology prefilled syringes — quality-led, partner-grade, and supplied across 25+ countries.
             </span>
             <span className="hero-text-mobile">
-              Ophthalmic, cardiac, orthopaedic, and gynaecology PFS products supplied across 25+ countries.
+              Quality-led prefilled syringe supply for healthcare partners worldwide.
             </span>
           </p>
           <div className="hero-actions">

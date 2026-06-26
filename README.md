@@ -58,7 +58,6 @@ functions/
   api/forms/       Cloudflare Pages Functions for form submissions
 public/
   images/          Product, hero, and logo assets
-  icons.svg
 ```
 
 ## Editable Content

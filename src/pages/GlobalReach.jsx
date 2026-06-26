@@ -15,8 +15,8 @@ function GlobalReach() {
         eyebrow={globalReachSettings.pageHero.eyebrow}
         title={globalReachSettings.pageHero.title}
         text={globalReachSettings.pageHero.text}
-        mobileTitle="Sterile PFS supply across 25+ countries."
-        mobileText="Review active markets, product categories, and country-specific export support."
+        mobileTitle="Supplying 25+ countries."
+        mobileText="Explore markets, products, and export support."
         breadcrumbs={[{ label: 'Global Reach' }]}
         image="/images/hero/optimized/export-logistics.jpg"
         imageAlt="International cargo containers representing pharmaceutical export logistics"

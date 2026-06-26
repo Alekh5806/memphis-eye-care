@@ -42,8 +42,8 @@ function Capabilities() {
         eyebrow="Capabilities"
         title="Integrated pharma capabilities for sterile PFS partnerships."
         text="Explore Memphis Vision Care's manufacturing, quality, documentation, and partnership capabilities for distributors, institutions, export markets, and pharma partners."
-        mobileTitle="Sterile PFS capabilities."
-        mobileText="Manufacturing, quality, documentation, and partnership support for pharma buyers."
+        mobileTitle="Capabilities for sterile supply."
+        mobileText="Manufacturing, quality, documents, and partner support."
         breadcrumbs={[{ label: 'Capabilities' }]}
         image="/images/hero/optimized/cleanroom-manufacturing.jpg"
         imageAlt="Sterile cleanroom production area for pharmaceutical manufacturing"

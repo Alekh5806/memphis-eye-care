@@ -46,8 +46,8 @@ function Products() {
     ? `${activeCategory.name} — Sterile PFS catalogue`
     : 'Sterile prefilled syringe products organised for fast buyer review.'
   const mobileHeroTitle = activeCategory
-    ? `${activeCategory.name} PFS catalogue`
-    : 'Sterile PFS product catalogue.'
+    ? `${activeCategory.name} PFS`
+    : 'Sterile PFS catalogue.'
 
   return (
     <>
@@ -61,7 +61,7 @@ function Products() {
         title={heroTitle}
         text="Search by product name, strength, fill volume, dosage form, or therapeutic segment to review grouped product lines and their available variants."
         mobileTitle={mobileHeroTitle}
-        mobileText="Browse product lines by segment, strength, fill volume, and pack format."
+        mobileText="Find product lines, strengths, and pack formats faster."
         breadcrumbs={activeCategory ? [{ label: 'Products', path: '/products' }, { label: activeCategory.name }] : [{ label: 'Products' }]}
         image="/images/hero/pages/clinical-syringe.jpg"
         imageAlt="Sterile syringe on a reflective clinical laboratory table"
