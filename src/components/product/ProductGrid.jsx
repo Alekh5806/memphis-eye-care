@@ -1,6 +1,6 @@
 import ProductCard from './ProductCard'
 
-function ProductGrid({ products }) {
+function ProductGrid({ products, variant = 'default' }) {
   if (!products.length) {
     return (
       <div className="empty-state">
@@ -11,9 +11,9 @@ function ProductGrid({ products }) {
   }
 
   return (
-    <div className="product-grid">
+    <div className={`product-grid ${variant === 'catalogue' ? 'product-grid-catalogue' : ''}`}>
       {products.map((product) => (
-        <ProductCard key={product.id} product={product} />
+        <ProductCard key={product.id} product={product} variant={variant} />
       ))}
     </div>
   )

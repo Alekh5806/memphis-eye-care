@@ -1,9 +1,17 @@
 import { useEffect, useRef, useState } from 'react'
-import { Search } from 'lucide-react'
+import { Bone, Eye, Grid2X2, HeartPulse, Search, SlidersHorizontal, Venus } from 'lucide-react'
 import categories from '../../data/categories.json'
+
+const categoryIcons = {
+  'ophthalmic-care': Eye,
+  'cardiac-critical-care': HeartPulse,
+  'orthopaedic-care': Bone,
+  'gynaecology-care': Venus,
+}
 
 function ProductFilter({ categoryId, search, onCategoryChange, onSearchChange }) {
   const [draftSearch, setDraftSearch] = useState(search)
+  const [segmentsOpen, setSegmentsOpen] = useState(true)
   const inputRef = useRef(null)
 
   useEffect(() => {
@@ -31,35 +39,57 @@ function ProductFilter({ categoryId, search, onCategoryChange, onSearchChange })
 
   return (
     <div className="product-filter">
-      <div className="search-field">
-        <Search size={18} />
-        <input
-          ref={inputRef}
-          type="search"
-          placeholder="Search products, strength, volume..."
-          aria-label="Search products by product, strength, volume, or dosage form"
-          value={draftSearch}
-          onChange={(event) => setDraftSearch(event.target.value)}
-        />
+      <div className="product-filter-primary">
+        <div className="search-field">
+          <Search size={20} />
+          <input
+            ref={inputRef}
+            type="search"
+            placeholder="Search products..."
+            aria-label="Search products by product, strength, volume, or dosage form"
+            value={draftSearch}
+            onChange={(event) => setDraftSearch(event.target.value)}
+          />
+        </div>
+        <button
+          className="product-filter-toggle"
+          type="button"
+          aria-controls="product-segment-control"
+          aria-expanded={segmentsOpen}
+          onClick={() => setSegmentsOpen((current) => !current)}
+        >
+          <SlidersHorizontal size={18} />
+          Filters
+        </button>
       </div>
-      <div className="segment-control" aria-label="Filter product segment">
+      <div
+        id="product-segment-control"
+        className={`segment-control ${segmentsOpen ? 'is-open' : ''}`}
+        aria-label="Filter product segment"
+      >
         <button
           className={categoryId === 'all' ? 'is-selected' : ''}
           type="button"
           onClick={() => onCategoryChange('all')}
         >
-          All
+          <Grid2X2 size={17} />
+          All Categories
         </button>
-        {categories.map((category) => (
-          <button
-            key={category.id}
-            className={categoryId === category.id ? 'is-selected' : ''}
-            type="button"
-            onClick={() => onCategoryChange(category.id)}
-          >
-            {category.shortName}
-          </button>
-        ))}
+        {categories.map((category) => {
+          const Icon = categoryIcons[category.id] ?? Grid2X2
+
+          return (
+            <button
+              key={category.id}
+              className={categoryId === category.id ? 'is-selected' : ''}
+              type="button"
+              onClick={() => onCategoryChange(category.id)}
+            >
+              <Icon size={17} />
+              {category.name}
+            </button>
+          )
+        })}
       </div>
     </div>
   )
