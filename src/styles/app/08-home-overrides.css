@@ -60,6 +60,81 @@ main > .section:has(.segment-grid) .section-heading {
   max-width: 880px;
 }
 
+.therapeutic-focus-section {
+  background:
+    linear-gradient(rgba(29, 68, 128, 0.026) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(29, 68, 128, 0.026) 1px, transparent 1px),
+    linear-gradient(180deg, #ffffff 0%, #f7fbff 100%);
+  background-size: 72px 72px, 72px 72px, auto;
+}
+
+.therapeutic-focus-intro {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+  align-items: stretch;
+  min-height: clamp(320px, 28vw, 390px);
+  overflow: hidden;
+  margin-bottom: clamp(24px, 3vw, 38px);
+  border: 1px solid rgba(29, 68, 128, 0.1);
+  border-radius: 24px;
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.96) 0%, rgba(255, 255, 255, 0.88) 48%, rgba(255, 255, 255, 0.08) 100%),
+    #eef6fb;
+  box-shadow: 0 20px 52px rgba(11, 34, 71, 0.08);
+}
+
+.therapeutic-focus-intro .section-heading {
+  position: relative;
+  z-index: 2;
+  max-width: 650px;
+  align-self: center;
+  margin: 0;
+  padding: clamp(30px, 3.5vw, 46px);
+}
+
+.therapeutic-focus-intro .section-heading h2 {
+  max-width: 18ch;
+  color: var(--primary-dark);
+  font-size: clamp(2.1rem, 3.1vw, 3.45rem);
+  line-height: 1.06;
+  letter-spacing: 0;
+}
+
+.therapeutic-focus-intro .section-heading p {
+  max-width: 48ch;
+  color: var(--ink-soft);
+}
+
+.therapeutic-focus-intro .btn {
+  margin-top: 26px;
+}
+
+.therapeutic-focus-media {
+  position: absolute;
+  inset: 0 0 0 auto;
+  z-index: 1;
+  width: 62%;
+}
+
+.therapeutic-focus-media::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.98) 0%, rgba(255, 255, 255, 0.62) 25%, rgba(255, 255, 255, 0.02) 62%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.1), rgba(15, 166, 179, 0.08));
+  pointer-events: none;
+}
+
+.therapeutic-focus-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 58% center;
+  filter: saturate(0.92) contrast(1.02);
+}
+
 .segment-grid,
 .product-grid {
   align-items: stretch;
@@ -71,12 +146,16 @@ main > .section:has(.segment-grid) .section-heading {
 }
 
 .segment-card {
+  --segment-accent: var(--teal);
   position: relative;
-  min-height: 420px;
+  min-height: 0;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  overflow: hidden;
   border-radius: 18px;
   border-color: rgba(29, 68, 128, 0.12);
   background: #ffffff;
-  box-shadow: 0 18px 44px rgba(11, 34, 71, 0.075);
+  box-shadow: 0 14px 36px rgba(11, 34, 71, 0.07);
   isolation: isolate;
   transition:
     transform 260ms var(--ease-out),
@@ -85,44 +164,55 @@ main > .section:has(.segment-grid) .section-heading {
 }
 
 .segment-card::before {
-  position: absolute;
-  inset: 0 0 auto;
-  z-index: 2;
-  height: 4px;
-  content: "";
-  background: linear-gradient(90deg, var(--primary), var(--teal), var(--brand-gold-500));
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 340ms var(--ease-out);
+  display: none;
 }
 
 .segment-card:hover,
 .segment-card:focus-visible {
-  transform: translateY(-6px);
-  border-color: rgba(15, 166, 179, 0.26);
-  box-shadow: 0 28px 64px rgba(11, 34, 71, 0.14);
+  transform: translateY(-4px);
+  border-color: rgba(29, 68, 128, 0.18);
+  box-shadow: 0 22px 48px rgba(11, 34, 71, 0.1);
 }
 
-.segment-card:hover::before,
-.segment-card:focus-visible::before {
-  transform: scaleX(1);
+.segment-card-media {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 1.55 / 1;
+  background: #edf4fb;
 }
 
-.segment-card img {
-  height: 196px;
+.segment-card-media::after {
+  position: absolute;
+  inset: auto 0 0;
+  height: 5px;
+  content: "";
+  background: var(--segment-accent);
+  opacity: 0.82;
+}
+
+.segment-card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   filter: saturate(0.98) contrast(1.03);
   transition: transform 700ms var(--ease-out), filter 260ms var(--ease-out);
 }
 
-.segment-card:hover img,
-.segment-card:focus-visible img {
+.segment-card:hover .segment-card-media img,
+.segment-card:focus-visible .segment-card-media img {
   filter: saturate(1.05) contrast(1.06);
-  transform: scale(1.05);
+  transform: scale(1.035);
+}
+
+.segment-card-body {
+  display: flex;
+  flex-direction: column;
+  padding: 22px 20px;
 }
 
 .segment-card span {
-  background: rgba(15, 166, 179, 0.09);
-  color: var(--primary);
+  background: color-mix(in srgb, var(--segment-accent) 10%, #ffffff);
+  color: var(--primary-dark);
 }
 
 .segment-card h3 {
@@ -136,6 +226,11 @@ main > .section:has(.segment-grid) .section-heading {
   line-height: 1.62;
 }
 
+.segment-card strong {
+  margin-top: auto;
+  padding-top: 20px;
+}
+
 .pfs-advantages-section .split-layout {
   align-items: center;
 }
@@ -145,19 +240,149 @@ main > .section:has(.segment-grid) .section-heading {
   top: 118px;
 }
 
+.pfs-advantages-section {
+  background:
+    linear-gradient(180deg, #eef6fb 0%, #f7fbff 100%);
+}
+
 .advantage-card {
-  min-height: 250px;
-  border-radius: 18px;
+  min-height: 218px;
+  border-radius: 16px;
+  box-shadow: 0 14px 34px rgba(11, 34, 71, 0.06);
 }
 
 .advantage-card:hover {
-  transform: translateY(-6px);
+  transform: translateY(-3px);
+}
+
+.advantage-number {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  color: var(--advantage-accent);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0;
+}
+
+.advantage-card h3 {
+  margin-top: 14px;
+  font-size: 1.04rem;
+}
+
+.advantage-card p {
+  line-height: 1.6;
 }
 
 .certification-card {
-  min-height: 260px;
-  border-radius: 18px;
-  box-shadow: 0 18px 44px rgba(11, 34, 71, 0.075);
+  min-height: 210px;
+  border-radius: 16px;
+  box-shadow: 0 14px 34px rgba(11, 34, 71, 0.06);
+}
+
+.certification-code {
+  width: fit-content;
+  min-height: 32px;
+  display: inline-flex;
+  align-items: center;
+  padding: 7px 10px;
+  border: 1px solid color-mix(in srgb, var(--cert-accent) 18%, transparent);
+  border-radius: 10px;
+  color: var(--primary-dark);
+  background: color-mix(in srgb, var(--cert-accent) 9%, #ffffff);
+  font-size: 0.82rem;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.certification-card small {
+  margin-top: 6px;
+  color: var(--primary);
+  font-size: 0.82rem;
+  font-weight: 850;
+  line-height: 1.35;
+}
+
+.certifications-section {
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(rgba(15, 166, 179, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(15, 166, 179, 0.035) 1px, transparent 1px),
+    linear-gradient(180deg, #f6fbfc 0%, #eef8f9 100%);
+  background-size: 80px 80px, 80px 80px, auto;
+}
+
+.certifications-topline {
+  display: grid;
+  grid-template-columns: minmax(0, 0.82fr) minmax(280px, 0.48fr);
+  gap: clamp(24px, 4vw, 56px);
+  align-items: center;
+  margin-bottom: 28px;
+}
+
+.certifications-topline .section-heading {
+  max-width: 760px;
+  margin-bottom: 0;
+}
+
+.compliance-visual {
+  position: relative;
+  min-height: 240px;
+  overflow: hidden;
+  border: 1px solid rgba(15, 166, 179, 0.16);
+  border-radius: 22px;
+  background:
+    radial-gradient(circle at 28% 36%, rgba(15, 166, 179, 0.14), transparent 34%),
+    linear-gradient(145deg, rgba(255, 255, 255, 0.88), rgba(231, 247, 249, 0.78));
+}
+
+.compliance-map {
+  position: absolute;
+  inset: 28px 18px;
+  opacity: 0.45;
+  background-image: radial-gradient(circle, rgba(29, 68, 128, 0.28) 1.1px, transparent 1.3px);
+  background-size: 12px 12px;
+  mask-image: radial-gradient(ellipse at center, #000 12%, transparent 68%);
+}
+
+.compliance-mark {
+  position: absolute;
+  top: 58px;
+  left: 50%;
+  display: grid;
+  place-items: center;
+  width: 118px;
+  height: 118px;
+  color: var(--teal);
+  font-family: var(--font-display);
+  font-size: 2.15rem;
+  font-weight: 650;
+  letter-spacing: 0;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(15, 166, 179, 0.22);
+  border-radius: 50%;
+  box-shadow: 0 18px 34px rgba(11, 34, 71, 0.08);
+  transform: translateX(-50%);
+}
+
+.compliance-market {
+  position: absolute;
+  right: 18px;
+  bottom: 18px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 38px;
+  padding: 9px 12px;
+  border: 1px solid rgba(29, 68, 128, 0.12);
+  border-radius: var(--radius-full);
+  color: var(--primary);
+  background: rgba(255, 255, 255, 0.84);
+  font-size: 0.82rem;
+  font-weight: 850;
+  box-shadow: 0 10px 22px rgba(11, 34, 71, 0.07);
 }
 
 .quality-band {
@@ -205,15 +430,283 @@ main > .section:has(.segment-grid) .section-heading {
   background-size: 56px 56px, 56px 56px, auto;
 }
 
+.b2b-partnership-section {
+  overflow: hidden;
+  scroll-margin-top: 96px;
+  padding-block: clamp(52px, 7vw, 88px);
+  background: linear-gradient(180deg, #ffffff 0%, #eef5fb 100%);
+}
+
+.cta-panel.b2b-partnership-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(300px, 0.55fr);
+  align-items: center;
+  min-height: clamp(330px, 31vw, 430px);
+  padding: clamp(30px, 4.4vw, 56px);
+  border: 1px solid rgba(182, 213, 232, 0.28);
+  border-radius: 24px;
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(120deg, #061633 0%, #0b2247 50%, #155a72 100%);
+  background-size: 58px 58px, 58px 58px, auto;
+  box-shadow:
+    0 26px 68px rgba(6, 22, 51, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.16);
+  isolation: isolate;
+}
+
+.cta-panel.b2b-partnership-panel::before {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  content: "";
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(6, 22, 51, 0.86) 0%, rgba(6, 22, 51, 0.38) 58%, rgba(6, 22, 51, 0.06) 100%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), transparent 36%);
+}
+
+.cta-panel.b2b-partnership-panel::after {
+  position: absolute;
+  inset: 10px;
+  z-index: 0;
+  width: auto;
+  height: auto;
+  content: "";
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 18px;
+  background: none;
+  pointer-events: none;
+}
+
+.b2b-partnership-copy {
+  position: relative;
+  z-index: 2;
+  max-width: 780px;
+}
+
+.cta-panel.b2b-partnership-panel .b2b-partnership-copy h2 {
+  max-width: 21ch;
+  color: #ffffff;
+  font-size: clamp(2.2rem, 4.2vw, 4.7rem);
+  line-height: 1.02;
+  letter-spacing: 0;
+  text-wrap: balance;
+}
+
+.cta-panel.b2b-partnership-panel .b2b-partnership-copy p {
+  max-width: 670px;
+  margin-top: 18px;
+  color: rgba(231, 242, 250, 0.82);
+  font-size: clamp(1rem, 1.2vw, 1.14rem);
+  line-height: 1.72;
+}
+
+.b2b-partnership-actions {
+  display: flex;
+  margin-top: 26px;
+}
+
+.cta-panel.b2b-partnership-panel .b2b-partnership-actions .btn {
+  min-height: 52px;
+  padding-inline: 24px;
+}
+
+.b2b-partnership-visual {
+  position: relative;
+  z-index: 1;
+  align-self: stretch;
+  min-height: 260px;
+}
+
+.b2b-syringe-model {
+  position: absolute;
+  top: 2%;
+  right: -20%;
+  width: min(680px, 54vw);
+  height: 150px;
+  transform: rotate(-24deg);
+  transform-origin: center;
+  filter: drop-shadow(0 34px 38px rgba(0, 0, 0, 0.22));
+}
+
+.b2b-syringe-plunger,
+.b2b-syringe-barrel,
+.b2b-syringe-tip,
+.b2b-syringe-needle {
+  position: absolute;
+  display: block;
+}
+
+.b2b-syringe-plunger {
+  top: 38px;
+  right: 0;
+  width: 178px;
+  height: 72px;
+  border: 2px solid rgba(206, 225, 239, 0.58);
+  border-left: 0;
+  border-radius: 0 999px 999px 0;
+  background: linear-gradient(90deg, rgba(232, 242, 250, 0.16), rgba(255, 255, 255, 0.04));
+}
+
+.b2b-syringe-barrel {
+  top: 24px;
+  right: 116px;
+  width: min(455px, 36vw);
+  height: 96px;
+  border: 1px solid rgba(225, 237, 246, 0.72);
+  border-radius: 999px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(228, 239, 247, 0.72) 48%, rgba(156, 187, 207, 0.22)),
+    rgba(255, 255, 255, 0.76);
+  box-shadow:
+    inset 0 12px 18px rgba(255, 255, 255, 0.46),
+    inset 0 -16px 22px rgba(48, 91, 122, 0.18);
+}
+
+.b2b-syringe-barrel span {
+  position: absolute;
+  top: 50%;
+  left: 42%;
+  color: #173c78;
+  font-family: var(--font-sans);
+  font-size: clamp(1.18rem, 2vw, 2rem);
+  font-weight: 900;
+  letter-spacing: 0;
+  transform: translate(-50%, -50%) rotate(7deg);
+}
+
+.b2b-syringe-barrel::before {
+  position: absolute;
+  top: 17px;
+  bottom: 17px;
+  left: 24px;
+  width: 45%;
+  content: "";
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(15, 166, 179, 0.18), rgba(15, 166, 179, 0.04));
+}
+
+.b2b-syringe-barrel::after {
+  position: absolute;
+  top: 26px;
+  right: 34px;
+  bottom: 26px;
+  width: 2px;
+  content: "";
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(20, 52, 100, 0.42) 0 3px,
+    transparent 3px 8px
+  );
+}
+
+.b2b-syringe-tip {
+  top: 58px;
+  right: calc(min(455px, 36vw) + 106px);
+  width: 96px;
+  height: 28px;
+  border-radius: 999px 0 0 999px;
+  background: linear-gradient(90deg, rgba(95, 187, 199, 0.42), rgba(227, 241, 248, 0.68));
+}
+
+.b2b-syringe-needle {
+  top: 72px;
+  right: calc(min(455px, 36vw) + 198px);
+  width: 168px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(218, 234, 246, 0.9));
+  transform: rotate(-4deg);
+  transform-origin: right center;
+}
+
 @media (max-width: 1120px) {
   .pfs-advantages-section .section-heading {
     position: static;
+  }
+
+  .therapeutic-focus-intro {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .therapeutic-focus-media {
+    width: 58%;
+    opacity: 0.58;
+  }
+
+  .certifications-topline {
+    grid-template-columns: 1fr;
+  }
+
+  .compliance-visual {
+    min-height: 190px;
+  }
+
+  .cta-panel.b2b-partnership-panel {
+    grid-template-columns: minmax(0, 1fr) 240px;
+    min-height: 0;
+  }
+
+  .b2b-partnership-copy {
+    max-width: 720px;
+  }
+
+  .cta-panel.b2b-partnership-panel .b2b-partnership-copy h2 {
+    max-width: 18ch;
+  }
+
+  .b2b-partnership-visual {
+    min-height: 250px;
+  }
+
+  .b2b-syringe-model {
+    top: 8%;
+    right: -160px;
+    width: 590px;
   }
 }
 
 @media (max-width: 760px) {
   main > .section:has(.segment-grid) {
     background-size: 52px 52px, 52px 52px, auto, auto;
+  }
+
+  .therapeutic-focus-section {
+    padding-block: 34px;
+  }
+
+  .therapeutic-focus-intro {
+    min-height: 0;
+    margin-bottom: 16px;
+    border-radius: 20px;
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(239, 247, 252, 0.92)),
+      #eef6fb;
+  }
+
+  .therapeutic-focus-intro .section-heading {
+    padding: 22px 18px;
+  }
+
+  .therapeutic-focus-intro .section-heading h2 {
+    max-width: 17ch;
+    font-size: clamp(1.78rem, 7.8vw, 2.28rem);
+    line-height: 1.08;
+  }
+
+  .therapeutic-focus-intro .section-heading p {
+    max-width: none;
+    font-size: 0.92rem;
+    line-height: 1.54;
+  }
+
+  .therapeutic-focus-intro .btn {
+    margin-top: 18px;
+  }
+
+  .therapeutic-focus-media {
+    display: none;
   }
 
   .segment-grid,
@@ -225,10 +718,15 @@ main > .section:has(.segment-grid) .section-heading {
   .segment-card {
     min-height: 0;
     border-radius: 16px;
+    padding-bottom: 0;
   }
 
-  .segment-card img {
-    height: 166px;
+  .segment-card-media {
+    aspect-ratio: 1.7 / 1;
+  }
+
+  .segment-card-media img {
+    height: 100%;
   }
 
   .segment-card span {
@@ -246,6 +744,10 @@ main > .section:has(.segment-grid) .section-heading {
     line-height: 1.55;
   }
 
+  .segment-card-body {
+    padding: 20px 18px;
+  }
+
   .advantage-card,
   .certification-card {
     min-height: 0;
@@ -257,6 +759,15 @@ main > .section:has(.segment-grid) .section-heading {
     padding: 16px;
   }
 
+  .certifications-topline {
+    gap: 18px;
+    margin-bottom: 18px;
+  }
+
+  .compliance-visual {
+    display: none;
+  }
+
   .cta-panel {
     display: grid;
     padding: 26px;
@@ -266,6 +777,105 @@ main > .section:has(.segment-grid) .section-heading {
   .cta-panel .btn {
     width: 100%;
     justify-content: center;
+  }
+
+  .b2b-partnership-section {
+    padding-block: 40px;
+  }
+
+  .cta-panel.b2b-partnership-panel {
+    grid-template-columns: 1fr;
+    min-height: 0;
+    padding: 24px 18px 26px;
+    border-radius: 20px;
+    background-size: 42px 42px, 42px 42px, auto;
+  }
+
+  .cta-panel.b2b-partnership-panel::after {
+    inset: 8px;
+    border-radius: 16px;
+  }
+
+  .cta-panel.b2b-partnership-panel .b2b-partnership-copy h2 {
+    max-width: none;
+    font-size: clamp(1.85rem, 8vw, 2.35rem);
+    line-height: 1.09;
+  }
+
+  .cta-panel.b2b-partnership-panel .b2b-partnership-copy p {
+    max-width: 27rem;
+    margin-top: 14px;
+    font-size: 0.94rem;
+    line-height: 1.58;
+  }
+
+  .b2b-partnership-actions {
+    margin-top: 20px;
+  }
+
+  .cta-panel.b2b-partnership-panel .b2b-partnership-actions .btn {
+    min-height: 48px;
+  }
+
+  .b2b-partnership-visual {
+    position: absolute;
+    inset: auto 0 0 auto;
+    width: 220px;
+    height: 110px;
+    min-height: 0;
+    overflow: hidden;
+    opacity: 0.18;
+    pointer-events: none;
+  }
+
+  .b2b-syringe-model {
+    top: 50px;
+    right: -150px;
+    width: 340px;
+    height: 96px;
+    transform: rotate(-17deg);
+  }
+
+  .b2b-syringe-plunger {
+    top: 25px;
+    width: 98px;
+    height: 42px;
+  }
+
+  .b2b-syringe-barrel {
+    top: 17px;
+    right: 64px;
+    width: 232px;
+    height: 58px;
+  }
+
+  .b2b-syringe-barrel span {
+    font-size: 0.98rem;
+  }
+
+  .b2b-syringe-barrel::before {
+    top: 12px;
+    bottom: 12px;
+    left: 17px;
+  }
+
+  .b2b-syringe-barrel::after {
+    top: 18px;
+    right: 24px;
+    bottom: 18px;
+  }
+
+  .b2b-syringe-tip {
+    top: 36px;
+    right: 290px;
+    width: 52px;
+    height: 18px;
+  }
+
+  .b2b-syringe-needle {
+    top: 45px;
+    right: 338px;
+    width: 74px;
   }
 }
 

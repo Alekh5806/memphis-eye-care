@@ -18,7 +18,7 @@ const mobilePathItems = [
   { href: '#home-products', icon: PackageCheck, label: 'Products', meta: 'Sterile PFS' },
   { href: '#home-quality', icon: ShieldCheck, label: 'Quality', meta: 'Compliance' },
   { href: '#home-global', icon: Globe2, label: 'Global', meta: '25+ markets' },
-  { href: '#home-cdmo', icon: Factory, label: 'CDMO', meta: 'Partners' },
+  { href: '#home-b2b', icon: Factory, label: 'CDMO', meta: 'Partners' },
 ]
 
 function Home() {

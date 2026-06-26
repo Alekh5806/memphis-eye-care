@@ -231,10 +231,6 @@ main > .section:nth-of-type(4) .section-heading h2 {
   transform: translateY(-6px);
 }
 
-.advantage-card:hover .advantage-icon {
-  transform: translateY(-3px) rotate(-2deg);
-}
-
 .certifications-section {
   position: relative;
   overflow: hidden;
@@ -474,7 +470,6 @@ main > .section:has(.product-grid) {
   .segment-card::after,
   .segment-card img,
   .advantage-card,
-  .advantage-card .advantage-icon,
   .quality-points div,
   .quality-points div::before,
   .product-card {
@@ -1094,57 +1089,6 @@ main {
   gap: 16px;
 }
 
-.advantage-icon {
-  position: relative;
-  display: grid;
-  place-items: center;
-  width: 52px;
-  height: 52px;
-  flex: 0 0 auto;
-  border: 1px solid rgba(var(--advantage-accent-rgb), 0.22);
-  border-radius: 12px;
-  color: var(--primary);
-  background: linear-gradient(180deg, #f8fcff, #eaf3fb);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.85),
-    0 10px 24px rgba(11, 34, 71, 0.08);
-  transition:
-    color 220ms var(--ease-out),
-    transform 220ms var(--ease-out),
-    border-color 220ms var(--ease-out);
-}
-
-.advantage-icon::before {
-  position: absolute;
-  inset: 6px;
-  border: 1px solid rgba(var(--advantage-accent-rgb), 0.12);
-  border-radius: 8px;
-  content: "";
-}
-
-.advantage-icon::after {
-  display: none;
-}
-
-.advantage-icon svg {
-  color: currentColor;
-}
-
-.advantage-signal {
-  display: inline-flex;
-  align-items: center;
-  min-height: 28px;
-  border: 1px solid rgba(29, 68, 128, 0.13);
-  border-radius: var(--radius-full);
-  background: #f3f7fc;
-  color: var(--primary);
-  padding: 6px 10px;
-  font-size: 0.7rem;
-  font-weight: 850;
-  line-height: 1;
-  text-transform: uppercase;
-}
-
 .advantage-card h3,
 .advantage-card p,
 .advantage-card-line {
@@ -1180,12 +1124,6 @@ main {
   transform: translateY(-3px);
   border-color: rgba(29, 68, 128, 0.24);
   box-shadow: 0 22px 46px rgba(11, 34, 71, 0.1);
-}
-
-.advantage-card:hover .advantage-icon {
-  color: var(--advantage-accent);
-  transform: translateY(-1px);
-  border-color: rgba(var(--advantage-accent-rgb), 0.32);
 }
 
 .advantage-card:hover .advantage-card-line {

@@ -1,38 +1,30 @@
 {
   "eyebrow": "Why PFS",
-  "title": "Practical advantages of sterile prefilled syringes.",
-  "text": "Ready-to-use PFS presentations support controlled handling, cleaner workflows, and consistent product use across institutional healthcare environments.",
+  "title": "Practical advantages you can rely on.",
+  "text": "PFS presentations help reduce handling steps, support consistent workflows, and improve product readiness across healthcare settings.",
   "items": [
     {
       "id": "handling-risk",
-      "icon": "ShieldCheck",
       "accent": "#0fa6b3",
-      "signal": "Sterility focus",
-      "title": "Reduced handling risk",
+      "title": "Reduced Handling Risk",
       "text": "Ready-to-use presentations help limit extra preparation touchpoints before administration."
     },
     {
       "id": "dose-consistency",
-      "icon": "CircleGauge",
       "accent": "#1d4480",
-      "signal": "Measured dose",
-      "title": "Accurate pre-measured fill",
+      "title": "Accurate Pre-measured Fill",
       "text": "Standardized fill volumes support repeatable handling and clearer product use in clinical workflows."
     },
     {
       "id": "workflow-speed",
-      "icon": "HandHeart",
       "accent": "#2f5a98",
-      "signal": "Workflow ready",
-      "title": "Convenient administration",
+      "title": "Workflow Ready",
       "text": "PFS formats simplify preparation steps for healthcare teams working in time-sensitive environments."
     },
     {
       "id": "wastage-control",
-      "icon": "Droplets",
       "accent": "#088896",
-      "signal": "Wastage control",
-      "title": "Lower wastage potential",
+      "title": "Lower Wastage Potential",
       "text": "Pre-filled single-use formats can help reduce product loss compared with manual preparation."
     }
   ]

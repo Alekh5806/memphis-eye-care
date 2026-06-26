@@ -2120,6 +2120,49 @@ button {
     padding: 18px;
   }
 
+  section#home-products.therapeutic-focus-section .therapeutic-focus-intro .section-heading {
+    max-width: 100%;
+    margin-bottom: 0;
+  }
+
+  section#home-products.therapeutic-focus-section .segment-grid,
+  main .pfs-advantages-section .advantage-grid,
+  main .certifications-section .certifications-grid {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 14px;
+    margin-inline: 0;
+    padding: 0;
+    overflow: visible;
+    scroll-padding-left: 0;
+    scroll-snap-type: none;
+  }
+
+  section#home-products.therapeutic-focus-section .segment-grid > *,
+  main .pfs-advantages-section .advantage-grid > *,
+  main .pfs-advantages-section .advantage-card,
+  main .certifications-section .certifications-grid > *,
+  main .certifications-section .certification-card {
+    flex: initial;
+    scroll-snap-align: initial;
+  }
+
+  section#home-products.therapeutic-focus-section .segment-card {
+    min-height: 0;
+    padding-bottom: 0;
+  }
+
+  section#home-products.therapeutic-focus-section .segment-card-media img {
+    height: 100%;
+  }
+
+  section#home-products.therapeutic-focus-section .segment-card span,
+  section#home-products.therapeutic-focus-section .segment-card h3,
+  section#home-products.therapeutic-focus-section .segment-card p,
+  section#home-products.therapeutic-focus-section .segment-card strong {
+    margin-inline: 0;
+  }
+
   .quality-band {
     padding: 46px 0;
     background:
@@ -2866,6 +2909,111 @@ button {
 
   .product-detail-section .product-detail-quickfacts div {
     flex-basis: min(82%, 260px);
+  }
+}
+
+@media (min-width: 640px) and (max-width: 900px) {
+  section#home-products.therapeutic-focus-section .segment-grid,
+  main .pfs-advantages-section .advantage-grid,
+  main .certifications-section .certifications-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (max-width: 639px) {
+  section#home-products.therapeutic-focus-section .segment-grid,
+  main .pfs-advantages-section .advantage-grid,
+  main .certifications-section .certifications-grid {
+    display: flex !important;
+    grid-template-columns: none !important;
+    gap: 12px;
+    margin-inline: -14px;
+    padding: 2px 14px 12px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-padding-left: 14px;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  section#home-products.therapeutic-focus-section .segment-grid::-webkit-scrollbar,
+  main .pfs-advantages-section .advantage-grid::-webkit-scrollbar,
+  main .certifications-section .certifications-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  section#home-products.therapeutic-focus-section .segment-grid > *,
+  main .pfs-advantages-section .advantage-grid > *,
+  main .certifications-section .certifications-grid > * {
+    flex: 0 0 min(74vw, 292px);
+    scroll-snap-align: start;
+  }
+
+  section#home-products.therapeutic-focus-section .segment-card {
+    min-height: 320px;
+  }
+
+  section#home-products.therapeutic-focus-section .segment-card-media {
+    aspect-ratio: 2.05 / 1;
+  }
+
+  section#home-products.therapeutic-focus-section .segment-card-body {
+    padding: 15px 16px 17px;
+  }
+
+  section#home-products.therapeutic-focus-section .segment-card h3 {
+    margin-top: 12px;
+    font-size: 1.02rem;
+  }
+
+  section#home-products.therapeutic-focus-section .segment-card p {
+    display: -webkit-box;
+    overflow: hidden;
+    font-size: 0.88rem;
+    line-height: 1.5;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+
+  section#home-products.therapeutic-focus-section .segment-card strong {
+    padding-top: 12px;
+    font-size: 0.88rem;
+  }
+
+  main .pfs-advantages-section .advantage-card {
+    min-height: 188px;
+    padding: 16px;
+  }
+
+  main .pfs-advantages-section .advantage-card h3 {
+    margin-top: 10px;
+    font-size: 0.98rem;
+  }
+
+  main .pfs-advantages-section .advantage-card p {
+    display: -webkit-box;
+    overflow: hidden;
+    font-size: 0.86rem;
+    line-height: 1.48;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+  }
+
+  main .certifications-section .certifications-grid > * {
+    flex-basis: min(74vw, 292px);
+  }
+
+  main .certifications-section .certification-card {
+    min-height: 184px;
+    padding: 16px;
+  }
+
+  main .certifications-section .certification-card p {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
   }
 }
 

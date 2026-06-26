@@ -244,23 +244,3 @@
 
 /* Vector cards: hide the text label baked into svg (it duplicates the h3) */
 /* (no-op — kept as future hook) */
-/* ---- Memphis premium preloader + image-backed heroes -------------- */
-.app-preloader {
-  position: fixed;
-  inset: 0;
-  z-index: 3000;
-  isolation: isolate;
-  display: grid;
-  place-items: center;
-  align-content: center;
-  gap: 24px;
-  align-content: center;
-  padding: 28px;
-  overflow: hidden;
-  background:
-    radial-gradient(circle at 50% 42%, rgba(255, 255, 255, 0.22), transparent 21%),
-    radial-gradient(circle at 18% 22%, rgba(200, 146, 64, 0.28), transparent 28%),
-    radial-gradient(circle at 82% 74%, rgba(15, 166, 179, 0.3), transparent 30%),
-    linear-gradient(135deg, var(--primary-deep), var(--primary));
-  color: #ffffff;
-}
