@@ -1,4 +1,4 @@
-import { useMemo } from 'react'
+import { startTransition, useCallback, useMemo } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { Layers3, PackageSearch, SlidersHorizontal } from 'lucide-react'
 import Container from '../components/common/Container'
@@ -16,7 +16,7 @@ function Products() {
   const categoryId = searchParams.get('category') || 'all'
   const activeCategory = categories.find((c) => c.id === categoryId)
 
-  const updateProductParams = (nextValues) => {
+  const updateProductParams = useCallback((nextValues) => {
     const nextCategory = nextValues.category ?? categoryId
     const nextSearch = nextValues.search ?? search
     const params = {}
@@ -24,13 +24,23 @@ function Products() {
     if (nextCategory && nextCategory !== 'all') params.category = nextCategory
     if (nextSearch.trim()) params.search = nextSearch.trim()
 
-    setSearchParams(params)
-  }
+    startTransition(() => {
+      setSearchParams(params)
+    })
+  }, [categoryId, search, setSearchParams])
+  const handleCategoryChange = useCallback((next) => {
+    updateProductParams({ category: next })
+  }, [updateProductParams])
+  const handleSearchChange = useCallback((next) => {
+    updateProductParams({ search: next })
+  }, [updateProductParams])
 
   const filteredProducts = useMemo(() => {
     return searchProducts(getProductsByCategory(products, categoryId), search)
   }, [categoryId, search])
-  const totalVariants = products.reduce((sum, product) => sum + (product.variants?.length ?? 0), 0)
+  const totalVariants = useMemo(() => {
+    return products.reduce((sum, product) => sum + (product.variants?.length ?? 0), 0)
+  }, [])
 
   const heroTitle = activeCategory
     ? `${activeCategory.name} — Sterile PFS catalogue`
@@ -92,8 +102,8 @@ function Products() {
           <ProductFilter
             categoryId={categoryId}
             search={search}
-            onCategoryChange={(next) => updateProductParams({ category: next })}
-            onSearchChange={(next) => updateProductParams({ search: next })}
+            onCategoryChange={handleCategoryChange}
+            onSearchChange={handleSearchChange}
           />
           <div className="products-result-meta" role="status" aria-live="polite">
             <strong>{filteredProducts.length}</strong>

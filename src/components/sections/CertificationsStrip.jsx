@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion'
 import Container from '../common/Container'
 import SectionHeading from '../common/SectionHeading'
 import certifications from '../../data/certifications.json'
@@ -20,21 +19,17 @@ function CertificationsStrip() {
           </div>
         </div>
         <div className="certifications-grid">
-          {certifications.map((cert, i) => (
-            <motion.article
+          {certifications.map((cert) => (
+            <article
               key={cert.id}
               className="certification-card"
-              initial={{ opacity: 0, y: 18 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.4, delay: i * 0.05 }}
             >
               <span className="certification-code" style={{ '--cert-accent': cert.color }}>
                 {cert.name}
               </span>
               <small>{cert.fullName}</small>
               <p>{cert.description}</p>
-            </motion.article>
+            </article>
           ))}
         </div>
       </Container>

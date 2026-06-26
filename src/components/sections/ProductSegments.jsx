@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom'
-import { motion } from 'framer-motion'
 import categories from '../../data/categories.json'
 import Button from '../common/Button'
 import Container from '../common/Container'
@@ -30,17 +29,11 @@ function ProductSegments() {
           </div>
         </div>
         <div className="segment-grid">
-          {categories.map((category, i) => {
+          {categories.map((category) => {
             const meta = categoryMeta[category.id] ?? categoryMeta['ophthalmic-care']
 
             return (
-              <motion.div
-                key={category.id}
-                initial={{ opacity: 0, y: 18 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.25 }}
-                transition={{ duration: 0.42, delay: i * 0.06 }}
-              >
+              <div key={category.id}>
                 <Link
                   className="segment-card"
                   to={`/products?category=${category.id}`}
@@ -56,7 +49,7 @@ function ProductSegments() {
                     <strong>View products</strong>
                   </div>
                 </Link>
-              </motion.div>
+              </div>
             )
           })}
         </div>

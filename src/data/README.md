@@ -249,21 +249,6 @@ Add / remove freely. The marquee loops automatically.
 The counter animates numeric prefixes (`25+`, `120+`). For 3 stats use 3
 objects, for 4 use 4 — the grid adapts.
 
----
-
-## `testimonials.json` — Testimonials slider
-
-```jsonc
-{
-  "id": "kvm-1",                                      // unique
-  "quote": "...",
-  "name": "Dr. Hari Menon",
-  "role": "Procurement Lead",
-  "organization": "Regional Eye Hospital Network",
-  "country": "Kenya",
-  "rating": 5                                         // 1–5
-}
-```
 
 ---
 

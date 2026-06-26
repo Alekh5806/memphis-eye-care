@@ -1,17 +1,15 @@
 import { useEffect, useState } from 'react'
 import { ArrowUp } from 'lucide-react'
+import { isPastScrollThreshold, subscribeToScrollThreshold } from '../../utils/scrollSignals'
 
 /**
  * Floating back-to-top button. Appears after the user scrolls > 600px.
  */
 function BackToTop() {
-  const [visible, setVisible] = useState(false)
+  const [visible, setVisible] = useState(() => isPastScrollThreshold(600))
 
   useEffect(() => {
-    const onScroll = () => setVisible(window.scrollY > 600)
-    onScroll()
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
+    return subscribeToScrollThreshold(600, setVisible)
   }, [])
 
   if (!visible) return null

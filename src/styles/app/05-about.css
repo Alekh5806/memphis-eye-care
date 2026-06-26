@@ -1237,10 +1237,6 @@
   .global-reach-stats { grid-template-columns: 1fr; }
 }
 
-/* ---- Newsletter card on home (if still used) ---------------------- */
-@media (max-width: 600px) {
-  .newsletter-card { padding: 28px 20px; }
-}
 /* ====================================================================
    PRODUCT CARD — premium polish (overrides earlier defaults)
    ==================================================================== */

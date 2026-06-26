@@ -1,17 +1,16 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
-import { AnimatePresence, motion } from 'framer-motion'
 import { ChevronDown, Menu, Phone, X } from 'lucide-react'
 import navigation from '../../data/navigation.json'
 import company from '../../data/company.json'
+import { isPastScrollThreshold, subscribeToScrollThreshold } from '../../utils/scrollSignals'
 import Button from './Button'
 
 function Header() {
   const [open, setOpen] = useState(false)
-  const [scrolled, setScrolled] = useState(false)
+  const [scrolled, setScrolled] = useState(() => isPastScrollThreshold(24))
   const [openGroup, setOpenGroup] = useState(null)
   const location = useLocation()
-  const drawerRef = useRef(null)
 
   /* eslint-disable react-hooks/set-state-in-effect -- closing the
      mobile drawer on navigation is a legitimate UI side-effect */
@@ -22,10 +21,7 @@ function Header() {
   /* eslint-enable react-hooks/set-state-in-effect */
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24)
-    onScroll()
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
+    return subscribeToScrollThreshold(24, setScrolled)
   }, [])
 
   useEffect(() => {
@@ -108,31 +104,19 @@ function Header() {
         </div>
       </header>
 
-      <AnimatePresence>
-        {open && (
-          <>
-            <motion.div
-              key="drawer-overlay"
-              className="mobile-drawer-overlay"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.2 }}
-              onClick={() => setOpen(false)}
-            />
-            <motion.aside
-              key="drawer-panel"
-              ref={drawerRef}
-              id="mobile-navigation-drawer"
-              className="mobile-drawer"
-              initial={{ x: '100%' }}
-              animate={{ x: 0 }}
-              exit={{ x: '100%' }}
-              transition={{ type: 'tween', ease: [0.16, 1, 0.3, 1], duration: 0.35 }}
-              aria-label="Mobile navigation"
-              aria-modal="true"
-              role="dialog"
-            >
+      {open && (
+        <>
+          <div
+            className="mobile-drawer-overlay"
+            onClick={() => setOpen(false)}
+          />
+          <aside
+            id="mobile-navigation-drawer"
+            className="mobile-drawer"
+            aria-label="Mobile navigation"
+            aria-modal="true"
+            role="dialog"
+          >
               <div className="mobile-drawer-head">
                 <Link className="brand" to="/" onClick={() => setOpen(false)}>
                   <img
@@ -209,10 +193,9 @@ function Header() {
                   <Phone size={16} /> {company.phone}
                 </a>
               </div>
-            </motion.aside>
-          </>
-        )}
-      </AnimatePresence>
+          </aside>
+        </>
+      )}
     </>
   )
 }

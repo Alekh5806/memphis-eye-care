@@ -1,7 +1,7 @@
 /* =====================================================================
    PREMIUM ENHANCEMENT LAYER — Memphis Vision Care
    Appended additions: utilities, top bar, header polish, drawer,
-   hero polish, marquees, certifications, testimonials, newsletter,
+   hero polish, marquees, certifications, footer newsletter,
    timeline, leadership, product polish, dock + back-to-top + progress.
    ===================================================================== */
 
@@ -149,6 +149,7 @@ main {
   background: rgba(6,22,51,0.55);
   backdrop-filter: blur(2px);
   z-index: 1100;
+  animation: mobileDrawerFade 160ms var(--ease-out, ease-out);
 }
 .mobile-drawer {
   position: fixed; top: 0; right: 0; bottom: 0;
@@ -157,6 +158,16 @@ main {
   z-index: 1101;
   display: flex; flex-direction: column;
   box-shadow: -24px 0 48px rgba(6,22,51,0.18);
+  animation: mobileDrawerSlide 260ms var(--ease-out, ease-out);
+  will-change: transform;
+}
+@keyframes mobileDrawerFade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes mobileDrawerSlide {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
 }
 .mobile-drawer-head {
   display: flex; align-items: center; justify-content: space-between;
@@ -369,100 +380,6 @@ main {
 }
 .certification-card small { color: var(--muted); font-size: 0.78rem; }
 .certification-card p { color: var(--muted); font-size: 0.86rem; margin: 6px 0 0; line-height: 1.5; }
-
-/* ---- Testimonials -------------------------------------------------- */
-.testimonials-section { padding: clamp(64px, 8vw, 110px) 0; background: linear-gradient(180deg, #fff, var(--bg)); }
-.testimonials-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 18px;
-  margin-top: 28px;
-}
-.testimonial-card {
-  position: relative;
-  margin: 0;
-  padding: 26px;
-  border-radius: var(--radius);
-  background: #fff;
-  border: 1px solid var(--line);
-  display: flex; flex-direction: column; gap: 14px;
-  box-shadow: 0 8px 24px rgba(11,34,71,0.05);
-  transition: transform 240ms var(--ease-out, ease-out), box-shadow 240ms var(--ease-out, ease-out);
-}
-.testimonial-card:hover { transform: translateY(-3px); box-shadow: 0 18px 36px rgba(11,34,71,0.10); }
-.testimonial-quote-icon { color: var(--teal); opacity: 0.6; }
-.testimonial-card blockquote {
-  margin: 0; font-size: 0.96rem; line-height: 1.6; color: var(--ink);
-}
-.testimonial-rating { display: inline-flex; gap: 2px; color: var(--amber, #c89240); }
-.testimonial-card figcaption {
-  border-top: 1px solid var(--line);
-  padding-top: 12px;
-  display: flex; flex-direction: column; gap: 2px;
-}
-.testimonial-card figcaption strong { color: var(--ink); font-size: 0.94rem; }
-.testimonial-card figcaption span { color: var(--muted); font-size: 0.82rem; }
-.testimonial-card figcaption small { color: var(--teal); font-size: 0.74rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; }
-
-/* ---- Newsletter (CTA section) ------------------------------------- */
-.newsletter-section { padding: clamp(56px, 7vw, 90px) 0; }
-.newsletter-card {
-  background: linear-gradient(135deg, var(--primary-deep) 0%, var(--primary) 60%, var(--teal) 130%);
-  color: #fff;
-  border-radius: var(--radius);
-  padding: clamp(28px, 4vw, 48px);
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: clamp(20px, 4vw, 48px);
-  align-items: center;
-  position: relative;
-  overflow: hidden;
-}
-.newsletter-card::before {
-  content: ""; position: absolute; inset: 0;
-  background: radial-gradient(circle at 80% 20%, rgba(255,255,255,0.18), transparent 50%);
-}
-.newsletter-card > * { position: relative; }
-.newsletter-card h2 { font-size: clamp(1.4rem, 2.4vw, 1.9rem); margin: 14px 0 10px; color: #fff; }
-.newsletter-card p { color: rgba(255,255,255,0.86); }
-.newsletter-trust {
-  list-style: none; padding: 0; margin: 18px 0 0;
-  display: flex; flex-wrap: wrap; gap: 8px;
-}
-.newsletter-trust li {
-  display: inline-flex; align-items: center; gap: 6px;
-  padding: 6px 12px; border-radius: 999px;
-  background: rgba(255,255,255,0.10);
-  font-size: 0.76rem;
-}
-.newsletter-form {
-  display: flex; gap: 10px; flex-wrap: wrap;
-  align-items: center;
-}
-.newsletter-form input {
-  flex: 1 1 220px;
-  padding: 14px 18px;
-  border-radius: 999px;
-  border: 1px solid rgba(255,255,255,0.18);
-  background: rgba(255,255,255,0.08);
-  color: #fff;
-  font-size: 0.95rem;
-  outline: none;
-}
-.newsletter-form input::placeholder { color: rgba(255,255,255,0.55); }
-.newsletter-form input:focus {
-  border-color: rgba(255,255,255,0.5);
-  background: rgba(255,255,255,0.14);
-}
-.newsletter-form button { flex: 0 0 auto; }
-.newsletter-success {
-  flex-basis: 100%;
-  color: #cfeef3;
-  font-size: 0.85rem;
-}
-@media (max-width: 820px) {
-  .newsletter-card { grid-template-columns: 1fr; }
-}
 
 /* ---- Footer CTA + newsletter (in footer) -------------------------- */
 .footer-cta-strip {
@@ -1207,6 +1124,8 @@ main {
   .quick-contact-pulse { animation: none; }
   .hero-scroll-cue span { animation: none; }
   .route-fallback-spinner { animation: none; }
+  .mobile-drawer,
+  .mobile-drawer-overlay { animation: none; }
   .product-card::before { display: none; }
   .usage-experience-panel::before,
   .usage-narrative-icon::after,
