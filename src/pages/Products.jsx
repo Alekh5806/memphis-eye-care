@@ -1,4 +1,4 @@
-import { startTransition, useCallback, useEffect, useMemo, useState } from 'react'
+import { startTransition, useCallback, useMemo, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { BadgeCheck, ChevronDown, ChevronLeft, ChevronRight, Eraser, Globe2, Plus, ShieldCheck, Stethoscope } from 'lucide-react'
 import Container from '../components/common/Container'
@@ -47,6 +47,16 @@ function Products() {
   const [page, setPage] = useState(1)
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE)
 
+  const resetCataloguePosition = useCallback(() => {
+    setPage(1)
+    setVisibleCount(PAGE_SIZE)
+  }, [])
+
+  const resetFacetSelections = useCallback(() => {
+    setSelectedStrengths([])
+    setSelectedPresentations([])
+  }, [])
+
   const updateProductParams = useCallback((nextValues) => {
     const nextCategory = nextValues.category ?? categoryId
     const nextSearch = nextValues.search ?? search
@@ -63,20 +73,18 @@ function Products() {
   }, [categoryId, search, setSearchParams, sort])
 
   const handleCategoryChange = useCallback((next) => {
+    resetFacetSelections()
+    resetCataloguePosition()
     updateProductParams({ category: next })
-  }, [updateProductParams])
+  }, [resetCataloguePosition, resetFacetSelections, updateProductParams])
   const handleSearchChange = useCallback((next) => {
+    resetCataloguePosition()
     updateProductParams({ search: next })
-  }, [updateProductParams])
+  }, [resetCataloguePosition, updateProductParams])
   const handleSortChange = useCallback((event) => {
+    resetCataloguePosition()
     updateProductParams({ sort: event.target.value })
-  }, [updateProductParams])
-
-  // Reset facet selections when category changes (options change with category)
-  useEffect(() => {
-    setSelectedStrengths([])
-    setSelectedPresentations([])
-  }, [categoryId])
+  }, [resetCataloguePosition, updateProductParams])
 
   const categoryProducts = useMemo(
     () => getProductsByCategory(products, categoryId),
@@ -157,11 +165,6 @@ function Products() {
   const totalPages = Math.max(1, Math.ceil(totalCount / PAGE_SIZE))
   const safePage = Math.min(page, totalPages)
 
-  useEffect(() => {
-    setPage(1)
-    setVisibleCount(PAGE_SIZE)
-  }, [categoryId, search, sort, selectedStrengths, selectedPresentations])
-
   const pageStart = (safePage - 1) * PAGE_SIZE
   const pageMaxEnd = Math.min(pageStart + PAGE_SIZE, totalCount)
   const cappedEnd = Math.min(pageStart + Math.max(visibleCount, PAGE_SIZE), pageMaxEnd)
@@ -172,14 +175,16 @@ function Products() {
   const showingTo = cappedEnd
 
   const toggleStrength = (value) => {
+    resetCataloguePosition()
     setSelectedStrengths((prev) => prev.includes(value) ? prev.filter((v) => v !== value) : [...prev, value])
   }
   const togglePresentation = (value) => {
+    resetCataloguePosition()
     setSelectedPresentations((prev) => prev.includes(value) ? prev.filter((v) => v !== value) : [...prev, value])
   }
   const clearAllFilters = () => {
-    setSelectedStrengths([])
-    setSelectedPresentations([])
+    resetCataloguePosition()
+    resetFacetSelections()
     if (search) updateProductParams({ search: '' })
   }
   const hasActiveFilters = selectedStrengths.length > 0 || selectedPresentations.length > 0 || Boolean(search)
@@ -231,29 +236,6 @@ function Products() {
             onSearchChange={handleSearchChange}
           />
 
-          <div className="catalogue-toolbar">
-            <div className="catalogue-toolbar-meta" role="status" aria-live="polite">
-              {totalCount > 0 ? (
-                <>
-                  Showing <strong>{showingFrom}&ndash;{showingTo}</strong> of <strong>{totalCount}</strong>{' '}
-                  {totalCount === 1 ? 'product line' : 'product lines'}
-                </>
-              ) : (
-                <span>No product lines match the current filters</span>
-              )}
-            </div>
-            <label className="product-sort-control">
-              <span>Sort by:</span>
-              <select value={sort} onChange={handleSortChange} aria-label="Sort products">
-                <option value="catalogue">Catalogue</option>
-                <option value="az">A to Z</option>
-                <option value="za">Z to A</option>
-                <option value="variants">Most variants</option>
-              </select>
-              <ChevronDown size={16} aria-hidden="true" />
-            </label>
-          </div>
-
           <div className="catalogue-layout">
             <aside className="catalogue-sidebar catalogue-sidebar-filters" aria-label="Quick filters">
               <div className="quick-filter-card">
@@ -285,6 +267,32 @@ function Products() {
             </aside>
 
             <div className="catalogue-results">
+              <div className="catalogue-toolbar">
+                <div className="catalogue-toolbar-meta" role="status" aria-live="polite">
+                  <span className="catalogue-toolbar-kicker">Catalogue results</span>
+                  <span>
+                    {totalCount > 0 ? (
+                      <>
+                        Showing <strong>{showingFrom}&ndash;{showingTo}</strong> of <strong>{totalCount}</strong>{' '}
+                        {totalCount === 1 ? 'product line' : 'product lines'}
+                      </>
+                    ) : (
+                      'No product lines match the current filters'
+                    )}
+                  </span>
+                </div>
+                <label className="product-sort-control">
+                  <span>Sort by:</span>
+                  <select value={sort} onChange={handleSortChange} aria-label="Sort products">
+                    <option value="catalogue">Catalogue</option>
+                    <option value="az">A to Z</option>
+                    <option value="za">Z to A</option>
+                    <option value="variants">Most variants</option>
+                  </select>
+                  <ChevronDown size={16} aria-hidden="true" />
+                </label>
+              </div>
+
               <ProductGrid products={pageItems} variant="catalogue" />
 
               {totalCount > 0 && (
@@ -341,30 +349,43 @@ function Products() {
                 </div>
               )}
             </div>
+          </div>
 
-            <aside className="catalogue-sidebar catalogue-sidebar-trust" aria-label="Why buyers choose Memphis Vision Care">
+          <section className="catalogue-assurance-panel" aria-label="Why buyers choose Memphis Vision Care">
+            <div className="assurance-panel-copy">
+              <span>Buyer confidence</span>
+              <h2>Built for product review, tender checks, and export-ready enquiries.</h2>
+              <p>Quality systems, clinical-use context, and supply support stay close to the catalogue without taking space from the products.</p>
+            </div>
+
+            <div className="assurance-proof-list">
               {TRUST_CARDS.map(({ icon: Icon, title, text }) => (
-                <article key={title} className="trust-card">
-                  <span className="trust-card-icon" aria-hidden="true">
-                    <Icon size={22} />
+                <article key={title} className="assurance-proof-item">
+                  <span className="assurance-proof-icon" aria-hidden="true">
+                    <Icon size={18} />
                   </span>
-                  <h3>{title}</h3>
-                  <p>{text}</p>
+                  <div>
+                    <h3>{title}</h3>
+                    <p>{text}</p>
+                  </div>
                 </article>
               ))}
-              <article className="trust-card trust-card-cta">
-                <span className="trust-card-icon" aria-hidden="true">
-                  <BadgeCheck size={22} />
-                </span>
+            </div>
+
+            <article className="assurance-quote-panel">
+              <span className="assurance-proof-icon" aria-hidden="true">
+                <BadgeCheck size={18} />
+              </span>
+              <div>
                 <h3>Need a custom quote?</h3>
-                <p>Share volumes and timelines — our specialists respond within one business day.</p>
-                <a className="trust-card-link" href="/contact?type=Product%20enquiry">
-                  Request a quote
-                  <ChevronRight size={15} aria-hidden="true" />
-                </a>
-              </article>
-            </aside>
-          </div>
+                <p>Share target products, volumes, market, and timelines.</p>
+              </div>
+              <a className="assurance-card-link" href="/contact?type=Product%20enquiry">
+                Request quote
+                <ChevronRight size={15} aria-hidden="true" />
+              </a>
+            </article>
+          </section>
         </Container>
       </section>
     </>

@@ -1,6 +1,8 @@
+import { motion } from 'framer-motion'
 import Container from '../common/Container'
 import SectionHeading from '../common/SectionHeading'
 import content from '../../data/pfsAdvantages.json'
+import { revealInView, revealTransition, riseReveal } from '../../utils/revealMotion'
 
 const hexToRgb = (hex) => {
   const fallback = '15, 166, 179'
@@ -32,17 +34,25 @@ function PfsAdvantages() {
   return (
     <section className="section section-muted pfs-advantages-section" id="home-cdmo">
       <Container className="split-layout">
-        <SectionHeading
-          eyebrow={eyebrow}
-          title={title}
-          text={text}
-        />
-        <div className="advantage-grid">
+        <motion.div variants={riseReveal} {...revealInView} transition={revealTransition()}>
+          <SectionHeading
+            eyebrow={eyebrow}
+            title={title}
+            text={text}
+          />
+        </motion.div>
+        <motion.div
+          className="advantage-grid"
+          {...revealInView}
+          transition={{ staggerChildren: 0.08 }}
+        >
           {items.map(({ id, accent, title, text }, i) => (
-            <article
+            <motion.article
               className="advantage-card"
               key={id ?? title}
               style={getAccentStyle(accent)}
+              variants={riseReveal}
+              transition={revealTransition(i * 0.05)}
             >
               <div className="advantage-card-top">
                 <span className="advantage-number">{String(i + 1).padStart(2, '0')}</span>
@@ -50,9 +60,9 @@ function PfsAdvantages() {
               <h3>{title}</h3>
               <p>{text}</p>
               <span className="advantage-card-line" aria-hidden="true" />
-            </article>
+            </motion.article>
           ))}
-        </div>
+        </motion.div>
       </Container>
     </section>
   )

@@ -1,5 +1,6 @@
 import { lazy, Suspense } from 'react'
 import { Factory, Globe2, PackageCheck, ShieldCheck } from 'lucide-react'
+import { motion } from 'framer-motion'
 import DocumentHead from '../components/common/DocumentHead'
 import CertificationsStrip from '../components/sections/CertificationsStrip'
 import ContractManufacturingCTA from '../components/sections/ContractManufacturingCTA'
@@ -10,6 +11,7 @@ import PfsAdvantages from '../components/sections/PfsAdvantages'
 import ProductSegments from '../components/sections/ProductSegments'
 import QualitySection from '../components/sections/QualitySection'
 import StatsSection from '../components/sections/StatsSection'
+import { revealTransition, revealViewport, riseReveal } from '../utils/revealMotion'
 
 // Heavy below-the-fold section (world-map paths) — split into its own chunk
 const GlobalReachSection = lazy(() => import('../components/sections/GlobalReachSection'))
@@ -29,7 +31,15 @@ function Home() {
         description="Sterile prefilled syringe manufacturer for ophthalmic, cardiac, orthopaedic, and gynaecology segments, serving healthcare partners across 25+ countries."
       />
       <HeroSection />
-      <nav className="home-mobile-path" aria-label="Home page quick sections">
+      <motion.nav
+        className="home-mobile-path"
+        aria-label="Home page quick sections"
+        variants={riseReveal}
+        initial="hidden"
+        whileInView="visible"
+        viewport={revealViewport}
+        transition={revealTransition(0.08)}
+      >
         {mobilePathItems.map(({ href, icon: Icon, label, meta }) => (
           <a key={href} href={href}>
             <Icon size={18} aria-hidden="true" />
@@ -37,7 +47,7 @@ function Home() {
             <small>{meta}</small>
           </a>
         ))}
-      </nav>
+      </motion.nav>
       <PartnersMarquee />
       <StatsSection />
       <ProductSegments />

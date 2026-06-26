@@ -536,8 +536,6 @@ main > section:not(.home-hero):not(.page-hero) {
 }
 
 /* ---------- Performance-friendly reveal motion ---------- */
-.page-reveal-pending .home-hero .hero-copy,
-.page-reveal-pending .home-hero .hero-badge,
 .page-reveal-pending .page-hero .page-hero-copy,
 .page-reveal-pending .page-hero .page-hero-evidence,
 .page-reveal-pending main > .section:first-child > .container,
@@ -546,22 +544,9 @@ main > section:not(.home-hero):not(.page-hero) {
   transform: translate3d(0, 28px, 0);
 }
 
-.page-reveal-pending .home-hero .hero-visual {
-  opacity: 0;
-  transform: translate3d(0, 28px, 0) scale(0.965);
-}
-
-.page-reveal-ready .home-hero .hero-copy {
-  animation: fade-up 760ms var(--ease-out) 0ms both;
-}
-
 .page-reveal-ready .page-hero .page-hero-copy,
 .page-reveal-ready main > .section:first-child > .container {
   animation: fade-up 760ms var(--ease-out) 0ms both;
-}
-
-.page-reveal-ready .home-hero .hero-visual {
-  animation: hero-panel-in 860ms var(--ease-out) 260ms both;
 }
 
 .page-reveal-ready .page-hero .page-hero-evidence,
@@ -569,51 +554,7 @@ main > section:not(.home-hero):not(.page-hero) {
   animation: hero-panel-in 860ms var(--ease-out) 220ms both;
 }
 
-.page-reveal-ready .home-hero .hero-badge-top {
-  animation: fade-up 620ms var(--ease-out) 760ms both;
-}
-
-.page-reveal-ready .home-hero .hero-badge-bottom {
-  animation: fade-up 620ms var(--ease-out) 900ms both;
-}
-
-@supports (animation-timeline: view()) {
-  .home-mobile-path,
-  .partners-marquee,
-  .therapeutic-focus-intro,
-  .pfs-advantages-section .section-heading,
-  .certifications-topline,
-  .quality-band .quality-layout > *,
-  .global-reach-section .section-topline,
-  .global-capability-strip,
-  .world-map-panel,
-  .country-detail-card,
-  .featured-products-section .section-topline,
-  .cta-panel.b2b-partnership-panel,
-  .stat-card,
-  .segment-grid > *,
-  .advantage-card,
-  .certification-card,
-  .featured-products-section .product-card,
-  .quality-points > * {
-    animation: fade-up both;
-    animation-timeline: view();
-    animation-range: entry 0% cover 26%;
-  }
-
-  .therapeutic-focus-media,
-  .global-reach-layout,
-  .b2b-partnership-visual {
-    animation: hero-panel-in both;
-    animation-timeline: view();
-    animation-range: entry 0% cover 30%;
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .home-hero .hero-copy,
-  .home-hero .hero-visual,
-  .home-hero .hero-badge,
   .page-hero .page-hero-copy,
   .page-hero .page-hero-evidence,
   main > .section:first-child > .container,

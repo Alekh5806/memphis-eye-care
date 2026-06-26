@@ -1,6 +1,8 @@
 import { ClipboardCheck, FileCheck2, Microscope, ShieldCheck } from 'lucide-react'
+import { motion } from 'framer-motion'
 import Button from '../common/Button'
 import Container from '../common/Container'
+import { revealInView, revealTransition, riseReveal } from '../../utils/revealMotion'
 
 const points = [
   { icon: ShieldCheck, label: 'Quality assurance systems' },
@@ -13,7 +15,7 @@ function QualitySection() {
   return (
     <section className="quality-band" id="home-quality">
       <Container className="quality-layout">
-        <div>
+        <motion.div variants={riseReveal} {...revealInView} transition={revealTransition()}>
           <span className="eyebrow">Quality and compliance</span>
           <h2>Trust should be visible before a buyer sends the first enquiry.</h2>
           <p>
@@ -23,15 +25,23 @@ function QualitySection() {
           <Button to="/quality" variant="light">
             View quality approach
           </Button>
-        </div>
-        <div className="quality-points">
-          {points.map(({ icon: Icon, label }) => (
-            <div key={label}>
+        </motion.div>
+        <motion.div
+          className="quality-points"
+          {...revealInView}
+          transition={{ staggerChildren: 0.08 }}
+        >
+          {points.map(({ icon: Icon, label }, index) => (
+            <motion.div
+              key={label}
+              variants={riseReveal}
+              transition={revealTransition(index * 0.05)}
+            >
               <Icon size={22} />
               <span>{label}</span>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </Container>
     </section>
   )

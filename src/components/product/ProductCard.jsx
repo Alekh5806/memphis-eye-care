@@ -63,6 +63,7 @@ function ProductCard({ product, variant = 'default' }) {
           </span>
         </div>
         <Link className="product-catalogue-action" to={detailPath} aria-label={`View ${product.name} details`}>
+          <span>View</span>
           <ArrowRight size={22} />
         </Link>
       </article>

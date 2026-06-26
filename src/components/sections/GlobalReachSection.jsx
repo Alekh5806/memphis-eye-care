@@ -7,11 +7,13 @@ import {
   PackageCheck,
   Send,
 } from 'lucide-react'
+import { motion } from 'framer-motion'
 import { useMemo, useState } from 'react'
 import Button from '../common/Button'
 import Container from '../common/Container'
 import SectionHeading from '../common/SectionHeading'
 import { worldMapPath } from '../../data/worldMapPath'
+import { panelReveal, revealInView, revealTransition, riseReveal } from '../../utils/revealMotion'
 import {
   getPluralizedLabel,
   globalReachCountries,
@@ -70,7 +72,12 @@ function GlobalReachSection({ mobileFull = false, variant = 'preview' }) {
       ].filter(Boolean).join(' ')}
     >
       <Container>
-        <div className="section-topline global-reach-topline">
+        <motion.div
+          className="section-topline global-reach-topline"
+          variants={riseReveal}
+          {...revealInView}
+          transition={revealTransition()}
+        >
           <SectionHeading
             eyebrow={globalReachSettings.eyebrow}
             title={globalReachSettings.section.title}
@@ -81,10 +88,15 @@ function GlobalReachSection({ mobileFull = false, variant = 'preview' }) {
               {globalReachSettings.section.previewButtonLabel} <ArrowRight size={18} />
             </Button>
           )}
-        </div>
+        </motion.div>
 
         {(isFull || showMobileFull) && (
-          <div className={`global-capability-strip ${showMobileFull ? 'global-reach-mobile-only' : ''}`.trim()}>
+          <motion.div
+            className={`global-capability-strip ${showMobileFull ? 'global-reach-mobile-only' : ''}`.trim()}
+            variants={riseReveal}
+            {...revealInView}
+            transition={revealTransition(0.08)}
+          >
             {capabilityItems.map(({ icon: Icon, value, label }) => (
               <div key={label}>
                 <Icon size={20} />
@@ -92,11 +104,17 @@ function GlobalReachSection({ mobileFull = false, variant = 'preview' }) {
                 <span>{label}</span>
               </div>
             ))}
-          </div>
+          </motion.div>
         )}
 
         <div className="global-reach-layout">
-          <div className="world-map-panel" aria-label="Interactive export countries map">
+          <motion.div
+            className="world-map-panel"
+            aria-label="Interactive export countries map"
+            variants={panelReveal}
+            {...revealInView}
+            transition={revealTransition(0, 0.65)}
+          >
             <div className="world-map-header">
               <div className="world-map-title">
                 <Globe2 size={22} />
@@ -212,9 +230,14 @@ function GlobalReachSection({ mobileFull = false, variant = 'preview' }) {
                 </button>
               ))}
             </div>
-          </div>
+          </motion.div>
 
-          <aside className="country-detail-card">
+          <motion.aside
+            className="country-detail-card"
+            variants={riseReveal}
+            {...revealInView}
+            transition={revealTransition(0.12)}
+          >
             <div className="country-detail-head">
               <span className="country-status">
                 <BadgeCheck size={16} />
@@ -263,7 +286,7 @@ function GlobalReachSection({ mobileFull = false, variant = 'preview' }) {
                 Enquire now <ArrowRight size={18} />
               </Button>
             </div>
-          </aside>
+          </motion.aside>
         </div>
       </Container>
     </section>

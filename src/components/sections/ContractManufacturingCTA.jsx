@@ -1,13 +1,20 @@
 import { ArrowRight } from 'lucide-react'
+import { motion } from 'framer-motion'
 import Button from '../common/Button'
 import Container from '../common/Container'
+import { panelReveal, revealInView, revealTransition, riseReveal } from '../../utils/revealMotion'
 
 function ContractManufacturingCTA() {
   return (
     <section id="home-b2b" className="section b2b-partnership-section">
       <Container>
         <div className="cta-panel b2b-partnership-panel">
-          <div className="b2b-partnership-copy">
+          <motion.div
+            className="b2b-partnership-copy"
+            variants={riseReveal}
+            {...revealInView}
+            transition={revealTransition()}
+          >
             <span className="eyebrow">B2B partnership</span>
             <h2>Discuss sterile PFS manufacturing requirements with Memphis.</h2>
             <p>
@@ -19,9 +26,15 @@ function ContractManufacturingCTA() {
                 Get in touch <ArrowRight size={18} />
               </Button>
             </div>
-          </div>
+          </motion.div>
 
-          <div className="b2b-partnership-visual" aria-hidden="true">
+          <motion.div
+            className="b2b-partnership-visual"
+            aria-hidden="true"
+            variants={panelReveal}
+            {...revealInView}
+            transition={revealTransition(0.12, 0.65)}
+          >
             <div className="b2b-syringe-model">
               <span className="b2b-syringe-plunger" />
               <span className="b2b-syringe-barrel">
@@ -30,7 +43,7 @@ function ContractManufacturingCTA() {
               <span className="b2b-syringe-tip" />
               <span className="b2b-syringe-needle" />
             </div>
-          </div>
+          </motion.div>
         </div>
       </Container>
     </section>

@@ -1,19 +1,27 @@
 import { Globe2, PackageCheck, ShieldCheck, TimerReset } from 'lucide-react'
+import { motion } from 'framer-motion'
 import Counter from '../common/Counter'
 import stats from '../../data/stats.json'
+import { revealInView, revealTransition, riseReveal } from '../../utils/revealMotion'
 
 const statIcons = [Globe2, PackageCheck, TimerReset, ShieldCheck]
 
 function StatsSection() {
   return (
     <section className="stats-section" id="home-stats">
-      <div className="container stats-grid">
+      <motion.div
+        className="container stats-grid"
+        {...revealInView}
+        transition={{ staggerChildren: 0.08 }}
+      >
         {stats.map((item, index) => {
           const Icon = statIcons[index] ?? ShieldCheck
           return (
-          <div
+          <motion.div
             className="stat-card"
             key={item.label}
+            variants={riseReveal}
+            transition={revealTransition(index * 0.04)}
           >
             <span className="stat-card-icon" aria-hidden="true">
               <Icon size={22} />
@@ -25,10 +33,10 @@ function StatsSection() {
               <span>{item.label}</span>
               {item.sub && <small>{item.sub}</small>}
             </div>
-          </div>
+          </motion.div>
           )
         })}
-      </div>
+      </motion.div>
     </section>
   )
 }

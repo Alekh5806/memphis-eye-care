@@ -20,10 +20,39 @@ const jsonHeaders = {
   'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
 }
 
+const previewFrameAncestors = "frame-ancestors 'self' http: https:"
+
 function jsonResponse(body, status = 200) {
   return new Response(JSON.stringify(body), {
     status,
     headers: jsonHeaders,
+  })
+}
+
+function withPreviewEmbeddingHeaders(response) {
+  const headers = new Headers(response.headers)
+  const contentType = headers.get('Content-Type') || ''
+  const isHtml = contentType.includes('text/html')
+
+  if (!isHtml) return response
+
+  headers.delete('X-Frame-Options')
+
+  const contentSecurityPolicy = headers.get('Content-Security-Policy')
+  const policyDirectives = contentSecurityPolicy
+    ? contentSecurityPolicy
+      .split(';')
+      .map((directive) => directive.trim())
+      .filter((directive) => directive && !directive.toLowerCase().startsWith('frame-ancestors'))
+    : []
+
+  policyDirectives.push(previewFrameAncestors)
+  headers.set('Content-Security-Policy', policyDirectives.join('; '))
+
+  return new Response(response.body, {
+    status: response.status,
+    statusText: response.statusText,
+    headers,
   })
 }
 
@@ -145,6 +174,7 @@ export default {
       return handleForms(request, env, url.pathname)
     }
 
-    return env.ASSETS.fetch(request)
+    const assetResponse = await env.ASSETS.fetch(request)
+    return withPreviewEmbeddingHeaders(assetResponse)
   },
 }
