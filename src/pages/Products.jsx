@@ -44,6 +44,7 @@ function Products() {
 
   const [selectedStrengths, setSelectedStrengths] = useState([])
   const [selectedPresentations, setSelectedPresentations] = useState([])
+  const [filtersOpen, setFiltersOpen] = useState(true)
   const [page, setPage] = useState(1)
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE)
 
@@ -185,9 +186,13 @@ function Products() {
   const clearAllFilters = () => {
     resetCataloguePosition()
     resetFacetSelections()
-    if (search) updateProductParams({ search: '' })
+    updateProductParams({ category: 'all', search: '' })
   }
-  const hasActiveFilters = selectedStrengths.length > 0 || selectedPresentations.length > 0 || Boolean(search)
+  const activeFilterCount =
+    selectedStrengths.length +
+    selectedPresentations.length +
+    (categoryId !== 'all' ? 1 : 0)
+  const hasActiveFilters = activeFilterCount > 0 || Boolean(search)
 
   const heroTitle = activeCategory
     ? `${activeCategory.name} — Sterile PFS catalogue`
@@ -230,14 +235,21 @@ function Products() {
       <section className="section section-ambient products-catalogue-section">
         <Container>
           <ProductFilter
+            activeFilterCount={activeFilterCount}
             categoryId={categoryId}
+            filtersOpen={filtersOpen}
             search={search}
             onCategoryChange={handleCategoryChange}
+            onFiltersToggle={() => setFiltersOpen((current) => !current)}
             onSearchChange={handleSearchChange}
           />
 
-          <div className="catalogue-layout">
-            <aside className="catalogue-sidebar catalogue-sidebar-filters" aria-label="Quick filters">
+          <div className={`catalogue-layout ${filtersOpen ? 'filters-open' : 'filters-closed'}`}>
+            <aside
+              id="product-quick-filters"
+              className="catalogue-sidebar catalogue-sidebar-filters"
+              aria-label="Quick filters"
+            >
               <div className="quick-filter-card">
                 <div className="quick-filter-heading">Quick Filters</div>
                 <FacetGroup

@@ -10,8 +10,7 @@ function ScrollToTop() {
 
   useEffect(() => {
     if (hash) return
-    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    window.scrollTo({ top: 0, left: 0, behavior: reduced ? 'auto' : 'instant' })
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
   }, [pathname, hash])
 
   return null

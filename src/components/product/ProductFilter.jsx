@@ -9,9 +9,16 @@ const categoryIcons = {
   'gynaecology-care': Venus,
 }
 
-function ProductFilter({ categoryId, search, onCategoryChange, onSearchChange }) {
+function ProductFilter({
+  activeFilterCount = 0,
+  categoryId,
+  filtersOpen = true,
+  onCategoryChange,
+  onFiltersToggle,
+  onSearchChange,
+  search,
+}) {
   const [draftSearch, setDraftSearch] = useState(search)
-  const [segmentsOpen, setSegmentsOpen] = useState(true)
   const inputRef = useRef(null)
 
   useEffect(() => {
@@ -52,19 +59,24 @@ function ProductFilter({ categoryId, search, onCategoryChange, onSearchChange })
           />
         </div>
         <button
-          className="product-filter-toggle"
+          className={`product-filter-toggle ${filtersOpen || activeFilterCount > 0 ? 'is-active' : ''}`.trim()}
           type="button"
-          aria-controls="product-segment-control"
-          aria-expanded={segmentsOpen}
-          onClick={() => setSegmentsOpen((current) => !current)}
+          aria-controls="product-segment-control product-quick-filters"
+          aria-expanded={filtersOpen}
+          onClick={onFiltersToggle}
         >
           <SlidersHorizontal size={18} />
           Filters
+          {activeFilterCount > 0 && (
+            <span className="product-filter-count" aria-label={`${activeFilterCount} active filters`}>
+              {activeFilterCount}
+            </span>
+          )}
         </button>
       </div>
       <div
         id="product-segment-control"
-        className={`segment-control ${segmentsOpen ? 'is-open' : ''}`}
+        className={`segment-control ${filtersOpen ? 'is-open' : ''}`}
         aria-label="Filter product segment"
       >
         <button
