@@ -34,7 +34,7 @@ function About() {
         mobileTitle="Built for sterile confidence."
         mobileText="Focused PFS manufacturing for trusted healthcare supply."
         breadcrumbs={[{ label: 'About' }]}
-        image="/images/hero/optimized/cleanroom-manufacturing.jpg"
+        image="/images/hero/optimized/cleanroom-manufacturing.webp"
         imageAlt="Sterile manufacturing team working in a controlled cleanroom"
         imagePosition="center"
         actions={[
@@ -136,7 +136,7 @@ function About() {
               viewport={{ once: true, amount: 0.28 }}
               transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
             >
-              <img src="/images/hero/optimized/cleanroom-manufacturing.jpg" alt="Sterile Memphis manufacturing environment" loading="lazy" />
+              <img src="/images/hero/optimized/cleanroom-manufacturing.webp" alt="Sterile Memphis manufacturing environment" loading="lazy" />
               <motion.div
                 className="about-profile-visual-card"
                 initial={{ opacity: 0, y: 18 }}

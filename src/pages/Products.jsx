@@ -215,7 +215,7 @@ function Products() {
         mobileTitle={mobileHeroTitle}
         mobileText="Find product lines, strengths, and pack formats faster."
         breadcrumbs={activeCategory ? [{ label: 'Products', path: '/products' }, { label: activeCategory.name }] : [{ label: 'Products' }]}
-        image="/images/hero/pages/clinical-syringe.jpg"
+        image="/images/hero/pages/clinical-syringe.webp"
         imageAlt="Sterile syringe on a reflective clinical laboratory table"
         imagePosition="center 58%"
         actions={[

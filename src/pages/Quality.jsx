@@ -27,7 +27,7 @@ function Quality() {
         mobileTitle="Quality you can verify."
         mobileText="QA, QC, validation, and documentation support."
         breadcrumbs={[{ label: 'Capabilities', path: '/capabilities' }, { label: 'Quality' }]}
-        image="/images/hero/pages/syringe-preparation.jpg"
+        image="/images/hero/pages/syringe-preparation.webp"
         imageAlt="Gloved specialist preparing a syringe under clinical lighting"
         imagePosition="center 32%"
         actions={[

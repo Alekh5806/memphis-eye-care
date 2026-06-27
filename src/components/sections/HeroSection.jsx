@@ -21,7 +21,7 @@ function HeroSection() {
       transition={{ staggerChildren: 0.12 }}
     >
       <div className="home-hero-bg" aria-hidden="true">
-        <img src="/images/hero/optimized/cleanroom-manufacturing.jpg" alt="" fetchPriority="high" />
+        <img src="/images/hero/optimized/cleanroom-manufacturing.webp" alt="" fetchPriority="high" />
         <span className="home-hero-orb home-hero-orb-1" />
         <span className="home-hero-orb home-hero-orb-2" />
         <span className="home-hero-grid" />

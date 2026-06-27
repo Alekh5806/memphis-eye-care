@@ -65,7 +65,7 @@ function Contact() {
         mobileTitle="Start the right conversation."
         mobileText="Send product, export, CDMO, or documentation enquiries."
         breadcrumbs={[{ label: 'Contact' }]}
-        image="/images/hero/pages/syringe-preparation.jpg"
+        image="/images/hero/pages/syringe-preparation.webp"
         imageAlt="Clinical syringe preparation representing specialist pharma enquiry support"
         imagePosition="center 34%"
         actions={[

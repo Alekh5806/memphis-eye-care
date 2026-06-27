@@ -24,7 +24,7 @@ function PartnerWithUs() {
         mobileTitle="Partner with Memphis."
         mobileText="Distribution, institutional, and export routes."
         breadcrumbs={[{ label: 'Capabilities', path: '/capabilities' }, { label: 'Partner With Us' }]}
-        image="/images/hero/optimized/export-logistics.jpg"
+        image="/images/hero/optimized/export-logistics.webp"
         imageAlt="Cargo and logistics route for international healthcare distribution partnerships"
         imagePosition="center"
         actions={[

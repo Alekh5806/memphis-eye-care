@@ -28,7 +28,7 @@ function Manufacturing() {
         mobileTitle="Controlled sterile manufacturing."
         mobileText="Aseptic filling, inspection, packing, and QA release."
         breadcrumbs={[{ label: 'Capabilities', path: '/capabilities' }, { label: 'Manufacturing' }]}
-        image="/images/hero/optimized/cleanroom-manufacturing.jpg"
+        image="/images/hero/optimized/cleanroom-manufacturing.webp"
         imageAlt="Controlled sterile manufacturing cleanroom with operators and equipment"
         imagePosition="center"
         actions={[

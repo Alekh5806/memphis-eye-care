@@ -18,7 +18,7 @@ function GlobalReach() {
         mobileTitle="Supplying 25+ countries."
         mobileText="Explore markets, products, and export support."
         breadcrumbs={[{ label: 'Global Reach' }]}
-        image="/images/hero/optimized/export-logistics.jpg"
+        image="/images/hero/optimized/export-logistics.webp"
         imageAlt="International cargo containers representing pharmaceutical export logistics"
         imagePosition="center"
         actions={[

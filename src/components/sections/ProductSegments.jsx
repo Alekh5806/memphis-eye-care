@@ -38,7 +38,7 @@ function ProductSegments() {
             {...revealInView}
             transition={revealTransition(0.12, 0.65)}
           >
-            <img src="/images/hero/optimized/cleanroom-manufacturing.jpg" alt="" loading="lazy" />
+            <img src="/images/hero/optimized/cleanroom-manufacturing.webp" alt="" loading="lazy" />
           </motion.div>
         </div>
         <motion.div

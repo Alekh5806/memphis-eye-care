@@ -27,7 +27,7 @@ function ContractManufacturing() {
         mobileTitle="Sterile PFS partnerships."
         mobileText="CDMO conversations with quality-led documentation."
         breadcrumbs={[{ label: 'Capabilities', path: '/capabilities' }, { label: 'Contract Manufacturing' }]}
-        image="/images/hero/optimized/cleanroom-manufacturing.jpg"
+        image="/images/hero/optimized/cleanroom-manufacturing.webp"
         imageAlt="Cleanroom manufacturing environment for sterile pharmaceutical partnerships"
         imagePosition="center"
         actions={[

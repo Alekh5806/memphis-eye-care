@@ -45,7 +45,7 @@ function Capabilities() {
         mobileTitle="Capabilities for sterile supply."
         mobileText="Manufacturing, quality, documents, and partner support."
         breadcrumbs={[{ label: 'Capabilities' }]}
-        image="/images/hero/optimized/cleanroom-manufacturing.jpg"
+        image="/images/hero/optimized/cleanroom-manufacturing.webp"
         imageAlt="Sterile cleanroom production area for pharmaceutical manufacturing"
         imagePosition="center"
         actions={[
